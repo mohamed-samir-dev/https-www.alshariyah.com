@@ -11,7 +11,11 @@ export async function GET() {
     });
     if (!res.ok) return NextResponse.json({}, { status: res.status });
     const data = await res.json();
-    return NextResponse.json(data);
+    return NextResponse.json(data, {
+      headers: {
+        "Cache-Control": "public, max-age=3600, s-maxage=86400, stale-while-revalidate=604800",
+      },
+    });
   } catch {
     return NextResponse.json({});
   }

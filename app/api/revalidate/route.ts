@@ -1,4 +1,4 @@
-import { revalidateTag } from "next/cache";
+import { revalidateTag, revalidatePath } from "next/cache";
 import { NextRequest, NextResponse } from "next/server";
 
 const REVALIDATE_SECRET = process.env.REVALIDATE_SECRET || "";
@@ -10,5 +10,7 @@ export async function POST(req: NextRequest) {
   }
   const tag = req.nextUrl.searchParams.get("tag");
   if (tag) revalidateTag(tag);
-  return NextResponse.json({ revalidated: true });
+  const path = req.nextUrl.searchParams.get("path") || "/";
+  revalidatePath(path, "layout");
+  return NextResponse.json({ revalidated: true, now: Date.now() });
 }

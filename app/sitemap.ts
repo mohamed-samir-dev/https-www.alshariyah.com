@@ -27,6 +27,8 @@ const staticRoutes: {
   { path: "/routers-cat",   priority: 0.7, changeFrequency: "daily"   },
 ];
 
+export const revalidate = 86400;
+
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const now = new Date();
 

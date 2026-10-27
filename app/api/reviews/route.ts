@@ -4,11 +4,16 @@ import { getBackend } from "../admin/_lib";
 export async function GET() {
   try {
     const res = await fetch(`${getBackend()}/api/admin/reviews`, {
-      next: { revalidate: 3600, tags: ["reviews"] },
+      next: { revalidate: 86400, tags: ["reviews"] },
       signal: AbortSignal.timeout(15000),
     });
     const data = await res.json();
-    return NextResponse.json(data, { status: res.status });
+    return NextResponse.json(data, {
+      status: res.status,
+      headers: {
+        "Cache-Control": "public, max-age=3600, s-maxage=86400, stale-while-revalidate=604800",
+      },
+    });
   } catch {
     return NextResponse.json([], { status: 200 });
   }

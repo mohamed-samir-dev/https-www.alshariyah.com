@@ -26,7 +26,7 @@ async function getSections(): Promise<BrandSection[]> {
   try {
     // 1. Try single consolidated endpoint (1 backend request instead of 1 + N)
     const singleRes = await fetch(`${BACKEND}/api/products/home-sections`, {
-      next: { revalidate: 3600, tags: ["home_sections", "products"] },
+      next: { revalidate: 86400, tags: ["home_sections", "products"] },
       signal: AbortSignal.timeout(15000),
     });
     if (singleRes.ok) {
@@ -50,7 +50,7 @@ async function getSections(): Promise<BrandSection[]> {
   try {
     // 2. Fallback to existing settings + multi-product fetch
     const settingsRes = await fetch(`${BACKEND}/api/admin/brands/home-settings`, {
-      next: { revalidate: 3600, tags: ["brands-settings"] },
+      next: { revalidate: 86400, tags: ["brands-settings"] },
       signal: AbortSignal.timeout(15000),
     });
     if (!settingsRes.ok) {
@@ -68,7 +68,7 @@ async function getSections(): Promise<BrandSection[]> {
         try {
           const res = await fetch(
             `${BACKEND}/api/products?brand=${encodeURIComponent(s.brand)}`,
-            { next: { revalidate: 3600, tags: ["products"] }, signal: AbortSignal.timeout(15000) }
+            { next: { revalidate: 86400, tags: ["products"] }, signal: AbortSignal.timeout(15000) }
           );
           const data = res.ok ? await res.json() : [];
           const raw: Product[] = Array.isArray(data) ? data : Array.isArray(data.products) ? data.products : [];

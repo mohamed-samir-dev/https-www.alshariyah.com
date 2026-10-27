@@ -10,12 +10,14 @@ const BACKEND =
   "http://localhost:5000";
 const SITE_URL = "https://www.alshariyaa.com";
 
+export const revalidate = 86400;
+
 let cachedReviewsBackup: any[] = [];
 
 async function getReviews() {
   try {
     const res = await fetch(`${BACKEND}/api/admin/reviews`, {
-      next: { revalidate: 3600, tags: ["reviews"] },
+      next: { revalidate: 86400, tags: ["reviews"] },
       signal: AbortSignal.timeout(15000),
     });
     if (!res.ok) return cachedReviewsBackup.length > 0 ? cachedReviewsBackup : [];

@@ -14,7 +14,7 @@ const nextConfig: NextConfig = {
   trailingSlash: false,
   images: {
     formats: ["image/avif", "image/webp"],
-    minimumCacheTTL: 2592000,
+    minimumCacheTTL: 31536000, // 1 year cache for optimized images
     deviceSizes: [640, 750, 1080, 1200, 1920],
     imageSizes: [32, 64, 96, 128, 256, 384],
     qualities: [75, 80],
@@ -38,7 +38,7 @@ const nextConfig: NextConfig = {
         headers: [
           {
             key: "Cache-Control",
-            value: "public, max-age=31536000, immutable",
+            value: "public, max-age=31536000, s-maxage=31536000, immutable",
           },
         ],
       },
@@ -47,7 +47,16 @@ const nextConfig: NextConfig = {
         headers: [
           {
             key: "Cache-Control",
-            value: "public, max-age=31536000, immutable",
+            value: "public, max-age=31536000, s-maxage=31536000, immutable",
+          },
+        ],
+      },
+      {
+        source: "/_next/image",
+        headers: [
+          {
+            key: "Cache-Control",
+            value: "public, max-age=31536000, s-maxage=31536000, stale-while-revalidate=31536000",
           },
         ],
       },

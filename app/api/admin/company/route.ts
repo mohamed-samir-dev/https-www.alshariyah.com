@@ -1,11 +1,10 @@
 import { NextRequest, NextResponse } from "next/server";
-import { revalidateTag } from "next/cache";
+import { revalidateTag, revalidatePath } from "next/cache";
 import { getBackend, forwardCookies } from "../_lib";
 
 export async function GET(req: NextRequest) {
   const res = await fetch(`${getBackend()}/api/admin/company`, forwardCookies(req, {
-    cache: "force-cache",
-    next: { tags: ["company"] }
+    cache: "no-store",
   }));
   if (!res.ok) return NextResponse.json({ error: "Backend unavailable" }, { status: res.status });
   const data = await res.json();
@@ -21,6 +20,11 @@ export async function PUT(req: NextRequest) {
   }));
   if (!res.ok) return NextResponse.json({ error: "Backend unavailable" }, { status: res.status });
   const data = await res.json();
-  revalidateTag("company");
+  try {
+    revalidateTag("company");
+    revalidatePath("/", "layout");
+  } catch (err) {
+    console.error("Revalidation error:", err);
+  }
   return NextResponse.json(data, { status: res.status });
 }
