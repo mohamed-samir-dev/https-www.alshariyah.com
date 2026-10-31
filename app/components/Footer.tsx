@@ -32,8 +32,8 @@ export default async function Footer() {
                   unoptimized={Boolean(c.crImage && c.crImage.startsWith("http"))}
                 />
                 <div className="flex flex-col">
-                  <span className="text-xs font-semibold text-gray-700">{c.crName || "السجل التجاري"}</span>
-                  <span dir="ltr" className="text-xs text-gray-500 tabular-nums">{c.crNumber || "7055426618"}</span>
+                  {c.crName ? <span className="text-xs font-semibold text-gray-700">{c.crName}</span> : null}
+                  {c.crNumber ? <span dir="ltr" className="text-xs text-gray-500 tabular-nums">{c.crNumber}</span> : null}
                 </div>
               </a>
             ) : (
@@ -47,33 +47,46 @@ export default async function Footer() {
                   unoptimized={Boolean(c.crImage && c.crImage.startsWith("http"))}
                 />
                 <div className="flex flex-col">
-                  <span className="text-xs font-semibold text-gray-700">{c.crName || "السجل التجاري"}</span>
-                  <span dir="ltr" className="text-xs text-gray-500 tabular-nums">{c.crNumber || "7055426618"}</span>
+                  {c.crName ? <span className="text-xs font-semibold text-gray-700">{c.crName}</span> : null}
+                  {c.crNumber ? <span dir="ltr" className="text-xs text-gray-500 tabular-nums">{c.crNumber}</span> : null}
                 </div>
               </div>
             )}
 
             {/* شهادة التوثيق / مركز الأعمال */}
             <div className="flex items-center gap-2.5">
-              <a
-                href={c.bcLink || "https://qr.saudibusiness.gov.sa/viewcr?nCrNumber=v2eosJ+qA5kQRXufqrwSSw=="}
-                target="_blank"
-                rel="noreferrer"
-                className="shrink-0 hover:opacity-85 transition-opacity"
-              >
-                <Image
-                  src={c.bcImage || "/work.webp"}
-                  alt={c.bcTitle || "شهادة التوثيق"}
-                  width={52}
-                  height={52}
-                  className="object-contain"
-                  unoptimized={Boolean(c.bcImage && c.bcImage.startsWith("http"))}
-                />
-              </a>
+              {c.bcLink ? (
+                <a
+                  href={c.bcLink}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="shrink-0 hover:opacity-85 transition-opacity"
+                >
+                  <Image
+                    src={c.bcImage || "/work.webp"}
+                    alt={c.bcTitle || "شهادة التوثيق"}
+                    width={52}
+                    height={52}
+                    className="object-contain"
+                    unoptimized={Boolean(c.bcImage && c.bcImage.startsWith("http"))}
+                  />
+                </a>
+              ) : (
+                <div className="shrink-0">
+                  <Image
+                    src={c.bcImage || "/work.webp"}
+                    alt={c.bcTitle || "شهادة التوثيق"}
+                    width={52}
+                    height={52}
+                    className="object-contain"
+                    unoptimized={Boolean(c.bcImage && c.bcImage.startsWith("http"))}
+                  />
+                </div>
+              )}
               <div className="flex flex-col">
-                <span className="text-xs font-semibold text-gray-700">{c.bcTitle || "شهادة التوثيق"}</span>
-                <span className="text-xs text-gray-500">{c.bcSubtitle || "مركز الاعمال"}</span>
-                <span dir="ltr" className="text-xs text-gray-500 tabular-nums">{c.bcNumber || "0000336194"}</span>
+                {c.bcTitle ? <span className="text-xs font-semibold text-gray-700">{c.bcTitle}</span> : null}
+                {c.bcSubtitle ? <span className="text-xs text-gray-500">{c.bcSubtitle}</span> : null}
+                {c.bcNumber ? <span dir="ltr" className="text-xs text-gray-500 tabular-nums">{c.bcNumber}</span> : null}
               </div>
             </div>
           </div>
@@ -120,22 +133,38 @@ export default async function Footer() {
             </ul>
 
             {/* شعار ضريبة القيمة المضافة / ملف PDF */}
-            <a
-              href={c.vatPdf || "/qema.pdf"}
-              target="_blank"
-              rel="noreferrer"
-              className="inline-block mt-2 w-fit hover:opacity-85 transition-opacity"
-              title={c.vatTitle || "شهادة ضريبة القيمة المضافة"}
-            >
-              <Image
-                src={c.vatImage || "/شعار ضريبة القيمة المضافة بدقة عالية svg - png (1).png"}
-                alt={c.vatTitle || "شهادة ضريبة القيمة المضافة"}
-                width={65}
-                height={65}
-                className="object-contain"
-                unoptimized={Boolean(c.vatImage && c.vatImage.startsWith("http"))}
-              />
-            </a>
+            {c.vatPdf ? (
+              <a
+                href={c.vatPdf}
+                target="_blank"
+                rel="noreferrer"
+                className="inline-block mt-2 w-fit hover:opacity-85 transition-opacity"
+                title={c.vatTitle || "شهادة ضريبة القيمة المضافة"}
+              >
+                <Image
+                  src={c.vatImage || "/شعار ضريبة القيمة المضافة بدقة عالية svg - png (1).png"}
+                  alt={c.vatTitle || "شهادة ضريبة القيمة المضافة"}
+                  width={65}
+                  height={65}
+                  className="object-contain"
+                  unoptimized={Boolean(c.vatImage && c.vatImage.startsWith("http"))}
+                />
+              </a>
+            ) : (
+              <div
+                className="inline-block mt-2 w-fit"
+                title={c.vatTitle || "شهادة ضريبة القيمة المضافة"}
+              >
+                <Image
+                  src={c.vatImage || "/شعار ضريبة القيمة المضافة بدقة عالية svg - png (1).png"}
+                  alt={c.vatTitle || "شهادة ضريبة القيمة المضافة"}
+                  width={65}
+                  height={65}
+                  className="object-contain"
+                  unoptimized={Boolean(c.vatImage && c.vatImage.startsWith("http"))}
+                />
+              </div>
+            )}
           </div>
         </div>
 

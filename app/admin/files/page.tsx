@@ -40,20 +40,20 @@ export default function AdminFilesPage() {
         const json = await res.json();
         if (isMounted && json) {
           setData({
-            crName: json.crName !== undefined && json.crName !== "" ? json.crName : defaultDocumentSettings.crName,
-            crNumber: json.crNumber !== undefined && json.crNumber !== "" ? json.crNumber : (json.number1 || defaultDocumentSettings.crNumber),
+            crName: typeof json.crName === "string" ? json.crName : (json.crName ?? defaultDocumentSettings.crName),
+            crNumber: typeof json.crNumber === "string" ? json.crNumber : (typeof json.number1 === "string" ? json.number1 : defaultDocumentSettings.crNumber),
             crImage: json.crImage || defaultDocumentSettings.crImage,
-            crLink: json.crLink || defaultDocumentSettings.crLink,
+            crLink: typeof json.crLink === "string" ? json.crLink : (json.crLink ?? defaultDocumentSettings.crLink),
 
-            bcTitle: json.bcTitle !== undefined && json.bcTitle !== "" ? json.bcTitle : defaultDocumentSettings.bcTitle,
-            bcSubtitle: json.bcSubtitle !== undefined && json.bcSubtitle !== "" ? json.bcSubtitle : defaultDocumentSettings.bcSubtitle,
-            bcNumber: json.bcNumber !== undefined && json.bcNumber !== "" ? json.bcNumber : (json.number2 || defaultDocumentSettings.bcNumber),
+            bcTitle: typeof json.bcTitle === "string" ? json.bcTitle : (json.bcTitle ?? defaultDocumentSettings.bcTitle),
+            bcSubtitle: typeof json.bcSubtitle === "string" ? json.bcSubtitle : (json.bcSubtitle ?? defaultDocumentSettings.bcSubtitle),
+            bcNumber: typeof json.bcNumber === "string" ? json.bcNumber : (typeof json.number2 === "string" ? json.number2 : defaultDocumentSettings.bcNumber),
             bcImage: json.bcImage || defaultDocumentSettings.bcImage,
-            bcLink: json.bcLink || defaultDocumentSettings.bcLink,
+            bcLink: typeof json.bcLink === "string" ? json.bcLink : (json.bcLink ?? defaultDocumentSettings.bcLink),
 
-            vatTitle: json.vatTitle !== undefined && json.vatTitle !== "" ? json.vatTitle : defaultDocumentSettings.vatTitle,
+            vatTitle: typeof json.vatTitle === "string" ? json.vatTitle : (json.vatTitle ?? defaultDocumentSettings.vatTitle),
             vatImage: json.vatImage || defaultDocumentSettings.vatImage,
-            vatPdf: json.vatPdf || defaultDocumentSettings.vatPdf,
+            vatPdf: typeof json.vatPdf === "string" ? json.vatPdf : (json.vatPdf ?? defaultDocumentSettings.vatPdf),
           });
         }
       } catch (err) {
@@ -641,32 +641,63 @@ export default function AdminFilesPage() {
                   unoptimized
                 />
                 <div className="flex flex-col">
-                  <span className="text-xs font-semibold text-gray-700">{data.crName || "السجل التجاري"}</span>
-                  <span dir="ltr" className="text-xs text-gray-500 tabular-nums">{data.crNumber || "7055426618"}</span>
+                  {data.crName ? (
+                    <span className="text-xs font-semibold text-gray-700">{data.crName}</span>
+                  ) : (
+                    <span className="text-[11px] text-gray-400 italic">(فارغ)</span>
+                  )}
+                  {data.crNumber ? (
+                    <span dir="ltr" className="text-xs text-gray-500 tabular-nums">{data.crNumber}</span>
+                  ) : (
+                    <span className="text-[11px] text-gray-400 italic">(لا يوجد رقم)</span>
+                  )}
                 </div>
               </div>
 
               {/* مركز الأعمال */}
               <div className="flex items-center gap-2.5 bg-white/70 p-3 rounded-lg border border-gray-200/60">
-                <a
-                  href={data.bcLink || "#"}
-                  target="_blank"
-                  rel="noreferrer"
-                  className="shrink-0 hover:opacity-80 transition-opacity"
-                >
-                  <Image
-                    src={data.bcImage || "/work.webp"}
-                    alt={data.bcTitle || "شهادة التوثيق"}
-                    width={52}
-                    height={52}
-                    className="object-contain"
-                    unoptimized
-                  />
-                </a>
+                {data.bcLink ? (
+                  <a
+                    href={data.bcLink}
+                    target="_blank"
+                    rel="noreferrer"
+                    className="shrink-0 hover:opacity-80 transition-opacity"
+                  >
+                    <Image
+                      src={data.bcImage || "/work.webp"}
+                      alt={data.bcTitle || "شهادة التوثيق"}
+                      width={52}
+                      height={52}
+                      className="object-contain"
+                      unoptimized
+                    />
+                  </a>
+                ) : (
+                  <div className="shrink-0">
+                    <Image
+                      src={data.bcImage || "/work.webp"}
+                      alt={data.bcTitle || "شهادة التوثيق"}
+                      width={52}
+                      height={52}
+                      className="object-contain"
+                      unoptimized
+                    />
+                  </div>
+                )}
                 <div className="flex flex-col">
-                  <span className="text-xs font-semibold text-gray-700">{data.bcTitle || "شهادة التوثيق"}</span>
-                  <span className="text-xs text-gray-500">{data.bcSubtitle || "مركز الاعمال"}</span>
-                  <span dir="ltr" className="text-xs text-gray-500 tabular-nums">{data.bcNumber || "0000336194"}</span>
+                  {data.bcTitle ? (
+                    <span className="text-xs font-semibold text-gray-700">{data.bcTitle}</span>
+                  ) : (
+                    <span className="text-[11px] text-gray-400 italic">(فارغ)</span>
+                  )}
+                  {data.bcSubtitle ? (
+                    <span className="text-xs text-gray-500">{data.bcSubtitle}</span>
+                  ) : null}
+                  {data.bcNumber ? (
+                    <span dir="ltr" className="text-xs text-gray-500 tabular-nums">{data.bcNumber}</span>
+                  ) : (
+                    <span className="text-[11px] text-gray-400 italic">(لا يوجد رقم)</span>
+                  )}
                 </div>
               </div>
             </div>
@@ -675,28 +706,50 @@ export default function AdminFilesPage() {
             <div className="space-y-4">
               <span className="text-xs font-bold text-gray-400 block mb-2">جهة اليسار بالفوتر:</span>
               <div className="bg-white/70 p-3 rounded-lg border border-gray-200/60 flex flex-col items-start gap-2">
-                <a
-                  href={data.vatPdf || "/qema.pdf"}
-                  target="_blank"
-                  rel="noreferrer"
-                  className="inline-block hover:opacity-80 transition-opacity"
-                  title={data.vatTitle || "شهادة ضريبة القيمة المضافة"}
-                >
-                  <Image
-                    src={data.vatImage || "/شعار ضريبة القيمة المضافة بدقة عالية svg - png (1).png"}
-                    alt={data.vatTitle || "شهادة ضريبة القيمة المضافة"}
-                    width={65}
-                    height={65}
-                    className="object-contain"
-                    unoptimized
-                  />
-                </a>
+                {data.vatPdf ? (
+                  <a
+                    href={data.vatPdf}
+                    target="_blank"
+                    rel="noreferrer"
+                    className="inline-block hover:opacity-80 transition-opacity"
+                    title={data.vatTitle || "شهادة ضريبة القيمة المضافة"}
+                  >
+                    <Image
+                      src={data.vatImage || "/شعار ضريبة القيمة المضافة بدقة عالية svg - png (1).png"}
+                      alt={data.vatTitle || "شهادة ضريبة القيمة المضافة"}
+                      width={65}
+                      height={65}
+                      className="object-contain"
+                      unoptimized
+                    />
+                  </a>
+                ) : (
+                  <div
+                    className="inline-block hover:opacity-80 transition-opacity"
+                    title={data.vatTitle || "شهادة ضريبة القيمة المضافة"}
+                  >
+                    <Image
+                      src={data.vatImage || "/شعار ضريبة القيمة المضافة بدقة عالية svg - png (1).png"}
+                      alt={data.vatTitle || "شهادة ضريبة القيمة المضافة"}
+                      width={65}
+                      height={65}
+                      className="object-contain"
+                      unoptimized
+                    />
+                  </div>
+                )}
                 <span className="text-xs text-gray-600 font-medium">
-                  {data.vatTitle || "شهادة ضريبة القيمة المضافة"}
+                  {data.vatTitle || <span className="text-gray-400 italic">(بدون مسمى)</span>}
                 </span>
                 <span className="text-[11px] text-gray-400 flex items-center gap-1">
                   <FileText className="w-3 h-3 text-red-500" />
-                  النقر على الشعار يفتح ملف PDF: <span dir="ltr" className="font-mono text-gray-600">{data.vatPdf?.slice(0, 35)}...</span>
+                  {data.vatPdf ? (
+                    <>
+                      النقر على الشعار يفتح ملف PDF: <span dir="ltr" className="font-mono text-gray-600">{data.vatPdf?.slice(0, 35)}...</span>
+                    </>
+                  ) : (
+                    <span className="text-gray-400 italic">(لا يوجد ملف PDF مرتبط)</span>
+                  )}
                 </span>
               </div>
             </div>
