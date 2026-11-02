@@ -1,4 +1,4 @@
-﻿import { TrendingUp } from "lucide-react";
+import { TrendingUp } from "lucide-react";
 import type { Product } from "./products/types";
 import ProductCard from "./products/ProductCard";
 
@@ -46,7 +46,7 @@ export default async function MostDemandedSection() {
           <div className="flex items-center gap-3">
             <div className="w-1 h-7 rounded-full bg-gradient-to-b from-[#02B9FA] to-[#005AAD]" />
             <div>
-              <h2 className="text-xl sm:text-3xl font-black text-gray-900">الأكثر طلباً</h2>
+              <h2 className="text-xl sm:text-3xl font-black text-[#01226B]">الأكثر طلباً</h2>
               <p className="text-gray-500 text-xs sm:text-sm mt-0.5">منتجات يختارها عملاؤنا باستمرار</p>
             </div>
           </div>

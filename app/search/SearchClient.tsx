@@ -1,4 +1,4 @@
-﻿"use client";
+"use client";
 
 import { useEffect, useState } from "react";
 import { useSearchParams } from "next/navigation";
@@ -25,13 +25,13 @@ export default function SearchClient() {
 
   return (
     <div className="max-w-7xl mx-auto px-4 py-8" dir="rtl">
-      <h1 className="text-xl font-bold text-gray-800 mb-6">
-        نتائج البحث عن: <span className="text-purple-700">{q}</span>
+      <h1 className="text-xl font-bold text-[#01226B] mb-6">
+        نتائج البحث عن: <span className="text-[#005AAD]">{q}</span>
       </h1>
 
       {loading && (
         <div className="flex justify-center py-20">
-          <div className="w-10 h-10 border-4 border-purple-700 border-t-transparent rounded-full animate-spin" />
+          <div className="w-10 h-10 border-4 border-slate-100 border-t-[#005AAD] rounded-full animate-spin" />
         </div>
       )}
 

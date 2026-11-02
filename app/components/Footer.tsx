@@ -1,4 +1,4 @@
-﻿import Image from "next/image";
+import Image from "next/image";
 import { FaWhatsapp, FaMobileAlt, FaEnvelope } from "react-icons/fa";
 import { getCompany } from "../lib/getCompany";
 
@@ -93,16 +93,16 @@ export default async function Footer() {
 
           {/* Contact details */}
           <div className="flex flex-col gap-4">
-            <h3 className="text-base font-bold text-black">تواصل معنا</h3>
+            <h3 className="text-base font-bold text-[#01226B]">تواصل معنا</h3>
 
             <ul className="flex flex-col gap-3">
 
               {c.whatsapp && (
                 <li>
                   <a href={`https://wa.me/${c.whatsapp.replace(/\D/g, "")}`} target="_blank" rel="noreferrer"
-                    className="flex items-center gap-3 text-sm text-gray-600 hover:text-black transition-colors">
+                    className="flex items-center gap-3 text-sm text-gray-600 hover:text-[#005AAD] transition-colors">
                     <span className="flex items-center justify-center w-8 h-8 rounded-xl border border-gray-200 shrink-0">
-                      <FaWhatsapp size={14} className="text-black" />
+                      <FaWhatsapp size={14} className="text-[#01226B]" />
                     </span>
                     <span dir="ltr">{c.whatsapp}</span>
                   </a>
@@ -111,9 +111,9 @@ export default async function Footer() {
               {c.phone && (
                 <li>
                   <a href={`tel:${c.phone}`}
-                    className="flex items-center gap-3 text-sm text-gray-600 hover:text-black transition-colors">
+                    className="flex items-center gap-3 text-sm text-gray-600 hover:text-[#005AAD] transition-colors">
                     <span className="flex items-center justify-center w-8 h-8 rounded-xl border border-gray-200 shrink-0">
-                      <FaMobileAlt size={14} className="text-black" />
+                      <FaMobileAlt size={14} className="text-[#01226B]" />
                     </span>
                     <span dir="ltr">{c.phone}</span>
                   </a>
@@ -122,9 +122,9 @@ export default async function Footer() {
               {c.email && (
                 <li>
                   <a href={`mailto:${c.email}`}
-                    className="flex items-center gap-3 text-sm text-gray-600 hover:text-black transition-colors">
+                    className="flex items-center gap-3 text-sm text-gray-600 hover:text-[#005AAD] transition-colors">
                     <span className="flex items-center justify-center w-8 h-8 rounded-xl border border-gray-200 shrink-0">
-                      <FaEnvelope size={14} className="text-black" />
+                      <FaEnvelope size={14} className="text-[#01226B]" />
                     </span>
                     <span dir="ltr">{c.email}</span>
                   </a>

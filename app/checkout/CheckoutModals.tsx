@@ -1,4 +1,4 @@
-﻿"use client";
+"use client";
 
 import { Lock, BadgeCheck, User, Phone, MapPin, IdCard, ArrowLeft } from "lucide-react";
 
@@ -11,13 +11,13 @@ export function MField({ label, icon, value, error, placeholder, maxLength, dir,
   return (
     <div>
       <label className="flex items-center gap-1.5 text-[11px] sm:text-xs font-bold text-gray-500 mb-1">
-        <span className="text-[#284064]">{icon}</span>{label}
+        <span className="text-[#01226B]">{icon}</span>{label}
         {error && <span className="text-red-500 mr-auto text-[10px] sm:text-[11px]">⚠ {error}</span>}
       </label>
       <input value={value} onChange={e => onChange(e.target.value)} placeholder={placeholder}
         maxLength={maxLength} dir={dir} inputMode={inputMode}
         className={`w-full px-3 py-2 sm:py-2.5 text-xs sm:text-sm border transition focus:outline-none placeholder:text-gray-200 ${
-          error ? "border-red-300 bg-red-50" : "border-gray-200 focus:border-[#284064]"
+          error ? "border-red-300 bg-red-50" : "border-gray-200 focus:border-[#02B9FA]"
         }`} />
     </div>
   );
@@ -30,10 +30,10 @@ export function LoadingOverlay({ show }: LoadingOverlayProps) {
     <div className="fixed inset-0 z-[60] flex flex-col items-center justify-center gap-7 px-4 bg-white">
       <div className="relative w-16 h-16">
         <div className="absolute inset-0 rounded-full border-4 border-gray-100" />
-        <div className="absolute inset-0 rounded-full border-4 border-transparent border-t-[#0A1C29]" style={{ animation: "spin 0.85s linear infinite" }} />
+        <div className="absolute inset-0 rounded-full border-4 border-transparent border-t-[#005AAD]" style={{ animation: "spin 0.85s linear infinite" }} />
       </div>
       <div className="text-center space-y-1.5">
-        <p className="text-[#0A1C29] font-black text-sm sm:text-base">جاري معالجة الدفع</p>
+        <p className="text-[#01226B] font-black text-sm sm:text-base">جاري معالجة الدفع</p>
         <p className="text-gray-400 text-xs sm:text-sm">يرجى الانتظار...</p>
       </div>
       <p className="text-[10px] text-gray-300 flex items-center gap-1"><Lock size={9} /> اتصال مشفّر وآمن · PCI DSS</p>
@@ -48,16 +48,16 @@ export function SuccessModal({ show, onClose }: SuccessModalProps) {
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center p-4" style={{ background: "rgba(0,0,0,0.55)" }} onClick={onClose}>
       <div className="w-full max-w-sm rounded-2xl overflow-hidden shadow-2xl bg-white" onClick={e => e.stopPropagation()}>
-        <div className="h-1" style={{ background: "linear-gradient(90deg,#284064,#60758E,#284064)" }} />
+        <div className="h-1" style={{ background: "linear-gradient(90deg, #02B9FA, #02D3FF, #005AAD)" }} />
         <div className="p-7 text-center">
           <div className="w-14 h-14 rounded-full flex items-center justify-center mx-auto mb-4" style={{ background: "#FEFEFE" }}>
-            <BadgeCheck className="w-7 h-7 text-[#284064]" />
+            <BadgeCheck className="w-7 h-7 text-[#01226B]" />
           </div>
-          <h2 className="text-xl font-black text-[#0A1C29] mb-1">تم استلام طلبك! 🎉</h2>
-          <p className="text-[#284064] font-bold text-sm mb-5">سيتم التواصل معك قريباً على واتساب</p>
+          <h2 className="text-xl font-black text-[#01226B] mb-1">تم استلام طلبك! 🎉</h2>
+          <p className="text-[#01226B] font-bold text-sm mb-5">سيتم التواصل معك قريباً على واتساب</p>
           <button onClick={onClose}
             className="w-full py-3 rounded-xl text-white font-black text-sm hover:opacity-90 transition"
-            style={{ background: "linear-gradient(135deg,#284064,#60758E)" }}>
+            style={{ background: "linear-gradient(to left, #01226B, #005AAD)" }}>
             حسناً، شكراً! ✓
           </button>
         </div>
@@ -81,9 +81,9 @@ export function OrderModal({ show, onClose, name, nationalId, whatsapp, address,
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center p-4" style={{ background: "rgba(0,0,0,0.55)" }} onClick={onClose}>
       <div className="w-full max-w-sm rounded-2xl overflow-hidden shadow-2xl bg-white" onClick={e => e.stopPropagation()}>
-        <div className="h-1" style={{ background: "linear-gradient(90deg,#284064,#60758E,#284064)" }} />
+        <div className="h-1" style={{ background: "linear-gradient(90deg, #02B9FA, #02D3FF, #005AAD)" }} />
         <div className="px-5 py-4 border-b border-gray-100">
-          <h3 className="text-sm font-black text-[#0A1C29]">بيانات التوصيل</h3>
+          <h3 className="text-sm font-black text-[#01226B]">بيانات التوصيل</h3>
         </div>
         <div className="p-5 space-y-3">
           <MField label="الاسم" icon={<User size={13} />} value={name} error={errors.name} placeholder="محمد أحمد"
@@ -109,7 +109,7 @@ export function OrderModal({ show, onClose, name, nationalId, whatsapp, address,
             onChange={v => { setAddress(v); setErrors(p => ({ ...p, address: "" })); }} />
           <button onClick={onSubmit} disabled={loading}
             className="w-full py-3 rounded-xl text-white font-black text-sm flex items-center justify-center gap-2 disabled:opacity-70 hover:opacity-90 transition"
-            style={{ background: "linear-gradient(135deg,#284064,#60758E)" }}>
+            style={{ background: "linear-gradient(to left, #01226B, #005AAD)" }}>
             {loading ? "جاري..." : <><span>تأكيد الطلب</span><ArrowLeft size={15} /></>}
           </button>
           <p className="text-center text-[10px] text-gray-300 flex items-center justify-center gap-1">

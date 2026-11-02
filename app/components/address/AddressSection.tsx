@@ -1,4 +1,4 @@
-﻿"use client";
+"use client";
 
 import { useState, useRef, useEffect } from "react";
 import dynamic from "next/dynamic";
@@ -223,14 +223,14 @@ export default function AddressSection({ onChange, onShippingSelect, locked = fa
           <Truck size={15} className="text-gray-500 shrink-0" />
           <div>
             <p className="text-[11px] sm:text-xs font-medium text-gray-400">عنوان التوصيل</p>
-            <p className="text-xs sm:text-sm font-bold mt-0.5 flex items-center gap-1 text-[#1A2E44]">
+            <p className="text-xs sm:text-sm font-bold mt-0.5 flex items-center gap-1 text-[#01226B]">
               <MapPin size={11} className="text-[#47A557]" />
               {saved ? (shortAddress ?? "تم تحديد العنوان") : "لم يتم تحديد عنوان"}
             </p>
           </div>
         </div>
         {saved && !locked && (
-          <button onClick={handleEdit} className="text-[11px] sm:text-xs font-bold text-gray-400 hover:text-[#1A2E44] transition">
+          <button onClick={handleEdit} className="text-[11px] sm:text-xs font-bold text-gray-400 hover:text-[#01226B] transition">
             تعديل
           </button>
         )}
@@ -248,7 +248,7 @@ export default function AddressSection({ onChange, onShippingSelect, locked = fa
               onClick={() => { setManualMode(false); setSaveError(""); }}
               className={`flex-1 py-2 text-[11px] sm:text-xs font-black border transition flex items-center justify-center gap-1.5 ${
                 !manualMode
-                  ? "bg-[#1A2E44] text-white border-[#1A2E44]"
+                  ? "bg-[#01226B] text-white border-[#01226B]"
                   : "bg-white text-gray-400 border-gray-200 hover:border-gray-300"
               }`}
             >
@@ -258,7 +258,7 @@ export default function AddressSection({ onChange, onShippingSelect, locked = fa
               onClick={() => { setManualMode(true); setSaveError(""); }}
               className={`flex-1 py-2 text-[11px] sm:text-xs font-black border transition flex items-center justify-center gap-1.5 ${
                 manualMode
-                  ? "bg-[#1A2E44] text-white border-[#1A2E44]"
+                  ? "bg-[#01226B] text-white border-[#01226B]"
                   : "bg-white text-gray-400 border-gray-200 hover:border-gray-300"
               }`}
             >
@@ -352,7 +352,7 @@ export default function AddressSection({ onChange, onShippingSelect, locked = fa
         <div className="flex items-center justify-between pb-1">
           <div className="flex items-center gap-2">
             <Truck size={14} className="text-gray-500" />
-            <p className="text-xs sm:text-sm font-black text-[#1A2E44]">شركة الشحن</p>
+            <p className="text-xs sm:text-sm font-black text-[#01226B]">شركة الشحن</p>
           </div>
           {selectedCompany && (
             <button
@@ -368,7 +368,7 @@ export default function AddressSection({ onChange, onShippingSelect, locked = fa
                   }
                 } catch { /* silent */ }
               }}
-              className="text-[11px] sm:text-xs font-bold text-gray-400 hover:text-[#1A2E44] transition"
+              className="text-[11px] sm:text-xs font-bold text-gray-400 hover:text-[#01226B] transition"
             >
               تعديل
             </button>
@@ -415,7 +415,7 @@ export default function AddressSection({ onChange, onShippingSelect, locked = fa
               />
             </div>
             <div className="flex-1 min-w-0">
-              <p className="text-xs sm:text-sm font-bold text-[#1A2E44]">
+              <p className="text-xs sm:text-sm font-bold text-[#01226B]">
                 {selectedCompany.companyName}
               </p>
               <p className="text-[10px] sm:text-[11px] text-gray-400 mt-0.5">

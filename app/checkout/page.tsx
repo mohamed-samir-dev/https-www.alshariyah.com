@@ -1,4 +1,4 @@
-﻿"use client";
+"use client";
 
 import { useState, useEffect, useRef } from "react";
 import { useRouter } from "next/navigation";
@@ -265,7 +265,7 @@ export default function CheckoutPage() {
             <Image src="/logo.webp" alt="logo" width={64} height={64} className="object-contain w-full h-full" />
           </div>
           <div className="flex-1 flex flex-col gap-2">
-            <p className="text-sm sm:text-base font-black text-[#0A1C29]">إجمالي الطلب</p>
+            <p className="text-sm sm:text-base font-black text-[#01226B]">إجمالي الطلب</p>
             <div className="flex flex-wrap gap-2">
               {items.map(({ product, qty }) => {
                 const rawImg = product.images?.[0] || (product as { image?: string }).image;
@@ -276,7 +276,7 @@ export default function CheckoutPage() {
                       {img ? <Image src={img} alt={product.name} width={40} height={40} className="object-contain w-full h-full p-0.5" /> : <span className="text-base">📦</span>}
                     </div>
                     {qty > 1 && (
-                      <span className="absolute -top-1 -left-1 w-3.5 h-3.5 rounded-full bg-[#0A1C29] text-white text-[8px] font-black flex items-center justify-center">{qty}</span>
+                      <span className="absolute -top-1 -left-1 w-3.5 h-3.5 rounded-full bg-[#01226B] text-white text-[8px] font-black flex items-center justify-center">{qty}</span>
                     )}
                   </div>
                 );
@@ -284,7 +284,7 @@ export default function CheckoutPage() {
             </div>
           </div>
           <div className="flex flex-col items-end gap-1 shrink-0">
-            <p className="text-lg sm:text-3xl font-black text-[#0A1C29] leading-none">
+            <p className="text-lg sm:text-3xl font-black text-[#01226B] leading-none">
               {fmt(finalTotal)}
               <span className="text-xs sm:text-sm font-medium text-gray-400 mr-1"><img src="/money-icon.webp" alt="ر.س" className="inline w-6 sm:w-7 h-6 sm:h-7 object-contain align-middle" /></span>
             </p>
@@ -301,7 +301,7 @@ export default function CheckoutPage() {
             <input value={coupon} onChange={e => { setCoupon(e.target.value); setCouponMsg(""); }}
               placeholder="أدخل الكود"
               className="flex-1 px-3 py-1.5 text-xs border border-gray-200 focus:border-gray-400 focus:outline-none transition" />
-            <button onClick={applyCoupon} className="px-3 py-1.5 bg-[#0A1C29] text-white text-xs font-black hover:opacity-80 transition">تطبيق</button>
+            <button onClick={applyCoupon} className="px-3 py-1.5 bg-[#01226B] text-white text-xs font-black hover:opacity-80 transition">تطبيق</button>
           </div>
         )}
         {couponOpen && couponMsg && (

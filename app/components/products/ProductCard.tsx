@@ -1,4 +1,4 @@
-﻿"use client";
+"use client";
 
 import { useState, useRef } from "react";
 import Link from "next/link";
@@ -92,7 +92,7 @@ export default function ProductCard({
           {/* خط لوني في الأعلى بألوان اللوجو */}
           <div
             className="absolute top-0 left-0 right-0 h-[3px] z-10"
-            style={{ background: "linear-gradient(90deg, #00246E, #0065C4, #03DFFD)" }}
+            style={{ background: "linear-gradient(90deg, #01226B, #005AAD, #02B9FA)" }}
           />
 
           {/* شارة الخصم */}
@@ -109,7 +109,7 @@ export default function ProductCard({
           {rank != null && (
             <div
               className="absolute top-3 left-3 z-20 w-6 h-6 rounded-full flex items-center justify-center text-[11px] font-black text-white"
-              style={{ background: "#00246E" }}
+              style={{ background: "#01226B" }}
             >
               {rank}
             </div>
@@ -150,7 +150,7 @@ export default function ProductCard({
               {brand && (
                 <span
                   className="text-[9px] sm:text-[10px] font-bold uppercase tracking-wider px-2 py-0.5 rounded-md"
-                  style={{ background: "#eef4fb", color: "#00246E" }}
+                  style={{ background: "#eef4fb", color: "#01226B" }}
                 >
                   {brand}
                 </span>
@@ -168,7 +168,7 @@ export default function ProductCard({
           )}
 
           {/* اسم المنتج */}
-          <p className="text-[12px] sm:text-[13px] font-semibold text-gray-700 leading-snug line-clamp-2 flex-1">
+          <p className="text-[12px] sm:text-[13px] font-semibold text-[#01226B] group-hover:text-[#005AAD] transition-colors leading-snug line-clamp-2 flex-1">
             {name}
           </p>
 
@@ -180,7 +180,7 @@ export default function ProductCard({
               <div className="flex items-baseline gap-1">
                 <span
                   className="text-[20px] sm:text-[24px] font-black leading-none"
-                  style={{ color: "#111827" }}
+                  style={{ color: "#01226B" }}
                 >
                   {fmt(displayPrice!)}
                 </span>
@@ -215,8 +215,8 @@ export default function ProductCard({
                 className="w-full py-2.5 sm:py-3 rounded-xl text-[11px] sm:text-xs font-bold transition-all duration-200 flex items-center justify-center gap-1.5"
                 style={
                   added
-                    ? { background: "#00246E", color: "#fff" }
-                    : { background: "#eef4fb", color: "#00246E" }
+                    ? { background: "#01226B", color: "#fff" }
+                    : { background: "#eef4fb", color: "#01226B" }
                 }
               >
                 <AnimatePresence mode="wait" initial={false}>

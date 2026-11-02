@@ -1,4 +1,4 @@
-﻿"use client";
+"use client";
 import { useEffect, useState } from "react";
 import { IoStar, IoStarOutline, IoAdd, IoCheckmarkCircle } from "react-icons/io5";
 
@@ -80,7 +80,7 @@ export default function CustomerReviews({ initialReviews }: { initialReviews?: R
         <div className="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-4 mb-8">
           <div>
             <p className="text-[#005AAD] text-xs font-bold tracking-widest mb-2">آراء العملاء</p>
-            <h2 className="text-2xl sm:text-3xl font-black text-gray-800">ماذا يقولون عنّا؟</h2>
+            <h2 className="text-2xl sm:text-3xl font-black text-[#01226B]">ماذا يقولون عنّا؟</h2>
           </div>
 
           {reviews.length > 0 && (
@@ -108,7 +108,7 @@ export default function CustomerReviews({ initialReviews }: { initialReviews?: R
                     </div>
                   </div>
                   <p className="text-gray-500 text-xs leading-relaxed line-clamp-3 flex-1">{r.comment}</p>
-                  <p className="text-gray-700 text-xs font-semibold">{r.name}</p>
+                  <p className="text-[#01226B] text-xs font-semibold">{r.name}</p>
                 </div>
               ))}
             </div>
@@ -130,7 +130,7 @@ export default function CustomerReviews({ initialReviews }: { initialReviews?: R
                           </div>
                         </div>
                         <p className="text-gray-500 text-xs leading-relaxed">{r.comment}</p>
-                        <p className="text-gray-700 text-xs font-semibold">{r.name}</p>
+                        <p className="text-[#01226B] text-xs font-semibold">{r.name}</p>
                       </div>
                     </div>
                   ))}
@@ -157,7 +157,7 @@ export default function CustomerReviews({ initialReviews }: { initialReviews?: R
             </div>
           ) : (
             <button onClick={() => setShowForm((v) => !v)}
-              className="flex items-center gap-1.5 px-5 py-2.5 rounded-xl font-bold text-xs text-white bg-gradient-to-r from-[#02B9FA] to-[#005AAD] hover:opacity-90 transition-colors">
+              className="flex items-center gap-1.5 px-5 py-2.5 rounded-xl font-bold text-xs text-white bg-gradient-to-l from-[#01226B] to-[#005AAD] hover:opacity-90 transition-colors">
               <IoAdd size={14} />
               {showForm ? "إلغاء" : "شارك تجربتك"}
             </button>
@@ -180,7 +180,7 @@ export default function CustomerReviews({ initialReviews }: { initialReviews?: R
                 <Stars rating={form.rating} interactive onRate={(s) => setForm({ ...form, rating: s })} />
               </div>
               <button type="submit" disabled={submitting}
-                className="bg-gradient-to-r from-[#02B9FA] to-[#005AAD] text-white font-bold py-2.5 rounded-xl text-xs hover:opacity-90 transition-colors disabled:opacity-50">
+                className="bg-gradient-to-l from-[#01226B] to-[#005AAD] text-white font-bold py-2.5 rounded-xl text-xs hover:opacity-90 transition-colors disabled:opacity-50">
                 {submitting ? "جاري الإرسال..." : "إرسال"}
               </button>
             </form>

@@ -1,4 +1,4 @@
-﻿import Link from "next/link";
+import Link from "next/link";
 import { Tag } from "lucide-react";
 import type { Product } from "./products/types";
 import ProductCard from "./products/ProductCard";
@@ -121,7 +121,7 @@ export default async function HomeCategorySections() {
               <div className="flex items-center gap-3">
                 <div className="w-1 h-7 rounded-full bg-gradient-to-b from-[#02D3FF] to-[#023A89]" />
                 <div>
-                  <h2 className="text-xl sm:text-3xl font-black text-gray-900">{sec.brand}</h2>
+                  <h2 className="text-xl sm:text-3xl font-black text-[#01226B]">{sec.brand}</h2>
                   <p className="text-gray-500 text-xs sm:text-sm mt-0.5">أفضل المنتجات في هذه الفئة</p>
                 </div>
               </div>

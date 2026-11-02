@@ -1,4 +1,4 @@
-﻿"use client";
+"use client";
 
 import { useRef, useEffect } from "react";
 import Link from "next/link";
@@ -39,7 +39,7 @@ export default function AccountDropdown({ user, onClose }: AccountDropdownProps)
     >
       {/* User info */}
       <div className="px-4 py-3 border-b border-gray-100 bg-gray-50">
-        <p className="text-sm font-bold text-[#0f2744] truncate">{displayName}</p>
+        <p className="text-sm font-bold text-[#01226B] truncate">{displayName}</p>
         <p className="text-xs text-gray-400 truncate" dir="ltr">{user.email}</p>
       </div>
 
@@ -48,7 +48,7 @@ export default function AccountDropdown({ user, onClose }: AccountDropdownProps)
         <Link
           href="/account"
           onClick={onClose}
-          className="flex items-center gap-3 px-4 py-2.5 text-sm text-gray-700 hover:bg-gray-50 hover:text-[#0f2744] transition"
+          className="flex items-center gap-3 px-4 py-2.5 text-sm text-gray-700 hover:bg-gray-50 hover:text-[#01226B] transition"
         >
           <User className="w-4 h-4 text-gray-400" />
           بيانات الحساب
@@ -56,7 +56,7 @@ export default function AccountDropdown({ user, onClose }: AccountDropdownProps)
         <Link
           href="/account?tab=orders"
           onClick={onClose}
-          className="flex items-center gap-3 px-4 py-2.5 text-sm text-gray-700 hover:bg-gray-50 hover:text-[#0f2744] transition"
+          className="flex items-center gap-3 px-4 py-2.5 text-sm text-gray-700 hover:bg-gray-50 hover:text-[#01226B] transition"
         >
           <ShoppingBag className="w-4 h-4 text-gray-400" />
           طلباتي

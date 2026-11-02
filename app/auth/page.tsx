@@ -1,4 +1,4 @@
-﻿"use client";
+"use client";
 
 import { useState, useEffect, useRef, useCallback, Suspense } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
@@ -178,8 +178,8 @@ function OtpInputs({
             error
               ? "border-red-400 bg-red-50 text-red-600 shadow-sm"
               : digit
-              ? "border-[#284064] bg-[#284064]/5 text-[#284064]"
-              : "border-[#8BA8D2] focus:border-[#284064] focus:ring-1 focus:ring-[#284064]"
+              ? "border-[#01226B] bg-[#01226B]/5 text-[#01226B]"
+              : "border-[#8BA8D2] focus:border-[#01226B] focus:ring-1 focus:ring-[#02B9FA]"
           } ${disabled ? "opacity-60 cursor-not-allowed" : ""}`}
         />
       ))}
@@ -240,7 +240,7 @@ function Field({
         className={`w-full px-4 py-3 border text-sm focus:outline-none transition-colors ${
           error
             ? "border-red-400 bg-red-50"
-            : "border-[#8BA8D2] focus:border-[#284064]"
+            : "border-[#8BA8D2] focus:border-[#01226B]"
         }`}
       />
       {error && <p className="text-xs text-red-500">{error}</p>}
@@ -269,7 +269,7 @@ function Btn({
   const styles =
     variant === "primary"
       ? "text-white"
-      : "border text-[#284064] bg-white";
+      : "border text-[#01226B] bg-white";
   return (
     <button
       type={type}
@@ -526,15 +526,15 @@ function RegisterForm({
     return (
       <div className="space-y-6">
         <div className="flex flex-col items-center text-center space-y-2">
-          <div className="w-14 h-14 rounded-full bg-[#284064]/10 text-[#284064] flex items-center justify-center mb-1">
+          <div className="w-14 h-14 rounded-full bg-[#01226B]/10 text-[#01226B] flex items-center justify-center mb-1">
             <Mail className="w-7 h-7" />
           </div>
-          <p className="text-lg font-bold text-[#284064]">تحقق من بريدك الإلكتروني</p>
+          <p className="text-lg font-bold text-[#01226B]">تحقق من بريدك الإلكتروني</p>
           <p className="text-xs text-gray-500">
             أدخل رمز التحقق المكوّن من 6 أرقام المرسل إلى:
           </p>
           <div className="inline-flex items-center gap-2.5 px-3 py-1.5 bg-gray-50 border border-gray-200 mt-1">
-            <span className="text-sm font-semibold text-[#284064]" dir="ltr">{email}</span>
+            <span className="text-sm font-semibold text-[#01226B]" dir="ltr">{email}</span>
             <button
               type="button"
               onClick={() => {
@@ -542,7 +542,7 @@ function RegisterForm({
                 setResendSuccess("");
                 setOtpError("");
               }}
-              className="text-xs text-[#9a6d38] hover:text-[#284064] font-medium underline inline-flex items-center gap-1 transition-colors"
+              className="text-xs text-[#005AAD] hover:text-[#01226B] font-medium underline inline-flex items-center gap-1 transition-colors"
               title="تعديل البيانات"
             >
               <Pencil className="w-3 h-3" />
@@ -585,7 +585,7 @@ function RegisterForm({
               setResendSuccess("");
               setOtpError("");
             }}
-            className="text-[#284064] hover:text-[#9a6d38] font-medium transition-colors inline-flex items-center gap-1"
+            className="text-[#01226B] hover:text-[#005AAD] font-medium transition-colors inline-flex items-center gap-1"
           >
             <span>تعديل البيانات</span>
           </button>
@@ -599,7 +599,7 @@ function RegisterForm({
               type="button"
               onClick={handleResend}
               disabled={loading}
-              className="text-[#284064] hover:text-[#9a6d38] font-semibold transition-colors underline disabled:opacity-50"
+              className="text-[#01226B] hover:text-[#005AAD] font-semibold transition-colors underline disabled:opacity-50"
             >
               لم يصلك الرمز؟ إعادة الإرسال
             </button>
@@ -646,7 +646,7 @@ function RegisterForm({
             placeholder={extra?.placeholder}
             style={{ borderRadius: 0 }}
             className={`w-full px-4 py-3 border text-sm focus:outline-none transition-colors ${extra?.suffix ? "pr-10" : ""} ${
-              err ? "border-red-400 bg-red-50" : "border-[#8BA8D2] focus:border-[#284064]"
+              err ? "border-red-400 bg-red-50" : "border-[#8BA8D2] focus:border-[#01226B]"
             }`}
           />
           {/* suffix slot (e.g. show/hide password button) */}
@@ -679,7 +679,7 @@ function RegisterForm({
   return (
     <div className="space-y-4">
       {hasSentOtpBefore && (
-        <div className="bg-slate-50 border border-slate-200 p-3 flex items-center justify-between gap-3 text-xs text-[#284064]">
+        <div className="bg-slate-50 border border-slate-200 p-3 flex items-center justify-between gap-3 text-xs text-[#01226B]">
           <div className="flex items-center gap-2">
             <span className="w-2 h-2 rounded-full bg-amber-500 animate-pulse" />
             <span className="font-medium">جارٍ تعديل بيانات الحساب.</span>
@@ -687,7 +687,7 @@ function RegisterForm({
           <button
             type="button"
             onClick={() => { setStep("otp"); setOtpError(""); }}
-            className="font-bold text-[#284064] hover:text-[#9a6d38] underline transition-colors inline-flex items-center gap-1"
+            className="font-bold text-[#01226B] hover:text-[#005AAD] underline transition-colors inline-flex items-center gap-1"
           >
             <span>العودة لإدخال الرمز</span>
             <ArrowLeft className="w-3.5 h-3.5" />
@@ -733,7 +733,7 @@ function RegisterForm({
             <button
               type="button"
               onClick={() => onSwitchToLogin(email)}
-              className="px-3 py-1.5 bg-[#284064] text-white font-medium hover:bg-[#1e3250] transition-colors text-xs inline-flex items-center gap-1.5"
+              className="px-3 py-1.5 bg-[#01226B] text-white font-medium hover:bg-[#005AAD] transition-colors text-xs inline-flex items-center gap-1.5"
             >
               <span>الانتقال لتسجيل الدخول بهذا البريد</span>
               <ArrowLeft className="w-3.5 h-3.5" />
@@ -947,17 +947,17 @@ function LoginForm({
     return (
       <div className="space-y-6">
         <div className="flex flex-col items-center text-center space-y-2">
-          <div className="w-14 h-14 rounded-full bg-[#284064]/10 text-[#284064] flex items-center justify-center mb-1">
+          <div className="w-14 h-14 rounded-full bg-[#01226B]/10 text-[#01226B] flex items-center justify-center mb-1">
             <Mail className="w-7 h-7" />
           </div>
-          <p className="text-lg font-bold text-[#284064]">تحقق من بريدك الإلكتروني</p>
+          <p className="text-lg font-bold text-[#01226B]">تحقق من بريدك الإلكتروني</p>
           <p className="text-xs text-gray-500">أرسلنا رمز تحقق لإعادة تعيين كلمة المرور إلى:</p>
           <div className="inline-flex items-center gap-2.5 px-3 py-1.5 bg-gray-50 border border-gray-200 mt-1">
-            <span className="text-sm font-semibold text-[#284064]" dir="ltr">{maskedForgotEmail}</span>
+            <span className="text-sm font-semibold text-[#01226B]" dir="ltr">{maskedForgotEmail}</span>
             <button
               type="button"
               onClick={() => { setStep("forgot-email"); setResendSuccess(""); setOtpError(""); }}
-              className="text-xs text-[#9a6d38] hover:text-[#284064] font-medium underline inline-flex items-center gap-1 transition-colors"
+              className="text-xs text-[#005AAD] hover:text-[#01226B] font-medium underline inline-flex items-center gap-1 transition-colors"
               title="تغيير البريد"
             >
               <Pencil className="w-3 h-3" />
@@ -995,7 +995,7 @@ function LoginForm({
               placeholder="6 أحرف على الأقل"
               style={{ borderRadius: 0 }}
               className={`w-full px-4 py-3 border text-sm focus:outline-none transition-colors pr-10 ${
-                newPasswordError ? "border-red-400 bg-red-50" : "border-[#8BA8D2] focus:border-[#284064]"
+                newPasswordError ? "border-red-400 bg-red-50" : "border-[#8BA8D2] focus:border-[#01226B]"
               }`}
             />
             <button
@@ -1028,7 +1028,7 @@ function LoginForm({
           <button
             type="button"
             onClick={() => { setStep("forgot-email"); setResendSuccess(""); setOtp(["","","","","",""]); setOtpError(""); setNewPassword(""); }}
-            className="text-[#284064] hover:text-[#9a6d38] font-medium transition-colors"
+            className="text-[#01226B] hover:text-[#005AAD] font-medium transition-colors"
           >
             تغيير البريد
           </button>
@@ -1042,7 +1042,7 @@ function LoginForm({
               type="button"
               onClick={handleResendForgot}
               disabled={loading}
-              className="text-[#284064] hover:text-[#9a6d38] font-semibold transition-colors underline disabled:opacity-50"
+              className="text-[#01226B] hover:text-[#005AAD] font-semibold transition-colors underline disabled:opacity-50"
             >
               لم يصلك الرمز؟ إعادة الإرسال
             </button>
@@ -1125,7 +1125,7 @@ function LoginForm({
           <button
             type="button"
             onClick={() => { setStep("forgot-email"); setForgotEmail(email); }}
-            className="text-xs text-[#284064] hover:text-[#9a6d38] transition-colors font-medium"
+            className="text-xs text-[#01226B] hover:text-[#005AAD] transition-colors font-medium"
           >
             نسيت كلمة السر؟
           </button>
@@ -1141,7 +1141,7 @@ function LoginForm({
             placeholder="••••••••"
             style={{ borderRadius: 0 }}
             className={`w-full px-4 py-3 border text-sm focus:outline-none transition-colors pr-10 ${
-              error ? "border-red-400 bg-red-50" : "border-[#8BA8D2] focus:border-[#284064]"
+              error ? "border-red-400 bg-red-50" : "border-[#8BA8D2] focus:border-[#01226B]"
             }`}
           />
           <button
@@ -1243,7 +1243,7 @@ function AuthPageInner() {
 
   if (!initialized) return (
     <div className="min-h-screen bg-white flex items-center justify-center">
-      <span className="w-8 h-8 border-2 border-[#0A1C29]/20 border-t-[#0A1C29] rounded-full animate-spin inline-block" />
+      <span className="w-8 h-8 border-2 border-[#005AAD]/20 border-t-[#005AAD] rounded-full animate-spin inline-block" />
     </div>
   );
   if (user) return null;

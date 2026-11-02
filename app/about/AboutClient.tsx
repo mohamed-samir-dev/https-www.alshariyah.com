@@ -1,4 +1,4 @@
-﻿"use client";
+"use client";
 import { useEffect, useRef, useState } from "react";
 import ContactSection from "../components/ContactSection";
 
@@ -78,17 +78,17 @@ const IconStar = () => (
 );
 
 const stats = [
-  { value: "١٠٠٪", label: "ضمان الجودة",  Icon: IconShield,  accent: "#053132", gradient: "from-[#053132] to-[#092C32]" },
-  { value: "٢٤/٧",  label: "دعم فني",      Icon: IconHeadset, accent: "#082D32", gradient: "from-[#082D32] to-[#0A2931]" },
-  { value: "٠٪",    label: "بدون فوائد",   Icon: IconPercent, accent: "#0A2931", gradient: "from-[#0A2931] to-[#0B2631]" },
-  { value: "سريع",  label: "توصيل",        Icon: IconTruck,   accent: "#0B2631", gradient: "from-[#0B2631] to-[#053132]" },
+  { value: "١٠٠٪", label: "ضمان الجودة",  Icon: IconShield,  accent: "#01226B", gradient: "from-[#01226B] to-[#023A89]" },
+  { value: "٢٤/٧",  label: "دعم فني",      Icon: IconHeadset, accent: "#005AAD", gradient: "from-[#023A89] to-[#005AAD]" },
+  { value: "٠٪",    label: "بدون فوائد",   Icon: IconPercent, accent: "#023A89", gradient: "from-[#005AAD] to-[#02B9FA]" },
+  { value: "سريع",  label: "توصيل",        Icon: IconTruck,   accent: "#02B9FA", gradient: "from-[#02B9FA] to-[#01226B]" },
 ];
 
 const sections = [
   {
     Icon: IconStore,
     title: "من نحن",
-    accent: "#053132",
+    accent: "#01226B",
     content: [
       "مؤسسة مدار الاجهزة الالكترونية هو متجر إلكتروني متخصص في تقديم المنتجات والخدمات بجودة عالية وتجربة شراء سهلة وآمنة تناسب احتياجات العملاء.",
       "نحن نحرص على توفير أفضل الحلول والعروض مع الاهتمام بالتفاصيل التي تمنح العميل تجربة احترافية بداية من تصفح المنتجات وحتى إتمام الطلب.",
@@ -98,7 +98,7 @@ const sections = [
   {
     Icon: IconTarget,
     title: "رؤيتنا",
-    accent: "#0A2931",
+    accent: "#023A89",
     content: [
       "تقديم تجربة تسوق إلكترونية موثوقة وسريعة ومريحة، مع الحفاظ على أعلى معايير الجودة وخدمة العملاء.",
     ],
@@ -106,7 +106,7 @@ const sections = [
   {
     Icon: IconStar,
     title: "رسالتنا",
-    accent: "#082D32",
+    accent: "#005AAD",
     content: [
       "نسعى إلى بناء ثقة طويلة الأمد مع عملائنا من خلال منتجات مميزة، دعم سريع، وشفافية كاملة في التعامل.",
     ],
@@ -134,13 +134,13 @@ export default function AboutClient() {
     <main dir="rtl" className="min-h-screen bg-[#f8f9fc] overflow-x-hidden">
 
       {/* ══ HERO ══ */}
-      <section className="relative w-full overflow-hidden" style={{ background: "linear-gradient(135deg, #053132 0%, #092C32 40%, #0A2931 70%, #0B2631 100%)" }}>
+      <section className="relative w-full overflow-hidden" style={{ background: "linear-gradient(135deg, #01226B 0%, #023A89 50%, #005AAD 100%)" }}>
 
         {/* decorative blobs */}
         <div className="pointer-events-none absolute inset-0">
           <div className="absolute -top-32 -right-32 w-[500px] h-[500px] rounded-full bg-white/5 blur-[80px]" />
           <div className="absolute top-10 left-10 w-64 h-64 rounded-full blur-[60px]" style={{ background: "rgba(255,255,255,0.04)" }} />
-          <div className="absolute bottom-0 left-1/2 w-[600px] h-40 -translate-x-1/2 blur-[50px]" style={{ background: "rgba(5,49,50,0.4)" }} />
+          <div className="absolute bottom-0 left-1/2 w-[600px] h-40 -translate-x-1/2 blur-[50px]" style={{ background: "rgba(1,34,107,0.3)" }} />
         </div>
 
         {/* grid pattern */}

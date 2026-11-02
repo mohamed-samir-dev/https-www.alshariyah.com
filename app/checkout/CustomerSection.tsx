@@ -1,4 +1,4 @@
-﻿"use client";
+"use client";
 
 import { useState, useRef, useEffect } from "react";
 import PhoneInput, { isValidPhoneNumber, getCountries, getCountryCallingCode } from "react-phone-number-input";
@@ -49,7 +49,7 @@ function Field({ label, value, error, placeholder, dir, inputMode, onChange }: {
         dir={dir}
         inputMode={inputMode}
         className={`w-full px-3 py-2.5 sm:py-3 text-sm sm:text-base border transition focus:outline-none placeholder:text-gray-300 ${
-          error ? "border-red-300 bg-red-50 focus:border-red-400" : "border-gray-200 focus:border-[#63D3A8]"
+          error ? "border-red-300 bg-red-50 focus:border-red-400" : "border-gray-200 focus:border-[#02B9FA]"
         }`}
       />
     </div>
@@ -108,10 +108,10 @@ function CustomCountrySelect({ value, onChange }: {
                 type="button"
                 onClick={() => { onChange(c); setOpen(false); }}
                 className={`w-full flex items-center gap-2 px-3 py-2 transition ${
-                  c === selected ? "bg-[#f0fdf9]" : "hover:bg-gray-50"
+                  c === selected ? "bg-[#02B9FA]/10" : "hover:bg-gray-50"
                 } ${isLastPriority ? "border-b border-gray-100" : ""}`}
               >
-                <span className="flex-1 text-right text-[#1A2E44] truncate text-xs">
+                <span className="flex-1 text-right text-[#01226B] truncate text-xs">
                   {isPriority ? ar[c] ?? c : c}
                 </span>
                 <span className="text-[11px] text-gray-400 font-mono shrink-0 w-10 text-left">+{getCountryCallingCode(c)}</span>
@@ -145,12 +145,12 @@ export default function CustomerSection({ data, errors, confirmed, isAuthenticat
     const fullName = [data.firstName, data.lastName].filter(Boolean).join(" ");
     return (
       <div className="px-4 sm:px-6 py-5 flex items-center justify-between">
-        <p className="text-sm font-semibold text-[#1A2E44]">
+        <p className="text-sm font-semibold text-[#01226B]">
           {fullName ? `حيّاك، ${fullName}` : "حيّاك"}
         </p>
         <button
           onClick={onEdit}
-          className="text-xs font-medium text-gray-400 hover:text-[#1A2E44] transition shrink-0"
+          className="text-xs font-medium text-gray-400 hover:text-[#01226B] transition shrink-0"
         >
           تعديل
         </button>
@@ -163,12 +163,12 @@ export default function CustomerSection({ data, errors, confirmed, isAuthenticat
     return (
       <div className="px-4 sm:px-6 py-5 flex items-center justify-between">
         <div>
-          <p className="text-sm font-semibold text-[#1A2E44]">
+          <p className="text-sm font-semibold text-[#01226B]">
             {data.firstName ? `${data.firstName} ${data.lastName}`.trim() : "ضيف"}
           </p>
           <p className="text-xs text-gray-400 font-mono" dir="ltr">{data.phone}</p>
         </div>
-        <button onClick={onEdit} className="text-xs font-medium text-gray-400 hover:text-[#1A2E44] transition">تعديل</button>
+        <button onClick={onEdit} className="text-xs font-medium text-gray-400 hover:text-[#01226B] transition">تعديل</button>
       </div>
     );
   }
@@ -179,7 +179,7 @@ export default function CustomerSection({ data, errors, confirmed, isAuthenticat
   return (
     <div className="px-4 sm:px-6 py-5 space-y-4">
       <div>
-        <p className="text-sm font-semibold text-[#1A2E44]">
+        <p className="text-sm font-semibold text-[#01226B]">
           {isAuthenticated
             ? (data.firstName ? `حيّاك، ${data.firstName}` : "حيّاك")
             : "بيانات التواصل"}
@@ -272,7 +272,7 @@ export default function CustomerSection({ data, errors, confirmed, isAuthenticat
       <button
         onClick={onConfirm}
         className="w-full py-3 text-white font-black text-sm sm:text-base hover:opacity-90 transition"
-        style={{ background: "linear-gradient(135deg,#63D3A8,#56CFA1)" }}
+        style={{ background: "linear-gradient(to left, #01226B, #005AAD)" }}
       >
         تأكيد
       </button>

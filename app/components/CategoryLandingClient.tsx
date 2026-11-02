@@ -1,4 +1,4 @@
-﻿"use client";
+"use client";
 
 import { useEffect, useState } from "react";
 import Link from "next/link";
@@ -46,13 +46,13 @@ function HeroBg() {
       {/* blobs */}
       <motion.div
         className="absolute w-[600px] h-[600px] rounded-full"
-        style={{ background: "radial-gradient(circle, rgba(20,184,166,.25) 0%, transparent 65%)", top: "-30%", right: "-15%" }}
+        style={{ background: "radial-gradient(circle, rgba(2,185,250,.2) 0%, transparent 65%)", top: "-30%", right: "-15%" }}
         animate={{ scale: [1, 1.12, 1] }}
         transition={{ duration: 9, repeat: Infinity, ease: "easeInOut" }}
       />
       <motion.div
         className="absolute w-[450px] h-[450px] rounded-full"
-        style={{ background: "radial-gradient(circle, rgba(6,182,212,.18) 0%, transparent 65%)", bottom: "-20%", left: "-10%" }}
+        style={{ background: "radial-gradient(circle, rgba(2,211,255,.15) 0%, transparent 65%)", bottom: "-20%", left: "-10%" }}
         animate={{ scale: [1, 1.1, 1] }}
         transition={{ duration: 11, repeat: Infinity, ease: "easeInOut" }}
       />
@@ -87,7 +87,7 @@ export default function CategoryLandingClient({ title, emoji, subCategories, fil
         {/* ═══════════ HERO ═══════════ */}
         <div
           className="relative overflow-hidden"
-          style={{ background: "linear-gradient(135deg, #0d1f2d 0%, #0a3d3a 40%, #0d4f45 70%, #0a3d3a 100%)" }}
+          style={{ background: "linear-gradient(135deg, #01226B 0%, #023A89 50%, #005AAD 100%)" }}
         >
           <HeroBg />
 
@@ -118,7 +118,7 @@ export default function CategoryLandingClient({ title, emoji, subCategories, fil
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.55, delay: 0.1 }}
                 >
-                  <p className="text-teal-300/80 text-xs sm:text-sm font-semibold tracking-widest uppercase mb-2">
+                  <p className="text-[#02B9FA] text-xs sm:text-sm font-semibold tracking-widest uppercase mb-2">
                     {emoji} تسوق الآن
                   </p>
                   <h1 className="text-3xl sm:text-4xl md:text-5xl font-black text-white leading-tight">
@@ -151,7 +151,7 @@ export default function CategoryLandingClient({ title, emoji, subCategories, fil
                     key={i}
                     className="flex items-center gap-2 bg-white/[.08] border border-white/[.1] backdrop-blur-sm px-4 py-2 rounded-full text-white/80 text-[11px] sm:text-xs font-medium"
                   >
-                    <f.icon size={13} className="text-teal-300" />
+                    <f.icon size={13} className="text-[#02B9FA]" />
                     {f.text}
                   </div>
                 ))}
@@ -175,10 +175,10 @@ export default function CategoryLandingClient({ title, emoji, subCategories, fil
             animate={{ opacity: 1, y: 0 }}
             className="flex items-center gap-3 mb-6"
           >
-            <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-teal-500 to-emerald-500 flex items-center justify-center shadow-lg shadow-teal-200/50">
+            <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-[#02B9FA] to-[#005AAD] flex items-center justify-center shadow-lg shadow-[#02B9FA]/20">
               <IoGridOutline size={18} className="text-white" />
             </div>
-            <h2 className="text-base sm:text-lg font-black text-gray-900">الأقسام الفرعية</h2>
+            <h2 className="text-base sm:text-lg font-black text-[#01226B]">الأقسام الفرعية</h2>
           </motion.div>
 
           <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-2.5 sm:gap-3 lg:gap-4 mb-10 sm:mb-14">
@@ -192,15 +192,15 @@ export default function CategoryLandingClient({ title, emoji, subCategories, fil
                 <Link
                   href={cat.href}
                   prefetch={false}
-                  className="group relative flex flex-col items-center gap-3 bg-white rounded-2xl p-5 sm:p-6 border border-gray-100 hover:border-teal-300 hover:shadow-xl hover:shadow-teal-100/40 transition-all duration-300"
+                  className="group relative flex flex-col items-center gap-3 bg-white rounded-2xl p-5 sm:p-6 border border-gray-100 hover:border-[#02B9FA]/50 hover:shadow-xl hover:shadow-[#02B9FA]/10 transition-all duration-300"
                 >
-                  <div className="w-14 h-14 sm:w-16 sm:h-16 rounded-2xl bg-gradient-to-br from-teal-50 to-emerald-50 flex items-center justify-center text-2xl sm:text-3xl group-hover:from-teal-100 group-hover:to-emerald-100 transition-all shadow-sm group-hover:scale-110 group-hover:shadow-md duration-300">
+                  <div className="w-14 h-14 sm:w-16 sm:h-16 rounded-2xl bg-gradient-to-br from-blue-50/60 to-cyan-50/60 flex items-center justify-center text-2xl sm:text-3xl group-hover:from-blue-100/60 group-hover:to-cyan-100/60 transition-all shadow-sm group-hover:scale-110 group-hover:shadow-md duration-300">
                     {cat.emoji}
                   </div>
-                  <p className="text-xs sm:text-sm font-bold text-gray-700 group-hover:text-teal-700 transition text-center leading-relaxed">
+                  <p className="text-xs sm:text-sm font-bold text-[#01226B] group-hover:text-[#005AAD] transition text-center leading-relaxed">
                     {cat.label}
                   </p>
-                  <div className="absolute inset-0 rounded-2xl bg-gradient-to-br from-teal-500/[.03] to-emerald-500/[.03] opacity-0 group-hover:opacity-100 transition-opacity" />
+                  <div className="absolute inset-0 rounded-2xl bg-gradient-to-br from-[#02B9FA]/[0.04] to-[#005AAD]/[0.04] opacity-0 group-hover:opacity-100 transition-opacity" />
                 </Link>
               </motion.div>
             ))}
@@ -213,11 +213,11 @@ export default function CategoryLandingClient({ title, emoji, subCategories, fil
             transition={{ delay: 0.2 }}
             className="flex items-center gap-3 mb-6 sm:mb-8"
           >
-            <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-teal-500 to-emerald-500 flex items-center justify-center shadow-lg shadow-teal-200/50">
+            <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-[#02B9FA] to-[#005AAD] flex items-center justify-center shadow-lg shadow-[#02B9FA]/20">
               <IoSparkles size={18} className="text-white" />
             </div>
             <div>
-              <h2 className="text-base sm:text-lg font-black text-gray-900">جميع المنتجات</h2>
+              <h2 className="text-base sm:text-lg font-black text-[#01226B]">جميع المنتجات</h2>
               {!loading && products.length > 0 && (
                 <p className="text-[11px] text-gray-400">صفحة {page} من {totalPages || 1}</p>
               )}
@@ -246,7 +246,7 @@ export default function CategoryLandingClient({ title, emoji, subCategories, fil
               <motion.div
                 animate={{ y: [0, -8, 0] }}
                 transition={{ duration: 2, repeat: Infinity }}
-                className="w-24 h-24 rounded-3xl bg-gradient-to-br from-teal-50 to-emerald-50 flex items-center justify-center text-5xl shadow-lg shadow-teal-100/50 border border-teal-100/50"
+                className="w-24 h-24 rounded-3xl bg-gradient-to-br from-blue-50/60 to-cyan-50/60 flex items-center justify-center text-5xl shadow-lg shadow-teal-100/50 border border-teal-100/50"
               >
                 {emoji}
               </motion.div>
@@ -257,7 +257,7 @@ export default function CategoryLandingClient({ title, emoji, subCategories, fil
               <Link
                 href="/"
                 prefetch={false}
-                className="mt-2 text-sm font-bold text-teal-600 hover:text-teal-800 flex items-center gap-1.5 bg-teal-50 px-5 py-2.5 rounded-full transition-all hover:shadow-md hover:shadow-teal-100"
+                className="mt-2 text-sm font-bold text-[#01226B] hover:text-[#005AAD] flex items-center gap-1.5 bg-blue-50/80 border border-[#02B9FA]/20 px-5 py-2.5 rounded-full transition-all hover:shadow-md"
               >
                 <IoArrowForward size={14} />
                 العودة إلى الرئيسية
@@ -291,7 +291,7 @@ export default function CategoryLandingClient({ title, emoji, subCategories, fil
                   <button
                     onClick={() => { setPage((p) => Math.max(1, p - 1)); window.scrollTo({ top: 0, behavior: "smooth" }); }}
                     disabled={page === 1}
-                    className="flex items-center gap-1.5 px-4 sm:px-5 py-2.5 rounded-xl bg-white border border-gray-200 text-xs sm:text-sm font-bold disabled:opacity-30 hover:bg-teal-50 hover:border-teal-300 hover:text-teal-700 transition-all shadow-sm hover:shadow-md"
+                    className="flex items-center gap-1.5 px-4 sm:px-5 py-2.5 rounded-xl bg-white border border-gray-200 text-xs sm:text-sm font-bold disabled:opacity-30 hover:bg-teal-50 hover:border-[#02B9FA]/50 hover:text-teal-700 transition-all shadow-sm hover:shadow-md"
                   >
                     <IoArrowForward size={14} />
                     السابق
@@ -302,8 +302,8 @@ export default function CategoryLandingClient({ title, emoji, subCategories, fil
                       onClick={() => { setPage(n); window.scrollTo({ top: 0, behavior: "smooth" }); }}
                       className={`w-10 h-10 sm:w-11 sm:h-11 rounded-xl text-xs sm:text-sm font-black transition-all ${
                         page === n
-                          ? "bg-gradient-to-br from-teal-600 to-emerald-600 text-white shadow-lg shadow-teal-200/60 scale-110"
-                          : "bg-white border border-gray-200 hover:bg-teal-50 hover:border-teal-300 hover:text-teal-700 shadow-sm"
+                          ? "bg-gradient-to-br from-[#01226B] to-[#005AAD] text-white shadow-lg shadow-[#01226B]/20 scale-110"
+                          : "bg-white border border-gray-200 hover:bg-teal-50 hover:border-[#02B9FA]/50 hover:text-teal-700 shadow-sm"
                       }`}
                     >
                       {n}
@@ -312,7 +312,7 @@ export default function CategoryLandingClient({ title, emoji, subCategories, fil
                   <button
                     onClick={() => { setPage((p) => Math.min(totalPages, p + 1)); window.scrollTo({ top: 0, behavior: "smooth" }); }}
                     disabled={page === totalPages}
-                    className="flex items-center gap-1.5 px-4 sm:px-5 py-2.5 rounded-xl bg-white border border-gray-200 text-xs sm:text-sm font-bold disabled:opacity-30 hover:bg-teal-50 hover:border-teal-300 hover:text-teal-700 transition-all shadow-sm hover:shadow-md"
+                    className="flex items-center gap-1.5 px-4 sm:px-5 py-2.5 rounded-xl bg-white border border-gray-200 text-xs sm:text-sm font-bold disabled:opacity-30 hover:bg-teal-50 hover:border-[#02B9FA]/50 hover:text-teal-700 transition-all shadow-sm hover:shadow-md"
                   >
                     التالي
                     <IoArrowBack size={14} />

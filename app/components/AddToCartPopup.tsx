@@ -1,4 +1,4 @@
-﻿"use client";
+"use client";
 
 import { useEffect, useRef, useState, useCallback } from "react";
 import { useRouter } from "next/navigation";
@@ -88,7 +88,7 @@ export default function AddToCartPopup() {
             <motion.div
               className="h-full origin-left"
               style={{
-                background: "linear-gradient(90deg,#284064,#60758E)",
+                background: "linear-gradient(90deg, #01226B, #005AAD)",
                 scaleX: progress,
                 transformOrigin: "left",
               }}
@@ -98,8 +98,8 @@ export default function AddToCartPopup() {
 
           {/* ── Header ── */}
           <div className="flex items-center gap-2 px-4 pt-3 pb-2" dir="rtl">
-            <IoCheckmarkCircle size={18} className="text-[#284064] shrink-0" />
-            <span className="text-sm font-black text-gray-900">تمّت الإضافة إلى سلة التسوق</span>
+            <IoCheckmarkCircle size={18} className="text-[#01226B] shrink-0" />
+            <span className="text-sm font-black text-[#01226B]">تمّت الإضافة إلى سلة التسوق</span>
           </div>
 
           {/* ── Divider ── */}
@@ -136,13 +136,13 @@ export default function AddToCartPopup() {
               transition={{ delay: 0.08, duration: 0.22 }}
               className="flex flex-col gap-0.5 min-w-0"
             >
-              <p className="text-[13px] font-bold text-gray-900 line-clamp-2 leading-snug">
+              <p className="text-[13px] font-bold text-[#01226B] line-clamp-2 leading-snug">
                 {product.name}
               </p>
               <div className="flex items-center gap-1 mt-0.5">
                 <span
                   className="text-[15px] font-black leading-none"
-                  style={{ color: product.hasDiscount ? "#284064" : "#111827" }}
+                  style={{ color: "#01226B" }}
                 >
                   {fmt(product.price)}
                 </span>
@@ -161,8 +161,8 @@ export default function AddToCartPopup() {
             <button
               onClick={handleCheckout}
               aria-label="إتمام الطلب"
-              className="flex-1 flex items-center justify-center gap-1.5 py-2.5 rounded-xl text-white text-[13px] font-black transition-opacity hover:opacity-90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#284064]"
-              style={{ background: "linear-gradient(135deg,#284064,#60758E)" }}
+              className="flex-1 flex items-center justify-center gap-1.5 py-2.5 rounded-xl text-white text-[13px] font-black transition-opacity hover:opacity-90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#005AAD]"
+              style={{ background: "linear-gradient(to left, #01226B, #005AAD)" }}
             >
               <IoCheckmarkCircle size={15} />
               إتمام الطلب
@@ -172,7 +172,7 @@ export default function AddToCartPopup() {
             <button
               onClick={handleCart}
               aria-label="عرض السلة"
-              className="flex-1 flex items-center justify-center gap-1.5 py-2.5 rounded-xl text-gray-800 text-[13px] font-black bg-gray-100 hover:bg-gray-200 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gray-400"
+              className="flex-1 flex items-center justify-center gap-1.5 py-2.5 rounded-xl text-[#01226B] text-[13px] font-black bg-[#02B9FA]/10 hover:bg-[#02B9FA]/20 border border-[#02B9FA]/20 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gray-400"
             >
               <IoCartOutline size={15} />
               عرض السلة

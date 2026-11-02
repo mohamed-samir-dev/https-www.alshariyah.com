@@ -1,4 +1,4 @@
-﻿"use client";
+"use client";
 
 import { useEffect, useState } from "react";
 import { useSearchParams } from "next/navigation";
@@ -129,14 +129,14 @@ export default function AllProductsClient({
           className="flex items-center mb-5 sm:mb-7"
         >
           <div className="flex items-center gap-3">
-            <div className="w-10 h-10 rounded-2xl bg-[#284064] flex items-center justify-center shadow-lg shadow-[#284064]/20">
+            <div className="w-10 h-10 rounded-2xl bg-[#01226B] flex items-center justify-center shadow-lg shadow-[#01226B]/20">
               <IoGridOutline size={18} className="text-white" />
             </div>
             <div>
-              <h2 className="text-sm sm:text-base font-black text-black leading-tight">{brand ? `منتجات ${brand}` : "جميع المنتجات"}</h2>
+              <h2 className="text-sm sm:text-base font-black text-[#01226B] leading-tight">{brand ? `منتجات ${brand}` : "جميع المنتجات"}</h2>
               {!loading && (
                 <p className="text-[11px] text-black/40 flex items-center gap-1.5 mt-0.5">
-                  <span className="font-bold text-[#284064]">{filtered.length}</span>
+                  <span className="font-bold text-[#01226B]">{filtered.length}</span>
                   <span>منتج متاح</span>
                 </p>
               )}

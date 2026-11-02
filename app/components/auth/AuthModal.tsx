@@ -1,4 +1,4 @@
-﻿"use client";
+"use client";
 
 import { useState, useEffect, useRef, useCallback } from "react";
 import { X, Mail, ArrowRight } from "lucide-react";
@@ -199,7 +199,7 @@ export default function AuthModal({ open, onClose }: AuthModalProps) {
       <div className="relative w-full max-w-sm bg-white rounded-2xl shadow-2xl overflow-hidden">
         {/* Header */}
         <div className="flex items-center justify-between px-6 pt-6 pb-4 border-b border-gray-100">
-          <h2 className="text-lg font-bold text-[#0f2744]">
+          <h2 className="text-lg font-bold text-[#01226B]">
             {step === "email" ? "تسجيل الدخول" : "أدخل رمز التحقق"}
           </h2>
           <button
@@ -234,8 +234,8 @@ export default function AuthModal({ open, onClose }: AuthModalProps) {
                     onKeyDown={(e) => e.key === "Enter" && !loading && handleSendOtp()}
                     placeholder="example@mail.com"
                     dir="ltr"
-                    className={`w-full px-4 py-3 pr-10 border rounded-xl text-sm transition focus:outline-none focus:ring-2 focus:ring-[#0f2744]/20 ${
-                      emailError ? "border-red-300 bg-red-50" : "border-gray-200 focus:border-[#0f2744]"
+                    className={`w-full px-4 py-3 pr-10 border rounded-xl text-sm transition focus:outline-none focus:ring-2 focus:ring-[#01226B]/20 ${
+                      emailError ? "border-red-300 bg-red-50" : "border-gray-200 focus:border-[#01226B]"
                     }`}
                   />
                   <Mail className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-300" />
@@ -248,7 +248,7 @@ export default function AuthModal({ open, onClose }: AuthModalProps) {
               <button
                 onClick={handleSendOtp}
                 disabled={loading}
-                className="w-full py-3 bg-[#0f2744] text-white font-bold text-sm rounded-xl hover:bg-[#1a3a5c] transition disabled:opacity-60 disabled:cursor-not-allowed flex items-center justify-center gap-2"
+                className="w-full py-3 bg-[#01226B] text-white font-bold text-sm rounded-xl hover:bg-[#005AAD] transition disabled:opacity-60 disabled:cursor-not-allowed flex items-center justify-center gap-2"
               >
                 {loading ? (
                   <span className="w-4 h-4 border-2 border-white/30 border-t-white rounded-full animate-spin" />
@@ -264,7 +264,7 @@ export default function AuthModal({ open, onClose }: AuthModalProps) {
             <>
               <div className="text-center space-y-1">
                 <p className="text-sm text-gray-500">تم إرسال رمز التحقق إلى</p>
-                <p className="text-sm font-bold text-[#0f2744]" dir="ltr">{maskedEmail}</p>
+                <p className="text-sm font-bold text-[#01226B]" dir="ltr">{maskedEmail}</p>
               </div>
 
               {/* OTP Boxes */}
@@ -281,12 +281,12 @@ export default function AuthModal({ open, onClose }: AuthModalProps) {
                     onChange={(e) => handleOtpChange(i, e.target.value)}
                     onKeyDown={(e) => handleOtpKeyDown(i, e)}
                     onFocus={(e) => e.target.select()}
-                    className={`w-11 h-12 text-center text-xl font-bold border-2 rounded-xl transition focus:outline-none focus:ring-2 focus:ring-[#0f2744]/20 ${
+                    className={`w-11 h-12 text-center text-xl font-bold border-2 rounded-xl transition focus:outline-none focus:ring-2 focus:ring-[#01226B]/20 ${
                       otpError
                         ? "border-red-300 bg-red-50 text-red-600"
                         : digit
-                        ? "border-[#0f2744] bg-[#f0f4f9] text-[#0f2744]"
-                        : "border-gray-200 focus:border-[#0f2744]"
+                        ? "border-[#01226B] bg-[#f0f4f9] text-[#01226B]"
+                        : "border-gray-200 focus:border-[#01226B]"
                     }`}
                   />
                 ))}
@@ -299,7 +299,7 @@ export default function AuthModal({ open, onClose }: AuthModalProps) {
               <button
                 onClick={handleVerifyOtp}
                 disabled={loading || otp.join("").length < 6}
-                className="w-full py-3 bg-[#0f2744] text-white font-bold text-sm rounded-xl hover:bg-[#1a3a5c] transition disabled:opacity-60 disabled:cursor-not-allowed flex items-center justify-center gap-2"
+                className="w-full py-3 bg-[#01226B] text-white font-bold text-sm rounded-xl hover:bg-[#005AAD] transition disabled:opacity-60 disabled:cursor-not-allowed flex items-center justify-center gap-2"
               >
                 {loading ? (
                   <span className="w-4 h-4 border-2 border-white/30 border-t-white rounded-full animate-spin" />
@@ -311,14 +311,14 @@ export default function AuthModal({ open, onClose }: AuthModalProps) {
               <div className="flex items-center justify-between text-xs text-gray-400">
                 <button
                   onClick={() => { setStep("email"); setOtp(["", "", "", "", "", ""]); setOtpError(""); }}
-                  className="hover:text-[#0f2744] transition font-medium"
+                  className="hover:text-[#01226B] transition font-medium"
                 >
                   تغيير البريد
                 </button>
                 <button
                   onClick={handleResend}
                   disabled={cooldown > 0 || loading}
-                  className="hover:text-[#0f2744] transition font-medium disabled:opacity-50 disabled:cursor-not-allowed"
+                  className="hover:text-[#01226B] transition font-medium disabled:opacity-50 disabled:cursor-not-allowed"
                 >
                   {cooldown > 0 ? `إعادة الإرسال (${cooldown}ث)` : "إعادة إرسال الرمز"}
                 </button>

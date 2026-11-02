@@ -1,4 +1,4 @@
-﻿"use client";
+"use client";
 
 import React from "react";
 import { Clock, CheckCircle2, Package, Truck, XCircle } from "lucide-react";
@@ -153,7 +153,7 @@ export function OrderTracker({ status, orderId, compact = false }: OrderTrackerP
                   : "bg-blue-500"
               }`}
             />
-            <span className="text-xs font-black text-[#0A1C29]">
+            <span className="text-xs font-black text-[#01226B]">
               حالة الطلب:{" "}
               <span
                 className={
@@ -196,11 +196,11 @@ export function OrderTracker({ status, orderId, compact = false }: OrderTrackerP
       {/* Header */}
       <div className="flex items-center justify-between pb-4 mb-4 border-b border-gray-100">
         <div className="flex items-center gap-2">
-          <div className="w-8 h-8 rounded-lg bg-[#0A1C29]/5 flex items-center justify-center text-[#0A1C29]">
+          <div className="w-8 h-8 rounded-lg bg-[#02B9FA]/10 flex items-center justify-center text-[#01226B]">
             <Truck className="w-4 h-4" />
           </div>
           <div>
-            <h4 className="text-xs sm:text-sm font-black text-[#0A1C29]">مراحل تتبع الطلب</h4>
+            <h4 className="text-xs sm:text-sm font-black text-[#01226B]">مراحل تتبع الطلب</h4>
             {orderId && (
               <p className="text-[11px] text-gray-400 font-mono" dir="ltr">
                 #{orderId}
@@ -251,7 +251,7 @@ export function OrderTracker({ status, orderId, compact = false }: OrderTrackerP
               key={st.num}
               className={`relative rounded-xl p-3 border transition-all ${
                 isCurrent
-                  ? "bg-white border-[#0A1C29] shadow-sm ring-2 ring-[#0A1C29]/10"
+                  ? "bg-white border-[#01226B] shadow-sm ring-2 ring-[#0A1C29]/10"
                   : isDone
                   ? "bg-emerald-50/40 border-emerald-200/80"
                   : "bg-gray-50/60 border-gray-100 opacity-60"
@@ -261,7 +261,7 @@ export function OrderTracker({ status, orderId, compact = false }: OrderTrackerP
                 <div
                   className={`w-7 h-7 rounded-lg flex items-center justify-center font-bold text-xs ${
                     isCurrent
-                      ? "bg-[#0A1C29] text-white"
+                      ? "bg-[#01226B] text-white"
                       : isDone
                       ? "bg-emerald-600 text-white"
                       : "bg-gray-200 text-gray-500"
@@ -277,7 +277,7 @@ export function OrderTracker({ status, orderId, compact = false }: OrderTrackerP
               <p
                 className={`text-xs font-black leading-tight ${
                   isCurrent
-                    ? "text-[#0A1C29]"
+                    ? "text-[#01226B]"
                     : isDone
                     ? "text-emerald-900"
                     : "text-gray-500"

@@ -1,4 +1,4 @@
-﻿"use client";
+"use client";
 
 import Link from "next/link";
 import { X } from "lucide-react";
@@ -21,7 +21,7 @@ export default function MobileMenu({ items, isOpen, onClose, pathname }: MobileM
       style={{ boxShadow: "0 20px 60px rgba(0,0,0,0.12)" }}
     >
       {/* Green top accent */}
-      <div className="h-1 w-full bg-[#284064]" />
+      <div className="h-1 w-full bg-[#01226B]" />
 
       {/* Close button row */}
       <div className="flex items-center justify-between px-4 py-3 border-b border-gray-100">
@@ -29,7 +29,7 @@ export default function MobileMenu({ items, isOpen, onClose, pathname }: MobileM
         <button
           onClick={onClose}
           aria-label="إغلاق"
-          className="w-9 h-9 rounded-full bg-gray-100 hover:bg-[#F6F8FC] hover:text-[#284064] text-gray-500 flex items-center justify-center transition-colors"
+          className="w-9 h-9 rounded-full bg-gray-100 hover:bg-[#F6F8FC] hover:text-[#01226B] text-gray-500 flex items-center justify-center transition-colors"
         >
           <X className="w-4 h-4" />
         </button>
@@ -47,8 +47,8 @@ export default function MobileMenu({ items, isOpen, onClose, pathname }: MobileM
               onClick={onClose}
               className={`flex items-center justify-between w-full px-4 py-3 rounded-xl text-sm font-bold transition-all duration-200 ${
                 isActive
-                  ? "bg-[#284064] text-white shadow-sm shadow-[#284064]/30"
-                  : "bg-gray-50 text-gray-700 hover:bg-[#F6F8FC] hover:text-[#284064]"
+                  ? "bg-[#01226B] text-white shadow-sm shadow-[#01226B]/20"
+                  : "bg-gray-50 text-gray-700 hover:bg-[#F6F8FC] hover:text-[#01226B]"
               }`}
               style={{ transitionDelay: isOpen ? `${i * 50}ms` : "0ms" }}
             >

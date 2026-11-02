@@ -1,4 +1,4 @@
-﻿"use client";
+"use client";
 
 import { useState, useEffect, useSyncExternalStore } from "react";
 import Image from "next/image";
@@ -76,7 +76,7 @@ export default function Navbar() {
               <button
                 aria-label="القائمة"
                 onClick={() => setMobileOpen(!mobileOpen)}
-                className="lg:hidden p-1.5 rounded-lg text-gray-500 hover:text-[#284064] hover:bg-[#F6F8FC] transition-colors"
+                className="lg:hidden p-1.5 rounded-lg text-gray-500 hover:text-[#01226B] hover:bg-[#02B9FA]/5 transition-colors"
               >
                 {mobileOpen ? <X className="w-4 h-4" /> : <Menu className="w-4 h-4" />}
               </button>
@@ -104,13 +104,13 @@ export default function Navbar() {
                     prefetch={false}
                     className={`relative px-5 py-2.5 rounded-xl text-sm font-semibold transition-all duration-200 group ${
                       isActive
-                        ? "text-[#284064] bg-[#F6F8FC]"
-                        : "text-gray-600 hover:text-[#284064] hover:bg-[#F6F8FC]"
+                        ? "text-[#01226B] bg-[#02B9FA]/10"
+                        : "text-gray-600 hover:text-[#01226B] hover:bg-[#02B9FA]/5"
                     }`}
                   >
                     {item.label}
                     <span
-                      className={`absolute bottom-1 right-4 left-4 h-0.5 rounded-full bg-[#284064] transition-all duration-200 ${
+                      className={`absolute bottom-1 right-4 left-4 h-0.5 rounded-full bg-[#005AAD] transition-all duration-200 ${
                         isActive ? "opacity-100 scale-x-100" : "opacity-0 scale-x-0 group-hover:opacity-60 group-hover:scale-x-100"
                       }`}
                     />
@@ -127,14 +127,14 @@ export default function Navbar() {
                 <button
                   aria-label={user ? "حسابي" : "تسجيل الدخول"}
                   onClick={handleAccountClick}
-                  className="p-1.5 rounded-lg text-gray-500 hover:text-[#284064] hover:bg-[#F6F8FC] transition-colors relative"
+                  className="p-1.5 rounded-lg text-gray-500 hover:text-[#01226B] hover:bg-[#02B9FA]/5 transition-colors relative"
                 >
                   {mounted && user && initials ? (
-                    <span className="w-6 h-6 sm:w-7 sm:h-7 rounded-full bg-[#284064] text-white text-xs font-bold flex items-center justify-center">
+                    <span className="w-6 h-6 sm:w-7 sm:h-7 rounded-full bg-[#01226B] text-white text-xs font-bold flex items-center justify-center">
                       {initials}
                     </span>
                   ) : (
-                    <User className={`w-5 h-5 sm:w-6 sm:h-6 ${mounted && user ? "text-[#284064]" : ""}`} />
+                    <User className={`w-5 h-5 sm:w-6 sm:h-6 ${mounted && user ? "text-[#01226B]" : ""}`} />
                   )}
                 </button>
               </div>
@@ -144,12 +144,12 @@ export default function Navbar() {
                 href="/cart"
                 prefetch={false}
                 aria-label="السلة"
-                className="relative flex items-center gap-1.5 px-2 py-1.5 rounded-lg text-gray-500 hover:text-[#284064] hover:bg-[#F6F8FC] transition-colors"
+                className="relative flex items-center gap-1.5 px-2 py-1.5 rounded-lg text-gray-500 hover:text-[#01226B] hover:bg-[#02B9FA]/5 transition-colors"
               >
                 <div className="relative">
                   <IoBagHandleOutline className="w-5 h-5 sm:w-6 sm:h-6" />
                   {mounted && itemCount > 0 && (
-                    <span className="absolute -top-1 -left-1 bg-[#284064] text-white text-[9px] font-bold min-w-[15px] h-[15px] flex items-center justify-center rounded-full px-0.5">
+                    <span className="absolute -top-1 -left-1 bg-[#01226B] text-white text-[9px] font-bold min-w-[15px] h-[15px] flex items-center justify-center rounded-full px-0.5">
                       {itemCount}
                     </span>
                   )}

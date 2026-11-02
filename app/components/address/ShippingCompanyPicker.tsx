@@ -1,4 +1,4 @@
-﻿"use client";
+"use client";
 
 import Image from "next/image";
 import type { ShippingOption } from "./AddressSection";
@@ -21,8 +21,8 @@ export default function ShippingCompanyPicker({ options, selected, onSelect }: P
             className={`w-full flex items-center gap-4 px-4 py-3.5 text-right transition border-b border-gray-100 last:border-b-0 ${isSelected ? "bg-gray-50" : "bg-white hover:bg-gray-50"}`}
           >
             {/* Radio */}
-            <div className={`w-4 h-4 rounded-full border-2 flex items-center justify-center shrink-0 transition ${isSelected ? "border-[#1A2E44]" : "border-gray-300"}`}>
-              {isSelected && <div className="w-2 h-2 rounded-full bg-[#1A2E44]" />}
+            <div className={`w-4 h-4 rounded-full border-2 flex items-center justify-center shrink-0 transition ${isSelected ? "border-[#01226B]" : "border-gray-300"}`}>
+              {isSelected && <div className="w-2 h-2 rounded-full bg-[#01226B]" />}
             </div>
 
             {/* Logo */}
@@ -39,7 +39,7 @@ export default function ShippingCompanyPicker({ options, selected, onSelect }: P
 
             {/* Info */}
             <div className="flex-1 min-w-0">
-              <p className="text-xs sm:text-sm font-bold text-[#1A2E44]">{opt.companyName}</p>
+              <p className="text-xs sm:text-sm font-bold text-[#01226B]">{opt.companyName}</p>
               <p className="text-[10px] sm:text-[11px] text-gray-400 mt-0.5">{opt.workDays}</p>
             </div>
 

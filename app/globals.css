@@ -18,7 +18,7 @@
 
 :root {
   --background: #ffffff;
-  --foreground: #284064;
+  --foreground: #01226B;
   
   /* ألوان اللوجو */
   --logo-cyan: #02D3FF;
@@ -29,9 +29,9 @@
   
   /* الألوان الأصلية */
   --color-1: #F6F8FC;
-  --color-2: #284064;
+  --color-2: #01226B;
   --color-3: #60758E;
-  --color-4: #8BA8D2;
+  --color-4: #02B9FA;
   --color-5: #595593;
 }
 
@@ -51,7 +51,7 @@ body {
 
 
 input, textarea, select {
-  color: #284064;
+  color: #01226B;
 }
 
 /* ── Custom Phone Input ── */
@@ -81,7 +81,7 @@ input, textarea, select {
   outline: none;
   padding: 10px 12px;
   font-size: 14px;
-  color: #284064;
+  color: #01226B;
   background: transparent;
   font-family: monospace;
   min-width: 0;
@@ -127,30 +127,30 @@ input, textarea, select {
   justify-content: center;
   gap: 7px;
   background: #ffffff;
-  color: #284064;
+  color: #01226B;
   font-weight: 800;
   font-size: 0.78rem;
   letter-spacing: 0.025em;
   padding: 11px 0;
   border-radius: 14px;
-  border: 1.5px solid #284064;
+  border: 1.5px solid #01226B;
   transition: background 0.2s ease, color 0.2s ease;
 }
 @media (min-width: 640px) {
   .cart-btn { font-size: 0.82rem; padding: 12px 0; }
 }
 .cart-btn:hover {
-  background: #284064;
+  background: #01226B;
   color: #ffffff;
 }
 .cart-btn:active {
-  background: #284064;
+  background: #01226B;
   color: #ffffff;
 }
 .cart-btn.added {
-  background: #284064;
+  background: #01226B;
   color: #ffffff;
-  border-color: #284064;
+  border-color: #01226B;
 }
 
 @keyframes fade-in-down {

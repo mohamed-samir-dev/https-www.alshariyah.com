@@ -1,4 +1,4 @@
-﻿"use client";
+"use client";
 
 import { useState, useEffect, useCallback, Suspense, useRef } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
@@ -101,7 +101,7 @@ function fmtMoney(n: number) {
 
 function Spinner({ sm }: { sm?: boolean }) {
   return (
-    <span className={`border-2 border-[#0A1C29]/15 border-t-[#0A1C29] rounded-full animate-spin inline-block ${sm ? "w-4 h-4" : "w-6 h-6"}`} />
+    <span className={`border-2 border-[#01226B]/15 border-t-[#005AAD] rounded-full animate-spin inline-block ${sm ? "w-4 h-4" : "w-6 h-6"}`} />
   );
 }
 
@@ -113,7 +113,7 @@ function OrderCard({ order }: { order: Order }) {
   const imgUrl = resolveImg(firstItem?.image);
 
   return (
-    <div className="bg-white border border-[#e8ecef] rounded-2xl overflow-hidden hover:border-[#0A1C29]/30 transition-all shadow-xs">
+    <div className="bg-white border border-[#e8ecef] rounded-2xl overflow-hidden hover:border-[#01226B]/30 transition-all shadow-xs">
       <Link
         href={`/account/orders/${order.orderId || order._id}`}
         className="block focus-visible:outline-none"
@@ -122,7 +122,7 @@ function OrderCard({ order }: { order: Order }) {
         <div className="flex items-center justify-between gap-3 p-4 bg-gradient-to-r from-slate-50 to-white border-b border-gray-100">
           <div className="flex flex-col gap-1">
             <span className="text-[11px] text-gray-400 font-medium">رقم الطلب</span>
-            <span className="text-sm font-black text-[#0A1C29] font-mono tracking-wide" dir="ltr">
+            <span className="text-sm font-black text-[#01226B] font-mono tracking-wide" dir="ltr">
               #{order.orderId}
             </span>
           </div>
@@ -158,7 +158,7 @@ function OrderCard({ order }: { order: Order }) {
             </div>
             <div className="min-w-0">
               <div className="flex items-center gap-1.5 flex-wrap">
-                <p className={`text-xs sm:text-sm font-bold ${order.status === "cancelled" ? "line-through text-gray-400" : "text-[#0A1C29]"} truncate`}>
+                <p className={`text-xs sm:text-sm font-bold ${order.status === "cancelled" ? "line-through text-gray-400" : "text-[#01226B]"} truncate`}>
                   {firstItem?.name || "طلب شريحة / باقة"}
                 </p>
                 {order.status === "cancelled" && (
@@ -177,10 +177,10 @@ function OrderCard({ order }: { order: Order }) {
           </div>
 
           <div className="text-left shrink-0">
-            <span className={`text-base font-black ${order.status === "cancelled" ? "text-gray-400 line-through" : "text-[#0A1C29]"} tabular-nums`} dir="ltr">
+            <span className={`text-base font-black ${order.status === "cancelled" ? "text-gray-400 line-through" : "text-[#01226B]"} tabular-nums`} dir="ltr">
               {fmtMoney(order.total)} <span className="text-xs font-semibold text-gray-400">ر.س</span>
             </span>
-            <div className="text-[11px] font-bold text-[#0A1C29] underline underline-offset-2 mt-1">
+            <div className="text-[11px] font-bold text-[#01226B] underline underline-offset-2 mt-1">
               عرض التفاصيل الكاملة ⟵
             </div>
           </div>
@@ -196,7 +196,7 @@ function InfoRow({ label, value, ltr }: { label: string; value?: string; ltr?: b
   return (
     <div className="flex flex-col gap-0.5">
       <span className="text-[11px] text-gray-400 font-medium">{label}</span>
-      <span className="text-sm font-semibold text-[#0A1C29]" dir={ltr ? "ltr" : undefined}>{value || "—"}</span>
+      <span className="text-sm font-semibold text-[#01226B]" dir={ltr ? "ltr" : undefined}>{value || "—"}</span>
     </div>
   );
 }
@@ -492,12 +492,12 @@ function AccountPageInner() {
         {/* ── Hero Profile / Guest Card ── */}
         <div className="bg-white border border-[#e2e8f0] rounded-2xl p-4 sm:p-5 flex items-center justify-between shadow-xs">
           <div className="flex items-center gap-3 min-w-0">
-            <div className="w-12 h-12 rounded-xl bg-[#0A1C29] text-white flex items-center justify-center text-base font-black shrink-0 select-none shadow-sm">
+            <div className="w-12 h-12 rounded-xl bg-[#01226B] text-white flex items-center justify-center text-base font-black shrink-0 select-none shadow-sm">
               {user ? initials : "🛒"}
             </div>
             <div className="min-w-0">
               <div className="flex items-center gap-2">
-                <p className="text-base font-black text-[#0A1C29] truncate">{displayName}</p>
+                <p className="text-base font-black text-[#01226B] truncate">{displayName}</p>
                 {!user ? (
                   <span className="text-[10px] font-bold bg-amber-50 text-amber-700 border border-amber-200 px-2 py-0.5 rounded-full">
                     تتبع زائر (بدون تسجيل)
@@ -538,7 +538,7 @@ function AccountPageInner() {
                   onClick={() => handleTabChange(t)}
                   className={`flex-1 py-3.5 text-xs sm:text-sm font-black transition-all border-b-2 -mb-px flex items-center justify-center gap-2 ${
                     tab === t
-                      ? "border-[#0A1C29] text-[#0A1C29] bg-gray-50/40"
+                      ? "border-[#01226B] text-[#01226B] bg-gray-50/40"
                       : "border-transparent text-gray-400 hover:text-gray-600"
                   }`}
                 >
@@ -586,7 +586,7 @@ function AccountPageInner() {
                     </div>
                     <button
                       onClick={() => setEditing(true)}
-                      className="w-full py-3 bg-[#0A1C29] text-white text-sm font-bold transition rounded-xl hover:opacity-90"
+                      className="w-full py-3 bg-[#01226B] text-white text-sm font-bold transition rounded-xl hover:opacity-90"
                     >
                       تعديل البيانات
                     </button>
@@ -600,7 +600,7 @@ function AccountPageInner() {
                           id="acc-fn"
                           value={firstName}
                           onChange={(e) => setFirstName(e.target.value)}
-                          className="w-full px-3 py-2.5 border border-gray-200 text-sm rounded-xl focus:outline-none focus:border-[#0A1C29] bg-white"
+                          className="w-full px-3 py-2.5 border border-gray-200 text-sm rounded-xl focus:outline-none focus:border-[#01226B] bg-white"
                         />
                       </div>
                       <div className="space-y-1.5">
@@ -609,7 +609,7 @@ function AccountPageInner() {
                           id="acc-ln"
                           value={lastName}
                           onChange={(e) => setLastName(e.target.value)}
-                          className="w-full px-3 py-2.5 border border-gray-200 text-sm rounded-xl focus:outline-none focus:border-[#0A1C29] bg-white"
+                          className="w-full px-3 py-2.5 border border-gray-200 text-sm rounded-xl focus:outline-none focus:border-[#01226B] bg-white"
                         />
                       </div>
                     </div>
@@ -629,7 +629,7 @@ function AccountPageInner() {
                         onChange={(e) => setPhone(e.target.value)}
                         dir="ltr"
                         inputMode="tel"
-                        className="w-full px-3 py-2.5 border border-gray-200 text-sm rounded-xl focus:outline-none focus:border-[#0A1C29] bg-white"
+                        className="w-full px-3 py-2.5 border border-gray-200 text-sm rounded-xl focus:outline-none focus:border-[#01226B] bg-white"
                       />
                     </div>
 
@@ -639,7 +639,7 @@ function AccountPageInner() {
                       <button
                         type="button"
                         onClick={() => setChangePasswordOpen(!changePasswordOpen)}
-                        className="text-xs font-semibold text-[#0A1C29] hover:underline"
+                        className="text-xs font-semibold text-[#01226B] hover:underline"
                       >
                         {changePasswordOpen ? "إلغاء تغيير كلمة المرور" : "تغيير كلمة المرور؟"}
                       </button>
@@ -674,7 +674,7 @@ function AccountPageInner() {
                       <button
                         onClick={handleSave}
                         disabled={saving}
-                        className="flex-1 py-3 bg-[#0A1C29] text-white text-sm font-semibold transition disabled:opacity-60 flex items-center justify-center gap-2 rounded-xl"
+                        className="flex-1 py-3 bg-[#01226B] text-white text-sm font-semibold transition disabled:opacity-60 flex items-center justify-center gap-2 rounded-xl"
                       >
                         {saving ? <Spinner sm /> : "حفظ التعديلات"}
                       </button>
@@ -718,7 +718,7 @@ function AccountPageInner() {
                       onKeyDown={(e) => {
                         if (e.key === "Enter") fetchOrders(1, false, searchQuery);
                       }}
-                      className="w-full pr-9 pl-3 py-2 text-xs sm:text-sm border border-gray-200 rounded-xl focus:outline-none focus:border-[#0A1C29] bg-white transition"
+                      className="w-full pr-9 pl-3 py-2 text-xs sm:text-sm border border-gray-200 rounded-xl focus:outline-none focus:border-[#01226B] bg-white transition"
                     />
                   </div>
                   <div className="flex items-center gap-2">
@@ -733,7 +733,7 @@ function AccountPageInner() {
                     <button
                       onClick={() => fetchOrders(page, false, searchQuery)}
                       disabled={ordersLoading}
-                      className="px-3 py-2 text-xs font-bold text-[#0A1C29] bg-gray-50 hover:bg-gray-100 border border-gray-200 rounded-xl flex items-center gap-1.5 transition disabled:opacity-50"
+                      className="px-3 py-2 text-xs font-bold text-[#01226B] bg-gray-50 hover:bg-gray-100 border border-gray-200 rounded-xl flex items-center gap-1.5 transition disabled:opacity-50"
                     >
                       <RefreshCw className={`w-3.5 h-3.5 ${ordersLoading ? "animate-spin" : ""}`} />
                       <span>تحديث الحالات</span>
@@ -768,13 +768,13 @@ function AccountPageInner() {
                     <div className="w-16 h-16 rounded-full bg-white shadow-xs border border-gray-100 flex items-center justify-center mx-auto text-2xl">
                       🛍️
                     </div>
-                    <p className="text-sm font-black text-[#0A1C29]">لا توجد طلبات مسجلة حاليًا</p>
+                    <p className="text-sm font-black text-[#01226B]">لا توجد طلبات مسجلة حاليًا</p>
                     <p className="text-xs text-gray-400 max-w-sm mx-auto leading-relaxed">
                       إذا قمت بإجراء طلب للتو، تأكد من إدخال رقم الطلب في شريط البحث أعلاه أو قم بتحديث الصفحة.
                     </p>
                     <Link
                       href="/"
-                      className="inline-block mt-2 px-5 py-2.5 bg-[#0A1C29] text-white text-xs font-bold rounded-xl hover:opacity-90 transition"
+                      className="inline-block mt-2 px-5 py-2.5 bg-[#01226B] text-white text-xs font-bold rounded-xl hover:opacity-90 transition"
                     >
                       تصفح المنتجات الآن
                     </Link>
@@ -826,7 +826,7 @@ export default function AccountPage() {
     <Suspense
       fallback={
         <div className="min-h-screen flex items-center justify-center">
-          <span className="w-6 h-6 border-2 border-[#0A1C29]/15 border-t-[#0A1C29] rounded-full animate-spin inline-block" />
+          <span className="w-6 h-6 border-2 border-[#01226B]/15 border-t-[#005AAD] rounded-full animate-spin inline-block" />
         </div>
       }
     >

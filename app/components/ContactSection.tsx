@@ -1,4 +1,4 @@
-﻿"use client";
+"use client";
 import { useRef, useState, useEffect, ReactNode, ReactElement, useCallback } from "react";
 
 function FadeUp({ children, delay = 0 }: { children: ReactNode; delay?: number }) {
@@ -65,15 +65,15 @@ export default function ContactSection({ title = "وسائل التواصل", ph
   return (
     <FadeUp delay={fadeDelay}>
       <div className="bg-white rounded-2xl sm:rounded-3xl border border-gray-100 shadow-sm overflow-hidden hover:shadow-lg transition-all duration-300">
-        <div className="h-1 w-full bg-linear-to-l from-orange-400 via-pink-500 to-rose-500" />
+        <div className="h-1 w-full bg-linear-to-l from-[#01226B] via-[#005AAD] to-[#02B9FA]" />
         <div className="p-4 sm:p-7 lg:p-9">
           <div className="flex items-center gap-3 sm:gap-4 mb-4 sm:mb-6">
-            <div className="w-10 h-10 sm:w-12 sm:h-12 lg:w-14 lg:h-14 rounded-xl sm:rounded-2xl bg-linear-to-br from-orange-400 to-rose-500 flex items-center justify-center text-white shadow-md shrink-0">
+            <div className="w-10 h-10 sm:w-12 sm:h-12 lg:w-14 lg:h-14 rounded-xl sm:rounded-2xl bg-linear-to-br from-[#02B9FA] to-[#005AAD] flex items-center justify-center text-white shadow-md shrink-0">
               <IconPhone />
             </div>
             <div>
-              <h2 className="text-base sm:text-xl lg:text-2xl font-extrabold text-gray-800">{title}</h2>
-              <div className="h-0.5 w-8 sm:w-10 mt-1 sm:mt-1.5 rounded-full bg-linear-to-l from-orange-400 to-rose-500" />
+              <h2 className="text-base sm:text-xl lg:text-2xl font-extrabold text-[#01226B]">{title}</h2>
+              <div className="h-0.5 w-8 sm:w-10 mt-1 sm:mt-1.5 rounded-full bg-linear-to-l from-[#02B9FA] to-[#005AAD]" />
             </div>
           </div>
 
@@ -92,7 +92,7 @@ export default function ContactSection({ title = "وسائل التواصل", ph
                   </div>
                   <div className="min-w-0 overflow-hidden">
                     <p className="text-[10px] sm:text-[11px] text-gray-400 font-semibold uppercase tracking-wider mb-0.5 sm:mb-1">{item.label}</p>
-                    <p dir="ltr" className="text-xs sm:text-sm font-bold text-gray-700 group-hover/card:text-blue-600 transition-colors break-all leading-snug">
+                    <p dir="ltr" className="text-xs sm:text-sm font-bold text-gray-700 group-hover/card:text-[#005AAD] transition-colors break-all leading-snug">
                       {item.value}
                     </p>
                   </div>

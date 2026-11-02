@@ -1,4 +1,4 @@
-﻿"use client";
+"use client";
 
 import { useState, useRef, useEffect, useCallback } from "react";
 import { Search, Loader2, X } from "lucide-react";
@@ -219,7 +219,7 @@ export default function AddressSearch({ onSelect, externalQuery }: Props) {
             <TbMapSearch size={15} className="text-[#47A557]" />
           </div>
           <div>
-            <p className="text-xs font-black text-[#1A2E44]">ابحث عن عنوانك</p>
+            <p className="text-xs font-black text-[#01226B]">ابحث عن عنوانك</p>
             <p className="text-[10px] text-gray-400 mt-0.5">اكتب اسم الشارع أو الحي أو المدينة</p>
           </div>
         </div>
@@ -295,7 +295,7 @@ export default function AddressSearch({ onSelect, externalQuery }: Props) {
                 <div className="flex items-start gap-2">
                   <HiOutlineLocationMarker size={13} className="text-gray-500 shrink-0 mt-0.5" />
                   <div className="min-w-0">
-                    <p className="text-xs font-bold text-[#1A2E44] truncate">{s.main_text}</p>
+                    <p className="text-xs font-bold text-[#01226B] truncate">{s.main_text}</p>
                     {location && (
                       <p className="text-[11px] text-gray-400 mt-0.5 truncate">{location}</p>
                     )}

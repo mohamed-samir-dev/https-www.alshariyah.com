@@ -1,4 +1,4 @@
-﻿"use client";
+"use client";
 
 import { useEffect, useRef, useState } from "react";
 import { Locate, Loader2 } from "lucide-react";
@@ -77,7 +77,7 @@ export default function AddressMap({
       if (hasMapId && G.marker?.AdvancedMarkerElement) {
         const pin = new G.marker.PinElement({
           background: "#47A557",
-          borderColor: "#1A2E44",
+          borderColor: "#01226B",
           glyphColor: "#ffffff",
           scale: 1.2,
         });
@@ -290,7 +290,7 @@ export default function AddressMap({
           onClick={handleCurrentLocation}
           disabled={locating}
           aria-label="استخدم موقعي الحالي"
-          className="absolute bottom-4 left-4 z-[1000] flex items-center gap-1.5 bg-white border border-gray-200 shadow-md px-3 py-2 text-xs font-bold text-[#1A2E44] hover:bg-gray-50 transition disabled:opacity-60"
+          className="absolute bottom-4 left-4 z-[1000] flex items-center gap-1.5 bg-white border border-gray-200 shadow-md px-3 py-2 text-xs font-bold text-[#01226B] hover:bg-gray-50 transition disabled:opacity-60"
         >
           {locating ? (
             <Loader2 size={13} className="animate-spin" />
