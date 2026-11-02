@@ -1,4 +1,4 @@
-import Link from "next/link";
+﻿import Link from "next/link";
 import { Tag } from "lucide-react";
 import type { Product } from "./products/types";
 import ProductCard from "./products/ProductCard";
@@ -119,7 +119,7 @@ export default async function HomeCategorySections() {
 
             <div className="flex items-center justify-between mb-6 sm:mb-10">
               <div className="flex items-center gap-3">
-                <div className="w-1 h-7 rounded-full bg-[#284064]" />
+                <div className="w-1 h-7 rounded-full bg-gradient-to-b from-[#02D3FF] to-[#023A89]" />
                 <div>
                   <h2 className="text-xl sm:text-3xl font-black text-gray-900">{sec.brand}</h2>
                   <p className="text-gray-500 text-xs sm:text-sm mt-0.5">أفضل المنتجات في هذه الفئة</p>
@@ -128,11 +128,14 @@ export default async function HomeCategorySections() {
               <Link
                 href={`/all-products?brand=${encodeURIComponent(sec.brand)}`}
                 prefetch={false}
-                className="flex items-center gap-2 px-3 py-1.5 rounded-full transition-opacity hover:opacity-80"
-                style={{ background: "rgba(40,64,100,0.1)", border: "1px solid rgba(40,64,100,0.25)" }}
+                className="flex items-center gap-2 px-3 py-1.5 rounded-full transition-all hover:shadow-sm"
+                style={{ 
+                  background: "linear-gradient(135deg, rgba(2,211,255,0.06), rgba(0,90,173,0.06))", 
+                  border: "1px solid rgba(2,185,250,0.25)" 
+                }}
               >
-                <Tag className="w-3.5 h-3.5 text-[#284064]" />
-                <span className="text-[#284064] text-xs font-bold">عرض الكل</span>
+                <Tag className="w-3.5 h-3.5 text-[#005AAD]" />
+                <span className="text-[#01226B] text-xs font-bold">عرض الكل</span>
               </Link>
             </div>
 
@@ -148,3 +151,4 @@ export default async function HomeCategorySections() {
     </>
   );
 }
+

@@ -1,16 +1,16 @@
-import { Suspense } from "react";
+﻿import { Suspense } from "react";
 import AllProductsClient from "./AllProductsClient";
 import type { Product } from "../components/products/types";
 import { sortProducts } from "../lib/sortProducts";
 import type { Metadata } from "next";
 
 const SITE_URL = "https://www.alshariyaa.com";
-const SITE_NAME = "الشريحة الموثوقة";
+const SITE_NAME = "شريحة الأعمال";
 
 export const metadata: Metadata = {
   title: `جميع الشرائح والمنتجات | ${SITE_NAME}`,
   description:
-    "تصفح جميع شرائح الاتصال وباقات الإنترنت بأفضل الأسعار من الشريحة الموثوقة. STC وموبايلي وزين وفيرجن وسلام.",
+    "تصفح جميع شرائح الاتصال وباقات الإنترنت بأفضل الأسعار من شريحة الأعمال. STC وموبايلي وزين وفيرجن وسلام.",
   alternates: {
     canonical: `${SITE_URL}/all-products`,
   },
@@ -19,7 +19,7 @@ export const metadata: Metadata = {
     url: `${SITE_URL}/all-products`,
     title: `جميع الشرائح والمنتجات | ${SITE_NAME}`,
     description:
-      "تصفح جميع شرائح الاتصال وباقات الإنترنت بأفضل الأسعار من الشريحة الموثوقة.",
+      "تصفح جميع شرائح الاتصال وباقات الإنترنت بأفضل الأسعار من شريحة الأعمال.",
     siteName: SITE_NAME,
     locale: "ar_SA",
   },
@@ -59,3 +59,4 @@ export default async function AllProductsPage() {
     </Suspense>
   );
 }
+

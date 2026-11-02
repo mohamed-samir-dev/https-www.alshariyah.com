@@ -1,4 +1,4 @@
-export interface ShippingCompany {
+﻿export interface ShippingCompany {
   id: string;
   nameAr: string;
   logo: string;

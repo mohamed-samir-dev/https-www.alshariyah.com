@@ -1,4 +1,4 @@
-import Image from "next/image";
+﻿import Image from "next/image";
 import { FaWhatsapp, FaMobileAlt, FaEnvelope } from "react-icons/fa";
 import { getCompany } from "../lib/getCompany";
 
@@ -17,7 +17,7 @@ export default async function Footer() {
           <div className="flex flex-col gap-4">
             <Image src="/logo.webp" alt="logo" width={72} height={72} className="object-contain" />
             <p className="text-sm leading-7 text-gray-600 whitespace-pre-line">
-              {c.details || "الشريحة الموثوقة - شرائح اتصال وإنترنت بأسعار منافسة، مع خدمة سريعة وآمنة ودعم عملاء مميز. ثقتكم غايتنا وخدمتكم أولويتنا"}
+              {c.details || "شريحة الأعمال - شرائح اتصال وإنترنت بأسعار منافسة، مع خدمة سريعة وآمنة ودعم عملاء مميز. ثقتكم غايتنا وخدمتكم أولويتنا"}
             </p>
 
             {/* السجل التجاري */}
@@ -190,3 +190,4 @@ export default async function Footer() {
     </footer>
   );
 }
+

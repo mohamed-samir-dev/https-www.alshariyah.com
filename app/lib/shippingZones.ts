@@ -1,4 +1,4 @@
-export interface ShippingZone {
+﻿export interface ShippingZone {
   names: string[];
   available: boolean;
   cost: number;

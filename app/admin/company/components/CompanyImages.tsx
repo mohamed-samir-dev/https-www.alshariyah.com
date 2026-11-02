@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 import { memo, useState } from "react";
 import { imageFields } from "../constants";
 import type { CompanyData } from "../types";

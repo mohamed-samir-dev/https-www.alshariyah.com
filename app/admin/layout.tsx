@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+﻿import type { Metadata } from "next";
 import AdminLayoutClient from "./AdminLayoutClient";
 
 // Admin pages must never be indexed by search engines

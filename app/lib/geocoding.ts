@@ -1,4 +1,4 @@
-export interface AddressData {
+﻿export interface AddressData {
   address: string;
   latitude: number;
   longitude: number;

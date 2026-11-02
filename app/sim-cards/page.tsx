@@ -1,10 +1,10 @@
-import SimCardsClient from "./SimCardsClient";
+﻿import SimCardsClient from "./SimCardsClient";
 import type { Product } from "../components/products/types";
 import { sortProducts } from "../lib/sortProducts";
 import type { Metadata } from "next";
 
 const SITE_URL = "https://www.alshariyaa.com";
-const SITE_NAME = "الشريحة الموثوقة";
+const SITE_NAME = "شريحة الأعمال";
 
 export const metadata: Metadata = {
   title: `شرائح الاتصال | ${SITE_NAME}`,
@@ -57,3 +57,4 @@ export default async function SimCardsPage() {
   const products = await getSimCards();
   return <SimCardsClient initialProducts={products} />;
 }
+

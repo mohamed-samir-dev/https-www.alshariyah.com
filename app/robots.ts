@@ -1,4 +1,4 @@
-import { MetadataRoute } from "next";
+﻿import { MetadataRoute } from "next";
 
 export const revalidate = 86400;
 

@@ -1,4 +1,4 @@
-import { NextRequest, NextResponse } from "next/server";
+﻿import { NextRequest, NextResponse } from "next/server";
 import { getBackend, forwardCookies } from "../../../_lib";
 
 export async function POST(req: NextRequest) {

@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 import { useRef, useState, useEffect, ReactNode, ReactElement, useCallback } from "react";
 
 function FadeUp({ children, delay = 0 }: { children: ReactNode; delay?: number }) {

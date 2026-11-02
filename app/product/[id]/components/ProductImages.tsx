@@ -21,9 +21,7 @@ export default function ProductImages({ images: rawImages, name, discountPercent
   return (
     <div className="flex flex-col gap-3 lg:sticky lg:top-[80px]">
       {/* Main Image */}
-      <div className="relative rounded-2xl overflow-hidden border border-[#003160]">
-
-
+      <div className="relative rounded-2xl overflow-hidden border border-[#02B9FA]">
         <div
           className="relative w-full min-h-[200px] sm:min-h-[300px]"
           style={{}}
@@ -57,8 +55,6 @@ export default function ProductImages({ images: rawImages, name, discountPercent
             )}
           </AnimatePresence>
         </div>
-
-
       </div>
 
       {/* Thumbnails */}
@@ -69,9 +65,8 @@ export default function ProductImages({ images: rawImages, name, discountPercent
               key={i}
               onClick={() => setSelected(i)}
               className={`relative w-16 h-16 rounded-xl overflow-hidden shrink-0 border-2 transition-all duration-200 ${
-                i === selected ? "border-[#FC0]" : "border-[#003160] opacity-50 hover:opacity-80"
+                i === selected ? "border-[#02D3FF]" : "border-[#02B9FA] opacity-50 hover:opacity-80"
               }`}
-
             >
               <Image src={img} alt="" fill className="object-contain p-1.5" sizes="64px" />
             </button>

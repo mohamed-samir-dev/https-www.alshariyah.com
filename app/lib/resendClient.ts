@@ -1,4 +1,4 @@
-import { Resend } from "resend";
+﻿import { Resend } from "resend";
 
 // Singleton — يُنشأ مرة واحدة عند تحميل الـ module بدل instance جديدة في كل call
 // هذا يُقلل object creation overhead في كل OTP send
@@ -23,8 +23,9 @@ export async function sendEmail({
   html: string;
 }): Promise<void> {
   const resend = getResend();
-  const from = `${process.env.RESEND_FROM_NAME || "الشريحة الموثوقة"} <${process.env.RESEND_FROM_EMAIL || "no-reply@alshariha.com"}>`;
+  const from = `${process.env.RESEND_FROM_NAME || "شريحة الأعمال"} <${process.env.RESEND_FROM_EMAIL || "no-reply@alshariha.com"}>`;
 
   const { error } = await resend.emails.send({ from, to, subject, html });
   if (error) throw new Error(error.message);
 }
+

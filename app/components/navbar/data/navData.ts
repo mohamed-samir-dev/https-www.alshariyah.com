@@ -1,4 +1,4 @@
-export interface NavChild {
+﻿export interface NavChild {
   label: string;
   href: string;
 }

@@ -31,8 +31,8 @@ export default function ProductDetails({ description, specifications }: ProductD
             onClick={() => setActive(tab.key)}
             className="flex items-center gap-2 px-4 py-2.5 rounded-xl text-sm font-bold transition-all whitespace-nowrap border"
             style={active === tab.key
-              ? { background: "var(--color-2)", color: "#fff", borderColor: "var(--color-2)" }
-              : { color: "var(--color-3)", borderColor: "var(--color-4)", background: "var(--color-1)" }
+              ? { background: "linear-gradient(to-r, from-[#02B9FA], to-[#005AAD])", color: "#fff", borderColor: "#02B9FA" }
+              : { color: "#60758E", borderColor: "#02B9FA", background: "#F6F8FC" }
             }
           >
             {tab.icon}
@@ -56,8 +56,8 @@ export default function ProductDetails({ description, specifications }: ProductD
                 <div className="space-y-4">
                   {specifications.map((group, gi) => (
                     <div key={gi} className="rounded-2xl overflow-hidden border border-gray-100">
-                      <div className="px-4 py-2.5 border-b" style={{ borderColor: "var(--color-4)", background: "rgba(139,168,210,0.15)" }}>
-                        <h3 className="text-xs font-black uppercase tracking-wider" style={{ color: "var(--color-2)" }}>{group.groupName}</h3>
+                      <div className="px-4 py-2.5 border-b" style={{ borderColor: "#02B9FA", background: "linear-gradient(135deg, rgba(2,211,255,0.08), rgba(0,90,173,0.08))" }}>
+                        <h3 className="text-xs font-black uppercase tracking-wider" style={{ color: "#01226B" }}>{group.groupName}</h3>
                       </div>
                       <div className="bg-white">
                         {group.items.map((item, ii) => (
@@ -66,8 +66,8 @@ export default function ProductDetails({ description, specifications }: ProductD
                             className={`flex items-center justify-between px-4 py-3 ${ii < group.items.length - 1 ? "border-b" : ""}`}
                             style={ii < group.items.length - 1 ? { borderColor: "var(--color-1)" } : {}}
                           >
-                            <span className="text-xs" style={{ color: "var(--color-3)" }}>{item.label}</span>
-                            <span className="text-xs font-bold" style={{ color: "var(--color-2)" }}>{item.value}</span>
+                            <span className="text-xs" style={{ color: "#60758E" }}>{item.label}</span>
+                            <span className="text-xs font-bold" style={{ color: "#01226B" }}>{item.value}</span>
                           </div>
                         ))}
                       </div>

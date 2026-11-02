@@ -1,4 +1,4 @@
-import { NextRequest, NextResponse } from "next/server";
+﻿import { NextRequest, NextResponse } from "next/server";
 import { sendEmail } from "../../../../lib/resendClient";
 import { otpEmailTemplate } from "../../../../lib/otpTemplate";
 
@@ -44,7 +44,7 @@ export async function POST(req: NextRequest) {
     try {
       await sendEmail({
         to: email,
-        subject: "رمز إعادة تعيين كلمة المرور | الشريحة الموثوقة",
+        subject: "رمز إعادة تعيين كلمة المرور | شريحة الأعمال",
         html: otpEmailTemplate(otp),
       });
     } catch {
@@ -59,3 +59,4 @@ export async function POST(req: NextRequest) {
     return NextResponse.json({ error: "خطأ في الخادم" }, { status: 500 });
   }
 }
+

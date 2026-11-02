@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 
 import { useState, useEffect, useRef, useCallback, Suspense } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
@@ -1262,7 +1262,7 @@ function AuthPageInner() {
             className="object-contain h-24 w-auto"
             priority
           />
-          <h1 className="text-xl font-bold" style={{ color: "var(--color-2)" }}>أهلًا بك في متجر الشريحة الموثوقة</h1>
+          <h1 className="text-xl font-bold" style={{ color: "var(--color-2)" }}>أهلًا بك في متجر شريحة الأعمال</h1>
         </div>
 
         {/* Tabs */}
@@ -1312,3 +1312,4 @@ export default function AuthPage() {
     </Suspense>
   );
 }
+

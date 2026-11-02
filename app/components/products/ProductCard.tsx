@@ -1,14 +1,10 @@
-"use client";
+﻿"use client";
 
 import { useState, useRef } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
-import {
-  IoCartOutline,
-  IoCheckmarkCircle,
-  IoWifiOutline,
-} from "react-icons/io5";
+import { IoCartOutline, IoCheckmarkCircle, IoWifiOutline } from "react-icons/io5";
 import type { Product } from "./types";
 import { useCartStore } from "../../store/cartStore";
 import { useCartPopupStore } from "../../store/cartPopupStore";
@@ -19,7 +15,6 @@ const resolveImgUrl = (src: string) => {
   const path = src.startsWith("/") ? src : "/" + src;
   return `${API}${encodeURI(decodeURI(path))}`;
 };
-
 const fmt = (n: number) => n.toLocaleString("en-US");
 
 export default function ProductCard({
@@ -31,41 +26,31 @@ export default function ProductCard({
   priority?: boolean;
   rank?: number;
 }) {
-  const {
-    name,
-    discountPercent = 0,
-    brand,
-    inStock,
-    installment,
-    network,
-  } = product;
+  const { name, brand, inStock, network } = product;
 
   const image = product.images?.[0] || product.image;
   const resolvedImage = image ? resolveImgUrl(image) : undefined;
   const originalPrice = product.originalPrice || product.price || 0;
-  const salePrice =
-    product.salePrice && product.salePrice > 0 ? product.salePrice : undefined;
+  const salePrice = product.salePrice && product.salePrice > 0 ? product.salePrice : undefined;
   const hasDiscount = salePrice != null && salePrice < originalPrice;
   const displayPrice = hasDiscount ? salePrice : originalPrice;
-  const savings = hasDiscount ? originalPrice - salePrice : 0;
+  const discountPct = hasDiscount
+    ? Math.round(((originalPrice - salePrice!) / originalPrice) * 100)
+    : 0;
 
   const addItem = useCartStore((s) => s.addItem);
   const showPopup = useCartPopupStore((s) => s.show);
   const [loading, setLoading] = useState(false);
   const [added, setAdded] = useState(false);
-  const addedTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
+  const timerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
 
   const handleAddToCart = (e: React.MouseEvent) => {
     e.preventDefault();
     if (inStock === false || loading) return;
     setLoading(true);
-
-    // addItem is synchronous (Zustand local store)
     addItem(product);
-
     setLoading(false);
     setAdded(true);
-
     showPopup({
       id: product._id,
       name: product.name,
@@ -73,186 +58,151 @@ export default function ProductCard({
       price: displayPrice ?? 0,
       hasDiscount,
     });
-
-    if (addedTimerRef.current) clearTimeout(addedTimerRef.current);
-    addedTimerRef.current = setTimeout(() => setAdded(false), 2000);
+    if (timerRef.current) clearTimeout(timerRef.current);
+    timerRef.current = setTimeout(() => setAdded(false), 2000);
   };
 
   return (
-    <>
-      <motion.div
-        initial={{ opacity: 0, y: 24 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.38, ease: [0.25, 0.46, 0.45, 0.94] }}
-        className="relative h-full"
+    <motion.div
+      initial={{ opacity: 0, y: 18 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.4, ease: [0.25, 0.46, 0.45, 0.94] }}
+      className="h-full"
+    >
+      <Link
+        href={`/product/${product._id}`}
+        prefetch={false}
+        dir="rtl"
+        className="group flex flex-col h-full"
+        style={{
+          borderRadius: 20,
+          overflow: "hidden",
+          background: "#fff",
+          boxShadow: "0 1px 3px rgba(0,0,0,0.06), 0 4px 16px rgba(0,0,0,0.06)",
+          border: "1px solid #f3f4f6",
+        }}
       >
-        <Link
-          href={`/product/${product._id}`}
-          prefetch={false}
-          dir="rtl"
-          className="group relative flex flex-col h-full rounded-[20px] overflow-hidden"
+        {/* ─── منطقة الصورة ─── */}
+        <div
+          className="relative w-full overflow-hidden"
           style={{
-            background: "#ffffff",
-            border: "1px solid rgba(0,0,0,0.08)",
+            background: "linear-gradient(145deg, #f8f9fb 0%, #f0f2f5 100%)",
           }}
         >
-          {/* Glow on hover */}
+          {/* خط لوني في الأعلى بألوان اللوجو */}
+          <div
+            className="absolute top-0 left-0 right-0 h-[3px] z-10"
+            style={{ background: "linear-gradient(90deg, #00246E, #0065C4, #03DFFD)" }}
+          />
 
+          {/* شارة الخصم */}
+          {hasDiscount && discountPct > 0 && (
+            <div
+              className="absolute top-3 right-3 z-20 text-white text-[10px] font-black px-2 py-0.5 rounded-full"
+              style={{ background: "#ef4444", letterSpacing: "0.03em" }}
+            >
+              {discountPct}% خصم
+            </div>
+          )}
 
-          {/* ══ IMAGE ZONE ══ */}
-          <div className="relative w-full overflow-hidden">
-            {/* Rank badge */}
-            {rank != null && (
-              <div
-                className="absolute top-2.5 right-2.5 z-30 w-7 h-7 rounded-full flex items-center justify-center text-xs font-black shadow-lg"
-                style={
-                  rank === 1
-                    ? {
-                        background: "linear-gradient(135deg, #284064 0%, #60758E 100%)",
-                        color: "#ffffff",
-                        boxShadow: "0 2px 10px rgba(40,64,100,0.4)",
-                      }
-                    : {
-                        background: "rgba(40,64,100,0.1)",
-                        color: "#284064",
-                        border: "1px solid rgba(40,64,100,0.35)",
-                      }
-                }
-              >
-                {rank}
-              </div>
-            )}
+          {/* رقم الترتيب */}
+          {rank != null && (
+            <div
+              className="absolute top-3 left-3 z-20 w-6 h-6 rounded-full flex items-center justify-center text-[11px] font-black text-white"
+              style={{ background: "#00246E" }}
+            >
+              {rank}
+            </div>
+          )}
 
-            {/* Out of stock badge */}
-            {inStock === false && (
-              <div
-                className="absolute top-2.5 left-2.5 z-30 px-2 py-1 rounded-md text-[10px] font-bold shadow-sm"
-                style={{
-                  background: "rgba(220, 38, 38, 0.9)",
-                  color: "#ffffff",
-                  backdropFilter: "blur(4px)",
-                }}
-              >
+          {/* نفذت الكمية */}
+          {inStock === false && (
+            <div className="absolute inset-0 z-10 flex items-center justify-center bg-white/70 backdrop-blur-[3px]">
+              <span className="text-[11px] font-bold text-gray-500 bg-white border border-gray-200 px-3 py-1 rounded-full shadow-sm">
                 نفذت الكمية
-              </div>
-            )}
+              </span>
+            </div>
+          )}
 
-            {/* Product image */}
-            {resolvedImage ? (
-              <Image
-                src={resolvedImage}
-                alt={name}
-                width={600}
-                height={600}
-                className="w-full h-auto object-contain block transition-transform duration-500"
-                sizes="(max-width: 640px) 50vw, (max-width: 1024px) 33vw, 25vw"
-                priority={priority}
-                loading={priority ? "eager" : "lazy"}
-                unoptimized={resolvedImage.includes("cloudinary.com")}
-              />
-            ) : (
-              <div className="flex items-center justify-center h-28 sm:h-40 text-4xl sm:text-5xl">📱</div>
-            )}
-          </div>
+          {resolvedImage ? (
+            <Image
+              src={resolvedImage}
+              alt={name}
+              width={400}
+              height={400}
+              className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-[1.04]"
+              sizes="(max-width: 640px) 50vw, (max-width: 1024px) 33vw, 25vw"
+              priority={priority}
+              loading={priority ? "eager" : "lazy"}
+              unoptimized={resolvedImage.includes("cloudinary.com")}
+            />
+          ) : (
+            <div className="flex items-center justify-center w-full h-full text-5xl select-none bg-gray-50">📱</div>
+          )}
+        </div>
 
-          {/* ══ CONTENT ZONE ══ */}
-          <div className="flex flex-col flex-1 px-2.5 sm:px-3.5 pt-2 sm:pt-3 pb-2.5 sm:pb-3.5 gap-1.5 sm:gap-2">
+        {/* ─── معلومات المنتج ─── */}
+        <div className="flex flex-col flex-1 p-3 sm:p-4 gap-2.5">
 
-            {/* Brand + network row */}
+          {/* brand + network */}
+          {(brand || network) && (
             <div className="flex items-center gap-1.5 flex-wrap">
               {brand && (
                 <span
-                  className="text-[9px] font-black px-2 py-0.5 rounded-md uppercase tracking-wider leading-none"
-                  style={{
-                    background: "rgba(40,64,100,0.1)",
-                    border: "1px solid rgba(40,64,100,0.3)",
-                    color: "#284064",
-                  }}
+                  className="text-[9px] sm:text-[10px] font-bold uppercase tracking-wider px-2 py-0.5 rounded-md"
+                  style={{ background: "#eef4fb", color: "#00246E" }}
                 >
                   {brand}
                 </span>
               )}
               {network && (
                 <span
-                  className="flex items-center gap-0.5 text-[9px] font-bold px-1.5 py-0.5 rounded-md leading-none"
-                  style={{
-                    background: "rgba(40,64,100,0.08)",
-                    border: "1px solid rgba(40,64,100,0.2)",
-                    color: "#284064",
-                  }}
+                  className="flex items-center gap-0.5 text-[9px] sm:text-[10px] font-semibold px-1.5 py-0.5 rounded-md"
+                  style={{ background: "#f5f5f5", color: "#6b7280" }}
                 >
-                  <IoWifiOutline size={8} />
+                  <IoWifiOutline size={9} />
                   {network}
                 </span>
               )}
             </div>
+          )}
 
-            {/* Product name */}
-            <h3 className="text-[11px] sm:text-[14px] font-bold text-gray-900 leading-[1.4] line-clamp-2 flex-1">
-              {name}
-            </h3>
+          {/* اسم المنتج */}
+          <p className="text-[12px] sm:text-[13px] font-semibold text-gray-700 leading-snug line-clamp-2 flex-1">
+            {name}
+          </p>
 
-            {/* Divider */}
-            <div
-              className="h-px"
-              style={{
-                background:
-                  "linear-gradient(90deg, rgba(40,64,100,0.25), rgba(40,64,100,0.06) 60%, transparent)",
-              }}
-            />
+          {/* ─── السعر والزر ─── */}
+          <div className="flex flex-col gap-2 mt-auto">
 
-            {/* Price block */}
-            <div className="flex items-end justify-between gap-2">
-              <div className="flex flex-col gap-0.5">
-                {hasDiscount && (
-                  <span className="text-[11px] line-through leading-none text-gray-400">
-                    {fmt(originalPrice)} <img src="/money-icon.webp" alt="ر.س" className="inline w-3 h-3 object-contain align-middle" />
-                  </span>
-                )}
-                <div className="flex items-baseline gap-1">
-                  <span
-                    className="text-[16px] sm:text-[26px] font-black leading-none tracking-tight"
-                    style={{ color: hasDiscount ? "#284064" : "#111827" }}
-                  >
-                    {fmt(displayPrice!)}
-                  </span>
-                  <img src="/money-icon.webp" alt="ر.س" className="w-6 sm:w-8 h-6 sm:h-8 object-contain mb-0.5" />
-                </div>
-              </div>
-
-              {hasDiscount && savings > 0 && (
-                <motion.div
-                  initial={{ opacity: 0, scale: 0.85 }}
-                  animate={{ opacity: 1, scale: 1 }}
-                  transition={{ delay: 0.1 }}
-                  className="shrink-0 text-center"
+            {/* السعر */}
+            <div className="flex items-center gap-2">
+              <div className="flex items-baseline gap-1">
+                <span
+                  className="text-[20px] sm:text-[24px] font-black leading-none"
+                  style={{ color: "#111827" }}
                 >
-                  <div className="text-[8px] text-gray-400 leading-none mb-0.5">وفّرت</div>
-                  <div
-                    className="text-[10px] font-black px-2 py-0.5 rounded-lg leading-none whitespace-nowrap"
-                    style={{
-                      background: "rgba(239,68,68,0.15)",
-                      border: "1px solid rgba(239,68,68,0.3)",
-                      color: "#fca5a5",
-                    }}
-                  >
-                    {fmt(savings)} <img src="/money-icon.webp" alt="ر.س" className="inline w-3 h-3 object-contain align-middle" />
-                  </div>
-                </motion.div>
+                  {fmt(displayPrice!)}
+                </span>
+                <img
+                  src="/money-icon.webp"
+                  alt="ر.س"
+                  className="w-5 sm:w-6 h-5 sm:h-6 object-contain"
+                />
+              </div>
+              {hasDiscount && (
+                <span className="text-[10px] sm:text-[11px] text-gray-400 line-through leading-none">
+                  {fmt(originalPrice)}
+                </span>
               )}
             </div>
 
-            {/* Cart button */}
+            {/* زر السلة */}
             {inStock === false ? (
               <button
-                type="button"
                 disabled
-                onClick={(e) => {
-                  e.preventDefault();
-                  e.stopPropagation();
-                }}
-                aria-label="نفذت الكمية"
-                className="w-full py-2.5 sm:py-3 rounded-xl sm:rounded-2xl text-xs sm:text-sm font-black bg-gray-100 text-gray-400 border border-gray-200 cursor-not-allowed flex items-center justify-center gap-1.5 opacity-90 select-none"
+                onClick={(e) => { e.preventDefault(); e.stopPropagation(); }}
+                className="w-full py-2.5 rounded-xl text-[11px] font-bold text-gray-400 bg-gray-100 cursor-not-allowed"
               >
                 نفذت الكمية
               </button>
@@ -262,42 +212,38 @@ export default function ProductCard({
                 whileTap={{ scale: 0.97 }}
                 disabled={loading}
                 aria-label="أضف إلى السلة"
-                className={`cart-btn ${added ? "added" : ""}`}
+                className="w-full py-2.5 sm:py-3 rounded-xl text-[11px] sm:text-xs font-bold transition-all duration-200 flex items-center justify-center gap-1.5"
+                style={
+                  added
+                    ? { background: "#00246E", color: "#fff" }
+                    : { background: "#eef4fb", color: "#00246E" }
+                }
               >
                 <AnimatePresence mode="wait" initial={false}>
                   {loading ? (
                     <motion.span
                       key="loading"
-                      initial={{ opacity: 0, y: 8 }}
-                      animate={{ opacity: 1, y: 0 }}
-                      exit={{ opacity: 0, y: -8 }}
-                      transition={{ duration: 0.15 }}
-                      className="flex items-center gap-2"
-                    >
-                      <span className="w-4 h-4 border-2 border-white border-t-transparent rounded-full animate-spin" />
-                    </motion.span>
+                      initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}
+                      className="w-4 h-4 border-2 border-current border-t-transparent rounded-full animate-spin"
+                    />
                   ) : added ? (
                     <motion.span
                       key="done"
-                      initial={{ opacity: 0, y: 8 }}
-                      animate={{ opacity: 1, y: 0 }}
-                      exit={{ opacity: 0, y: -8 }}
+                      initial={{ opacity: 0, scale: 0.85 }} animate={{ opacity: 1, scale: 1 }} exit={{ opacity: 0 }}
                       transition={{ duration: 0.18 }}
-                      className="flex items-center gap-2"
+                      className="flex items-center gap-1.5"
                     >
-                      <IoCheckmarkCircle size={16} />
+                      <IoCheckmarkCircle size={14} />
                       تمت الإضافة
                     </motion.span>
                   ) : (
                     <motion.span
                       key="add"
-                      initial={{ opacity: 0, y: 8 }}
-                      animate={{ opacity: 1, y: 0 }}
-                      exit={{ opacity: 0, y: -8 }}
+                      initial={{ opacity: 0, scale: 0.85 }} animate={{ opacity: 1, scale: 1 }} exit={{ opacity: 0 }}
                       transition={{ duration: 0.18 }}
-                      className="flex items-center gap-2"
+                      className="flex items-center gap-1.5"
                     >
-                      <IoCartOutline size={16} />
+                      <IoCartOutline size={14} />
                       أضف للسلة
                     </motion.span>
                   )}
@@ -305,8 +251,8 @@ export default function ProductCard({
               </motion.button>
             )}
           </div>
-        </Link>
-      </motion.div>
-    </>
+        </div>
+      </Link>
+    </motion.div>
   );
 }

@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 import { useMainCategories } from "./hooks/useMainCategories";
 import CategoriesTable from "./components/CategoriesTable";
 import AddModal from "./components/AddModal";

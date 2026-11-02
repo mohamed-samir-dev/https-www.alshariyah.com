@@ -1,4 +1,4 @@
-import type { Product } from "../components/products/types";
+﻿import type { Product } from "../components/products/types";
 
 // ترتيب أولويات الـ brands لشرائح الاتصال والراوترات
 const BRAND_ORDER: string[] = ["stc", "STC", "موبايلي", "زين", "سلام", "فيرجن"];

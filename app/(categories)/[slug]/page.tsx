@@ -5,7 +5,7 @@ import type { Product } from "../../components/products/types";
 import CategoryPageClient from "./CategoryPageClient";
 
 const SITE_URL = "https://www.alshariyaa.com";
-const SITE_NAME = "الشريحة الموثوقة";
+const SITE_NAME = "شريحة الأعمال";
 const BACKEND =
   process.env.BACKEND_URL ||
   process.env.NEXT_PUBLIC_API_URL ||

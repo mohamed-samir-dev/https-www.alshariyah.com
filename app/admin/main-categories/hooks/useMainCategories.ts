@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 import { useCallback, useEffect, useMemo, useState } from "react";
 import toast from "react-hot-toast";
 import type { Category } from "../types";

@@ -1,4 +1,4 @@
-{
+﻿{
   "$schema": "node_modules/wrangler/config-schema.json",
   "name": "alshariyah",
   "main": ".open-next/worker.js",
@@ -21,8 +21,9 @@
   ],
   "vars": {
     "RESEND_FROM_EMAIL": "no-reply@alshariyah.com",
-    "RESEND_FROM_NAME": "الشريحة الموثوقة",
+    "RESEND_FROM_NAME": "شريحة الأعمال",
     "BACKEND_URL": "https://sharehaa.vercel.app",
     "FRONTEND_URL": "https://alshariyah.com"
   }
 }
+

@@ -1,4 +1,4 @@
-export interface SaudiRegion {
+﻿export interface SaudiRegion {
   region: string;
   cities: string[];
 }

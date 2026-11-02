@@ -1,4 +1,4 @@
-import { create } from "zustand";
+﻿import { create } from "zustand";
 import { persist } from "zustand/middleware";
 import type { Product } from "../components/products/types";
 import { trackCartAddition } from "../lib/cartEvents";

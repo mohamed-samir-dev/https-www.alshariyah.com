@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 import { useCompany } from "./hooks/useCompany";
 import CompanyFields from "./components/CompanyFields";
 import CompanyImages from "./components/CompanyImages";

@@ -1,4 +1,4 @@
-import { cache } from "react";
+﻿import { cache } from "react";
 
 const BACKEND = process.env.BACKEND_URL || process.env.NEXT_PUBLIC_API_URL || "http://localhost:5000";
 
@@ -11,10 +11,17 @@ export const getCompany = cache(async () => {
       signal: AbortSignal.timeout(15000),
     });
     if (r.ok) {
-      const data = await r.json();
-      if (data && Object.keys(data).length > 0) {
-        cachedCompanyBackup = data;
-        return data;
+      const text = await r.text();
+      if (text && text.trim()) {
+        try {
+          const data = JSON.parse(text);
+          if (data && Object.keys(data).length > 0) {
+            cachedCompanyBackup = data;
+            return data;
+          }
+        } catch {
+          // Invalid JSON, fall through to backup
+        }
       }
     }
     return cachedCompanyBackup || {};

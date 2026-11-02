@@ -19,6 +19,15 @@
 :root {
   --background: #ffffff;
   --foreground: #284064;
+  
+  /* ألوان اللوجو */
+  --logo-cyan: #02D3FF;
+  --logo-navy: #01226B;
+  --logo-blue: #02B9FA;
+  --logo-dark-blue: #023A89;
+  --logo-medium-blue: #005AAD;
+  
+  /* الألوان الأصلية */
   --color-1: #F6F8FC;
   --color-2: #284064;
   --color-3: #60758E;
@@ -195,4 +204,110 @@ input, textarea, select {
   pointer-events: none !important;
   opacity: 0.8 !important;
   box-shadow: none !important;
+}
+
+
+/* ══════════════════════════════════════════════════════════════════════════
+   Product Page Styling with Logo Colors
+   ══════════════════════════════════════════════════════════════════════════ */
+
+/* Product Page Header & Navigation */
+.product-page header {
+  border-color: rgba(2, 185, 250, 0.2) !important;
+  background: rgba(255, 255, 255, 0.95) !important;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05) !important;
+}
+
+.product-page header button {
+  border-color: #02B9FA !important;
+  color: #005AAD !important;
+  background: linear-gradient(135deg, rgba(2, 211, 255, 0.08), rgba(0, 90, 173, 0.08)) !important;
+}
+
+.product-page header button:hover {
+  box-shadow: 0 2px 8px rgba(2, 185, 250, 0.2) !important;
+}
+
+/* Product Page Mobile Footer */
+.product-page .fixed.bottom-0 {
+  border-color: rgba(2, 185, 250, 0.2) !important;
+  box-shadow: 0 -4px 20px rgba(2, 185, 250, 0.1) !important;
+}
+
+/* Product Title & Text */
+[data-product-title="true"] {
+  color: #01226B !important;
+}
+
+[data-product-price="true"] {
+  color: #01226B !important;
+}
+
+/* Product Brand Badge */
+[data-product-badge="true"] {
+  color: #005AAD !important;
+  background: rgba(2, 185, 250, 0.08) !important;
+  border-color: rgba(2, 185, 250, 0.3) !important;
+}
+
+/* Product Rating Stars */
+[data-rating-star="active"] {
+  color: #02B9FA !important;
+}
+
+/* Product Price Card */
+[data-product-price-card="true"] {
+  border-color: #02B9FA !important;
+  background: linear-gradient(135deg, rgba(2, 211, 255, 0.03), rgba(0, 90, 173, 0.03)) !important;
+}
+
+/* Product Spec Cards */
+[data-product-spec="true"] {
+  border-color: #02B9FA !important;
+  background: linear-gradient(135deg, rgba(2, 211, 255, 0.03), rgba(0, 90, 173, 0.03)) !important;
+}
+
+[data-product-spec-icon="true"] {
+  color: #02B9FA !important;
+}
+
+/* Product Images */
+[data-product-image-main="true"] {
+  border-color: #02B9FA !important;
+}
+
+[data-product-thumbnail-active="true"] {
+  border-color: #02D3FF !important;
+}
+
+[data-product-thumbnail="true"] {
+  border-color: #02B9FA !important;
+}
+
+[data-product-thumbnail="true"]:hover {
+  opacity: 1 !important;
+  border-color: #02D3FF !important;
+}
+
+/* Product Details Tabs */
+[data-product-tab-active="true"] {
+  background: linear-gradient(to right, #02B9FA, #005AAD) !important;
+  color: #fff !important;
+  border-color: #02B9FA !important;
+}
+
+[data-product-tab="true"] {
+  color: #60758E !important;
+  border-color: #02B9FA !important;
+  background: #F6F8FC !important;
+}
+
+/* Product Specification Groups */
+[data-spec-group-header="true"] {
+  border-color: #02B9FA !important;
+  background: linear-gradient(135deg, rgba(2, 211, 255, 0.08), rgba(0, 90, 173, 0.08)) !important;
+}
+
+[data-spec-group-title="true"] {
+  color: #01226B !important;
 }

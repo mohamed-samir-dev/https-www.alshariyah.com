@@ -1,4 +1,4 @@
-export interface DocumentSettings {
+﻿export interface DocumentSettings {
   // السجل التجاري
   crName: string;
   crNumber: string;

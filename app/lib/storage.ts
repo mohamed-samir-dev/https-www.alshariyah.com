@@ -1,4 +1,4 @@
-/**
+﻿/**
  * Safe storage utility - minimizes sensitive data in browser storage
  * For demo: allows some data, but in production should be more restrictive
  */

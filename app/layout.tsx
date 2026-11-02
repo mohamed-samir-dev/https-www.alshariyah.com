@@ -1,4 +1,4 @@
-import type { Metadata, Viewport } from "next";
+﻿import type { Metadata, Viewport } from "next";
 import Script from "next/script";
 import "./globals.css";
 import ClientLayout from "./components/ClientLayout";
@@ -19,11 +19,11 @@ export const viewport: Viewport = {
 export async function generateMetadata(): Promise<Metadata> {
   const c = await getCompany();
 
-  const siteName = c.nameAr || "الشريحة الموثوقة";
+  const siteName = c.nameAr || "شريحة الأعمال";
   const titleDefault = `${siteName} | أفضل متجر لبيع شرائح الاتصال في السعودية`;
   const description =
     c.details ||
-    "الشريحة الموثوقة - تسوق أفضل شرائح الاتصال وباقات الإنترنت من فيرجن وSTC وزين وموبايلي بأسعار مميزة. توصيل سريع لجميع مناطق المملكة العربية السعودية.";
+    "شريحة الأعمال - تسوق أفضل شرائح الاتصال وباقات الإنترنت من فيرجن وSTC وزين وموبايلي بأسعار مميزة. توصيل سريع لجميع مناطق المملكة العربية السعودية.";
   const ogImage = `${SITE_URL}/logo.webp`;
 
   return {
@@ -34,7 +34,7 @@ export async function generateMetadata(): Promise<Metadata> {
     },
     description,
     keywords: [
-      "الشريحة الموثوقة",
+      "شريحة الأعمال",
       "alshariyaa",
       "بيع شرائح الاتصال",
       "شرائح اتصال",
@@ -237,3 +237,4 @@ snaptr('init','fa4cbf22-9c14-43d5-a2e6-0a1910358f11',{});`}
     </html>
   );
 }
+

@@ -1,1 +1,1 @@
-export type CompanyData = Record<string, string>;
+﻿export type CompanyData = Record<string, string>;

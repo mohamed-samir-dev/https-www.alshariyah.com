@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 
 import { useState, useRef, useEffect } from "react";
 import PhoneInput, { isValidPhoneNumber, getCountries, getCountryCallingCode } from "react-phone-number-input";

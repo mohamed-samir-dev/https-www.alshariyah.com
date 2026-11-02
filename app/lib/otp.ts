@@ -1,4 +1,4 @@
-import { createHmac, randomInt, timingSafeEqual } from "crypto";
+﻿import { createHmac, randomInt, timingSafeEqual } from "crypto";
 
 export function generateOtp(): string {
   return String(randomInt(100000, 1000000));

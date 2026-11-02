@@ -55,7 +55,7 @@ export async function generateMetadata({
     };
   }
 
-  const siteName = company.nameAr || "الشريحة الموثوقة";
+  const siteName = company.nameAr || "شريحة الأعمال";
   const productName = product.name;
 
   const parts: string[] = [];
@@ -125,7 +125,7 @@ export default async function ProductPage({
     notFound();
   }
 
-  const siteName = company.nameAr || "الشريحة الموثوقة";
+  const siteName = company.nameAr || "شريحة الأعمال";
   const price = product?.salePrice || product?.price || 0;
   const rawImg = product?.images?.[0] || product?.image || "";
   const imageUrl = rawImg
@@ -220,3 +220,4 @@ export default async function ProductPage({
     </>
   );
 }
+

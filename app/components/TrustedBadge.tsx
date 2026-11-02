@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 
 import { useEffect, useId, useState } from "react";
 import Image from "next/image";
@@ -32,7 +32,7 @@ export default function TrustedBadge() {
           <span>الموقع:</span>{" "}
           <strong dir="ltr">https://alshariyaa.com</strong>
         </a>
-        <p className={styles.company}>مؤسسة الشريحة الموثوقة</p>
+        <p className={styles.company}>مؤسسة شريحة الأعمال</p>
         <div className={styles.qrFrame}>
           <div className={styles.qr}>
             <Image src="/trusted-store-qr.webp" alt="رمز QR لموقع المتجر" width={180} height={180} loading="eager" unoptimized />
@@ -62,3 +62,4 @@ export default function TrustedBadge() {
     </div>
   );
 }
+

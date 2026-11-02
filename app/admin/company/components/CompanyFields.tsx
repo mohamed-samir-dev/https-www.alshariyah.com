@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 import { memo } from "react";
 import { fields } from "../constants";
 import type { CompanyData } from "../types";

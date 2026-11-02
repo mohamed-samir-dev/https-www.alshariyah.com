@@ -1,4 +1,4 @@
-import { NextRequest, NextResponse } from "next/server";
+﻿import { NextRequest, NextResponse } from "next/server";
 import { getBackend } from "../../admin/_lib";
 
 // GET /api/products/batch?ids=id1,id2,id3

@@ -53,15 +53,15 @@ export default function ProductPageClient({ id, initialProduct }: { id: string; 
 
       {/* Top Bar */}
       <header
-        className="sticky top-0 z-50 border-b backdrop-blur-xl bg-white/90"
-        style={{ borderColor: "var(--color-4)" }}
+        className="sticky top-0 z-50 border-b backdrop-blur-xl bg-white/95 shadow-sm"
+        style={{ borderColor: "rgba(2,185,250,0.2)" }}
       >
         <div className="max-w-6xl mx-auto px-4 sm:px-6 py-3 flex items-center justify-between">
           <div className="flex items-center gap-3">
             <button
               onClick={() => router.back()}
-              className="w-9 h-9 flex items-center justify-center rounded-xl border transition"
-              style={{ borderColor: "var(--color-4)", color: "var(--color-3)", background: "var(--color-1)" }}
+              className="w-9 h-9 flex items-center justify-center rounded-xl border transition-all hover:shadow-md"
+              style={{ borderColor: "#02B9FA", color: "#005AAD", background: "linear-gradient(135deg, rgba(2,211,255,0.08), rgba(0,90,173,0.08))" }}
             >
               <IoArrowForward size={17} />
             </button>
@@ -77,13 +77,13 @@ export default function ProductPageClient({ id, initialProduct }: { id: string; 
                   <IoChevronBack size={10} />
                 </>
               )}
-              <span className="font-bold truncate max-w-[180px]" style={{ color: "var(--color-2)" }}>{product.name}</span>
+              <span className="font-bold truncate max-w-[180px]" style={{ color: "#01226B" }}>{product.name}</span>
             </nav>
           </div>
           <button
             onClick={handleShare}
-            className="w-9 h-9 flex items-center justify-center rounded-xl border transition"
-            style={{ borderColor: "var(--color-4)", color: "var(--color-3)", background: "var(--color-1)" }}
+            className="w-9 h-9 flex items-center justify-center rounded-xl border transition-all hover:shadow-md"
+            style={{ borderColor: "#02B9FA", color: "#005AAD", background: "linear-gradient(135deg, rgba(2,211,255,0.08), rgba(0,90,173,0.08))" }}
           >
             <IoShareSocial size={15} />
           </button>
@@ -97,12 +97,12 @@ export default function ProductPageClient({ id, initialProduct }: { id: string; 
           <ProductInfo
             product={product}
             addedToCart={addedToCart}
-            onAddToCart={(qty) => {
+            onAddToCart={(qty: number) => {
               if (!product.inStock) return;
               addProductToCart(product, qty);
               setAddedToCart(true);
             }}
-            onBuyNow={(qty) => {
+            onBuyNow={(qty: number) => {
               if (!product.inStock) return;
               addProductToCart(product, qty);
               router.push("/cart");
@@ -121,14 +121,14 @@ export default function ProductPageClient({ id, initialProduct }: { id: string; 
 
       {/* Mobile Floating CTA */}
       <div
-        className="fixed bottom-0 left-0 right-0 z-40 lg:hidden border-t bg-white/95 backdrop-blur-xl"
-        style={{ borderColor: "var(--color-4)" }}
+        className="fixed bottom-0 left-0 right-0 z-40 lg:hidden border-t bg-white/95 backdrop-blur-xl shadow-[0_-4px_20px_rgba(2,185,250,0.1)]"
+        style={{ borderColor: "rgba(2,185,250,0.2)" }}
       >
         <div className="px-4 py-3" dir="rtl">
           <div className="flex items-center justify-between mb-2">
             <p className="text-xs truncate flex-1 ml-3" style={{ color: "var(--color-3)" }}>{product.name}</p>
             <div className="flex items-baseline gap-1">
-              <span className="text-xl font-black" style={{ color: "var(--color-2)" }}>{finalPrice.toLocaleString("en-US")}</span>
+              <span className="text-xl font-black" style={{ color: "#01226B" }}>{finalPrice.toLocaleString("en-US")}</span>
               <span className="text-xs text-gray-400"><img src="/money-icon.webp" alt="ر.س" className="inline w-6 h-6 object-contain align-middle" /></span>
             </div>
           </div>

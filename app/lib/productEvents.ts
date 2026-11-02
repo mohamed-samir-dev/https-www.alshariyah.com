@@ -1,4 +1,4 @@
-import type { Product } from '../components/products/types';
+﻿import type { Product } from '../components/products/types';
 
 export const CATALOG_PIXEL_ID = 'DB4IAG3C77U4O1M3UD7G';
 type Payload = {

@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+﻿import type { Metadata } from "next";
 // leaflet CSS مطلوب فقط في checkout (AddressMap)
 import "leaflet/dist/leaflet.css";
 

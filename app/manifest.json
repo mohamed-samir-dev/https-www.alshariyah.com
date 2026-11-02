@@ -1,6 +1,6 @@
-{
-  "name": "الشريحة الموثوقة",
-  "short_name": "الشريحة الموثوقة",
+﻿{
+  "name": "شريحة الأعمال",
+  "short_name": "شريحة الأعمال",
   "icons": [
     {
       "src": "/web-app-manifest-192x192.png",
@@ -19,3 +19,4 @@
   "background_color": "#ffffff",
   "display": "standalone"
 }
+

@@ -1,4 +1,4 @@
-import { TrendingUp } from "lucide-react";
+﻿import { TrendingUp } from "lucide-react";
 import type { Product } from "./products/types";
 import ProductCard from "./products/ProductCard";
 
@@ -44,7 +44,7 @@ export default async function MostDemandedSection() {
 
         <div className="flex items-center justify-between mb-6 sm:mb-10">
           <div className="flex items-center gap-3">
-            <div className="w-1 h-7 rounded-full bg-[#284064]" />
+            <div className="w-1 h-7 rounded-full bg-gradient-to-b from-[#02B9FA] to-[#005AAD]" />
             <div>
               <h2 className="text-xl sm:text-3xl font-black text-gray-900">الأكثر طلباً</h2>
               <p className="text-gray-500 text-xs sm:text-sm mt-0.5">منتجات يختارها عملاؤنا باستمرار</p>
@@ -52,10 +52,13 @@ export default async function MostDemandedSection() {
           </div>
           <div
             className="flex items-center gap-2 px-3 py-1.5 rounded-full"
-            style={{ background: "rgba(40,64,100,0.1)", border: "1px solid rgba(40,64,100,0.25)" }}
+            style={{ 
+              background: "linear-gradient(135deg, rgba(2,185,250,0.08), rgba(0,90,173,0.08))", 
+              border: "1px solid rgba(2,185,250,0.3)" 
+            }}
           >
-            <TrendingUp className="w-3.5 h-3.5 text-[#284064]" />
-            <span className="text-[#284064] text-xs font-bold">الأعلى مبيعاً</span>
+            <TrendingUp className="w-3.5 h-3.5 text-[#005AAD]" />
+            <span className="text-[#01226B] text-xs font-bold">الأعلى مبيعاً</span>
           </div>
         </div>
 

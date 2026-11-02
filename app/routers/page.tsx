@@ -1,15 +1,15 @@
-import RoutersClient from "./RoutersClient";
+﻿import RoutersClient from "./RoutersClient";
 import type { Product } from "../components/products/types";
 import { sortProducts } from "../lib/sortProducts";
 import type { Metadata } from "next";
 
 const SITE_URL = "https://www.alshariyaa.com";
-const SITE_NAME = "الشريحة الموثوقة";
+const SITE_NAME = "شريحة الأعمال";
 
 export const metadata: Metadata = {
   title: `الراوترات وأجهزة الإنترنت | ${SITE_NAME}`,
   description:
-    "تسوق أفضل الراوترات وأجهزة الإنترنت بأسرع سرعات وأقوى تغطية لمنزلك ومكتبك من الشريحة الموثوقة.",
+    "تسوق أفضل الراوترات وأجهزة الإنترنت بأسرع سرعات وأقوى تغطية لمنزلك ومكتبك من شريحة الأعمال.",
   alternates: {
     canonical: `${SITE_URL}/routers`,
   },
@@ -57,3 +57,4 @@ export default async function RoutersPage() {
   const products = await getRouters();
   return <RoutersClient initialProducts={products} />;
 }
+

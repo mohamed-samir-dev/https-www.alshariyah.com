@@ -1,4 +1,4 @@
-export interface SlugConfig {
+﻿export interface SlugConfig {
   label: string;
   parentLabel: string;
   parentHref: string;

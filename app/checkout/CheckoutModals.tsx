@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 
 import { Lock, BadgeCheck, User, Phone, MapPin, IdCard, ArrowLeft } from "lucide-react";
 

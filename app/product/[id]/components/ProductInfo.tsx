@@ -40,13 +40,13 @@ export default function ProductInfo({ product, addedToCart, onAddToCart, onBuyNo
     <div className="flex flex-col gap-5" dir="rtl">
       {/* Brand badge */}
       {product.brand && (
-        <span className="text-xs font-bold px-3 py-1 rounded-full w-fit border" style={{ color: "var(--color-5)", background: "rgba(89,85,147,0.1)", borderColor: "rgba(89,85,147,0.3)" }}>
+        <span className="text-xs font-bold px-3 py-1 rounded-full w-fit border" style={{ color: "#005AAD", background: "rgba(2,185,250,0.08)", borderColor: "rgba(2,185,250,0.3)" }}>
           {product.brand}
         </span>
       )}
 
       {/* Name */}
-      <h1 className="text-xl sm:text-2xl md:text-3xl font-black leading-tight" style={{ color: "var(--color-2)" }}>{name}</h1>
+      <h1 className="text-xl sm:text-2xl md:text-3xl font-black leading-tight" style={{ color: "#01226B" }}>{name}</h1>
 
       {/* Rating */}
       {rating && rating.count > 0 && (
@@ -56,40 +56,40 @@ export default function ProductInfo({ product, addedToCart, onAddToCart, onBuyNo
               <IoStar key={i} size={14} style={{ color: i < Math.round(rating.average) ? "var(--color-4)" : "#e5e7eb" }} />
             ))}
           </div>
-          <span className="text-sm font-bold" style={{ color: "var(--color-2)" }}>{rating.average}</span>
-          <span className="text-xs" style={{ color: "var(--color-3)" }}>({rating.count} تقييم)</span>
+          <span className="text-sm font-bold" style={{ color: "#01226B" }}>{rating.average}</span>
+          <span className="text-xs" style={{ color: "#60758E" }}>({rating.count} تقييم)</span>
         </div>
       )}
 
       {/* Price */}
-      <div className="rounded-2xl border p-4" style={{ borderColor: "var(--color-4)", background: "var(--color-1)" }}>
+      <div className="rounded-2xl border p-4" style={{ borderColor: "#02B9FA", background: "linear-gradient(135deg, rgba(2,211,255,0.03), rgba(0,90,173,0.03))" }}>
         <div className="flex items-baseline gap-3 flex-wrap">
-          <span className="text-3xl sm:text-4xl font-black" style={{ color: "var(--color-2)" }}>{fmt(finalPrice)}</span>
-          <span className="text-sm font-bold" style={{ color: "var(--color-3)" }}><img src="/money-icon.webp" alt="ر.س" className="inline w-6 h-6 object-contain align-middle" /></span>
+          <span className="text-3xl sm:text-4xl font-black" style={{ color: "#01226B" }}>{fmt(finalPrice)}</span>
+          <span className="text-sm font-bold" style={{ color: "#60758E" }}><img src="/money-icon.webp" alt="ر.س" className="inline w-6 h-6 object-contain align-middle" /></span>
           {hasDiscount && (
             <>
-              <span className="text-sm line-through" style={{ color: "var(--color-3)" }}>{fmt(originalPrice)} <img src="/money-icon.webp" alt="ر.س" className="inline w-6 h-6 object-contain align-middle" /></span>
-              <span className="text-xs font-black text-white px-2 py-0.5 rounded-md" style={{ background: "var(--color-5)" }}>
+              <span className="text-sm line-through" style={{ color: "#60758E" }}>{fmt(originalPrice)} <img src="/money-icon.webp" alt="ر.س" className="inline w-6 h-6 object-contain align-middle" /></span>
+              <span className="text-xs font-black text-white px-2 py-0.5 rounded-md" style={{ background: "linear-gradient(to-r, from-[#02B9FA], to-[#005AAD])" }}>
                 وفّر {savingsPercent}%
               </span>
             </>
           )}
         </div>
-        {taxIncluded && <p className="text-[11px] mt-1" style={{ color: "var(--color-3)" }}>شامل ضريبة القيمة المضافة</p>}
+        {taxIncluded && <p className="text-[11px] mt-1" style={{ color: "#60758E" }}>شامل ضريبة القيمة المضافة</p>}
       </div>
 
       {/* Brief */}
-      {brief && <p className="text-sm leading-relaxed" style={{ color: "var(--color-3)" }}>{brief}</p>}
+      {brief && <p className="text-sm leading-relaxed" style={{ color: "#60758E" }}>{brief}</p>}
 
       {/* Quick Specs */}
       {quickSpecs.length > 0 && (
         <div className="grid grid-cols-2 gap-2">
           {quickSpecs.map((spec, i) => (
-            <div key={i} className="flex items-center gap-2.5 rounded-xl border px-3 py-2.5" style={{ borderColor: "var(--color-4)", background: "var(--color-1)" }}>
-              <span style={{ color: "var(--color-4)" }}>{spec.icon}</span>
+            <div key={i} className="flex items-center gap-2.5 rounded-xl border px-3 py-2.5" style={{ borderColor: "#02B9FA", background: "linear-gradient(135deg, rgba(2,211,255,0.03), rgba(0,90,173,0.03))" }}>
+              <span style={{ color: "#02B9FA" }}>{spec.icon}</span>
               <div className="min-w-0">
-                <p className="text-[10px]" style={{ color: "var(--color-3)" }}>{spec.label}</p>
-                <p className="text-xs font-bold truncate" style={{ color: "var(--color-2)" }}>{spec.value}</p>
+                <p className="text-[10px]" style={{ color: "#60758E" }}>{spec.label}</p>
+                <p className="text-xs font-bold truncate" style={{ color: "#01226B" }}>{spec.value}</p>
               </div>
             </div>
           ))}
@@ -106,22 +106,22 @@ export default function ProductInfo({ product, addedToCart, onAddToCart, onBuyNo
 
       {/* Quantity */}
       <div className="flex items-center gap-4">
-        <span className="text-xs font-bold" style={{ color: "var(--color-3)" }}>الكمية:</span>
-        <div className="flex items-center rounded-xl overflow-hidden border" style={{ borderColor: "var(--color-4)" }}>
+        <span className="text-xs font-bold" style={{ color: "#60758E" }}>الكمية:</span>
+        <div className="flex items-center rounded-xl overflow-hidden border" style={{ borderColor: "#02B9FA" }}>
           <button
             disabled={!product.inStock}
             onClick={() => setQty((q) => Math.max(1, q - 1))}
             className="w-9 h-9 flex items-center justify-center transition"
-            style={{ color: "var(--color-3)" }}
+            style={{ color: "#60758E" }}
           >
             <IoRemove size={14} />
           </button>
-          <span className="w-10 text-center text-sm font-black" style={{ color: "var(--color-2)" }}>{qty}</span>
+          <span className="w-10 text-center text-sm font-black" style={{ color: "#01226B" }}>{qty}</span>
           <button
             disabled={!product.inStock}
             onClick={() => setQty((q) => q + 1)}
             className="w-9 h-9 flex items-center justify-center transition"
-            style={{ color: "var(--color-3)" }}
+            style={{ color: "#60758E" }}
           >
             <IoAdd size={14} />
           </button>
@@ -148,7 +148,7 @@ export default function ProductInfo({ product, addedToCart, onAddToCart, onBuyNo
               whileTap={{ scale: 0.97 }}
               onClick={() => onBuyNow(qty)}
               className="w-full font-bold text-sm py-3.5 rounded-2xl transition border hover:bg-gray-50"
-              style={{ borderColor: "var(--color-4)", color: "var(--color-2)" }}
+              style={{ borderColor: "#02B9FA", color: "#01226B" }}
             >
               اشتري الآن
             </motion.button>
@@ -162,22 +162,22 @@ export default function ProductInfo({ product, addedToCart, onAddToCart, onBuyNo
           { icon: <IoCarOutline size={18} />, title: freeDelivery ? "شحن مجاني" : "شحن سريع", sub: deliveryTime || "خلال 24 ساعة" },
           { icon: <IoFlash size={18} />, title: "دفع آمن", sub: "100% مشفر" },
         ].map((item, i) => (
-          <div key={i} className="flex flex-col items-center gap-1.5 rounded-xl border py-3 px-2" style={{ borderColor: "var(--color-4)", background: "var(--color-1)" }}>
-            <span style={{ color: "var(--color-4)" }}>{item.icon}</span>
-            <span className="text-[10px] font-bold text-center" style={{ color: "var(--color-2)" }}>{item.title}</span>
-            <span className="text-[9px] text-center" style={{ color: "var(--color-3)" }}>{item.sub}</span>
+          <div key={i} className="flex flex-col items-center gap-1.5 rounded-xl border py-3 px-2" style={{ borderColor: "#02B9FA", background: "linear-gradient(135deg, rgba(2,211,255,0.03), rgba(0,90,173,0.03))" }}>
+            <span style={{ color: "#02B9FA" }}>{item.icon}</span>
+            <span className="text-[10px] font-bold text-center" style={{ color: "#01226B" }}>{item.title}</span>
+            <span className="text-[9px] text-center" style={{ color: "#60758E" }}>{item.sub}</span>
           </div>
         ))}
       </div>
 
       {/* Installment */}
       {product.installment?.available && (
-        <div className="rounded-2xl border overflow-hidden" style={{ borderColor: "var(--color-4)", background: "var(--color-1)" }}>
-          <div className="flex items-center gap-2 px-4 py-3 border-b" style={{ borderColor: "var(--color-4)", background: "rgba(139,168,210,0.15)" }}>
-            <IoFlash size={16} style={{ color: "var(--color-5)" }} />
-            <span className="text-sm font-black" style={{ color: "var(--color-5)" }}>تقسيط متاح</span>
+        <div className="rounded-2xl border overflow-hidden" style={{ borderColor: "#02B9FA", background: "linear-gradient(135deg, rgba(2,211,255,0.03), rgba(0,90,173,0.03))" }}>
+          <div className="flex items-center gap-2 px-4 py-3 border-b" style={{ borderColor: "#02B9FA", background: "rgba(139,168,210,0.15)" }}>
+            <IoFlash size={16} style={{ color: "#005AAD" }} />
+            <span className="text-sm font-black" style={{ color: "#005AAD" }}>تقسيط متاح</span>
             {product.installment.months && (
-              <span className="mr-auto text-[11px] text-white px-2.5 py-0.5 rounded-full font-black" style={{ background: "var(--color-5)" }}>
+              <span className="mr-auto text-[11px] text-white px-2.5 py-0.5 rounded-full font-black" style={{ background: "linear-gradient(to-r, from-[#02B9FA], to-[#005AAD])" }}>
                 {product.installment.months} شهر
               </span>
             )}
@@ -185,19 +185,19 @@ export default function ProductInfo({ product, addedToCart, onAddToCart, onBuyNo
           <div className="p-4 space-y-3">
             {product.installment.downPayment && (
               <div className="flex items-center justify-between">
-                <span className="text-xs" style={{ color: "var(--color-3)" }}>الدفعة الأولى</span>
-                <span className="text-base font-black" style={{ color: "var(--color-2)" }}>{fmt(product.installment.downPayment)} <span className="text-xs" style={{ color: "var(--color-3)" }}><img src="/money-icon.webp" alt="ر.س" className="inline w-6 h-6 object-contain align-middle" /></span></span>
+                <span className="text-xs" style={{ color: "#60758E" }}>الدفعة الأولى</span>
+                <span className="text-base font-black" style={{ color: "#01226B" }}>{fmt(product.installment.downPayment)} <span className="text-xs" style={{ color: "#60758E" }}><img src="/money-icon.webp" alt="ر.س" className="inline w-6 h-6 object-contain align-middle" /></span></span>
               </div>
             )}
             {product.installment.note && (
-              <p className="text-xs leading-relaxed" style={{ color: "var(--color-3)" }}>{product.installment.note}</p>
+              <p className="text-xs leading-relaxed" style={{ color: "#60758E" }}>{product.installment.note}</p>
             )}
             {product.installment.conditions && product.installment.conditions.length > 0 && (
               <div className="space-y-1.5">
                 {product.installment.conditions.map((c, i) => (
                   <div key={i} className="flex items-start gap-2">
-                    <IoCheckmarkCircle size={13} className="mt-0.5 shrink-0" style={{ color: "var(--color-4)" }} />
-                    <span className="text-xs" style={{ color: "var(--color-3)" }}>{c}</span>
+                    <IoCheckmarkCircle size={13} className="mt-0.5 shrink-0" style={{ color: "#02B9FA" }} />
+                    <span className="text-xs" style={{ color: "#60758E" }}>{c}</span>
                   </div>
                 ))}
               </div>

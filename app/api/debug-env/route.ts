@@ -1,4 +1,4 @@
-import { NextResponse } from "next/server";
+﻿import { NextResponse } from "next/server";
 
 // Route مؤقت للتشخيص فقط — احذفه بعد حل المشكلة
 // يكشف أي env vars ناقصة بدون الكشف عن القيم

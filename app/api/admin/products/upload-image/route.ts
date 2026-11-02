@@ -1,4 +1,4 @@
-import { NextRequest, NextResponse } from "next/server";
+﻿import { NextRequest, NextResponse } from "next/server";
 import { forwardCookies, getBackend } from "../../_lib";
 
 export const dynamic = "force-dynamic";

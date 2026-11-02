@@ -50,7 +50,13 @@ export async function getCompanyData(): Promise<CompanyData> {
       signal: AbortSignal.timeout(15000),
     });
     if (!res.ok) return {};
-    return await res.json();
+    const text = await res.text();
+    if (!text || !text.trim()) return {};
+    try {
+      return JSON.parse(text);
+    } catch {
+      return {};
+    }
   } catch {
     return {};
   }

@@ -73,15 +73,17 @@ export default function CartPage() {
       <>
         <AnimatedBackground />
         <main className="min-h-[100dvh] flex flex-col items-center justify-center gap-6 px-4 text-center" dir="rtl">
-          <ShoppingBag className="w-16 h-16 text-[#0A1C29]/20" strokeWidth={1.5} />
+          <div className="w-20 h-20 rounded-full flex items-center justify-center bg-[#02B9FA]/10 border border-[#02B9FA]/20 mb-1">
+            <ShoppingBag className="w-10 h-10 text-[#005AAD]" strokeWidth={1.75} />
+          </div>
           <div className="space-y-1.5">
-            <h2 className="text-xl font-bold text-[#0A1C29]">السلة فارغة</h2>
-            <p className="text-[#0A1C29]/40 text-sm">لم تضف أي منتجات بعد</p>
+            <h2 className="text-xl font-black text-[#01226B]">السلة فارغة</h2>
+            <p className="text-slate-500 text-sm">لم تضف أي منتجات بعد</p>
           </div>
           <button
             onClick={() => router.push("/")}
-            className="px-8 py-2.5 rounded-xl text-white text-sm font-bold transition hover:opacity-90"
-            style={{ background: "#284064" }}
+            className="px-8 py-3 rounded-xl text-white text-sm font-bold transition-all shadow-md shadow-[#01226B]/15 hover:shadow-lg active:scale-95"
+            style={{ background: "linear-gradient(to left, #01226B, #005AAD)" }}
           >
             تصفح المنتجات
           </button>
@@ -97,14 +99,14 @@ export default function CartPage() {
       {redirecting && (
         <div className="fixed inset-0 z-[60] flex flex-col items-center justify-center gap-7 px-4 bg-white">
           <div className="relative w-16 h-16">
-            <div className="absolute inset-0 rounded-full border-4 border-gray-100" />
-            <div className="absolute inset-0 rounded-full border-4 border-transparent border-t-[#0A1C29]" style={{ animation: "spin 0.85s linear infinite" }} />
+            <div className="absolute inset-0 rounded-full border-4 border-slate-100" />
+            <div className="absolute inset-0 rounded-full border-4 border-transparent border-t-[#005AAD]" style={{ animation: "spin 0.85s linear infinite" }} />
           </div>
           <div className="text-center space-y-1.5">
-            <p className="text-[#0A1C29] font-black text-sm sm:text-base">جاري الانتقال للطلب</p>
-            <p className="text-gray-400 text-xs sm:text-sm">يرجى الانتظار...</p>
+            <p className="text-[#01226B] font-black text-sm sm:text-base">جاري الانتقال للطلب</p>
+            <p className="text-slate-400 text-xs sm:text-sm">يرجى الانتظار...</p>
           </div>
-          <p className="text-[10px] text-gray-300 flex items-center gap-1"><Lock size={9} /> اتصال مشفّر وآمن · PCI DSS</p>
+          <p className="text-[10px] text-slate-400 flex items-center gap-1"><Lock size={9} /> اتصال مشفّر وآمن · PCI DSS</p>
           <style>{`@keyframes spin { to { transform: rotate(360deg); } }`}</style>
         </div>
       )}
@@ -113,48 +115,47 @@ export default function CartPage() {
       {showPopup && (
         <div
           className="fixed inset-0 z-50 flex items-center justify-center p-4"
-          style={{ background: "rgba(0,0,0,0.55)" }}
+          style={{ background: "rgba(1, 34, 107, 0.45)", backdropFilter: "blur(4px)" }}
           onClick={() => { setShowPopup(false); clear(); }}
         >
           <div
-            className="relative w-full max-w-sm rounded-3xl overflow-hidden shadow-2xl"
-            style={{ background: "#ffffff" }}
+            className="relative w-full max-w-sm rounded-3xl overflow-hidden shadow-2xl bg-white"
             onClick={e => e.stopPropagation()}
           >
-            <div className="h-1.5 w-full" style={{ background: "linear-gradient(90deg, #284064, #60758E, #284064)" }} />
+            <div className="h-1.5 w-full" style={{ background: "linear-gradient(90deg, #02B9FA, #02D3FF, #005AAD)" }} />
             <div className="p-6 sm:p-8 text-center" dir="rtl">
-              <div className="w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4" style={{ background: "linear-gradient(135deg, #FEFEFE, #F6F8FC)" }}>
-                <BadgeCheck className="w-8 h-8 text-[#284064]" />
+              <div className="w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4 bg-gradient-to-br from-[#02B9FA]/15 to-[#005AAD]/15 border border-[#02B9FA]/20">
+                <BadgeCheck className="w-8 h-8 text-[#005AAD]" />
               </div>
-              <h2 className="text-xl font-black text-[#0A1C29] mb-1">تم استلام طلبك! 🎉</h2>
-              <p className="text-[#284064] font-bold text-sm mb-4">سيتم التواصل معك قريباً</p>
-              <div className="rounded-2xl border border-[#60758E]/40 p-4 mb-4 text-right space-y-2" style={{ background: "#FEFEFE" }}>
+              <h2 className="text-xl font-black text-[#01226B] mb-1">تم استلام طلبك! 🎉</h2>
+              <p className="text-[#005AAD] font-bold text-sm mb-4">سيتم التواصل معك قريباً</p>
+              <div className="rounded-2xl border border-slate-200/80 p-4 mb-4 text-right space-y-2 bg-slate-50/50">
                 <div className="flex justify-between text-xs">
-                  <span className="text-[#0A1C29]/50">الاسم</span>
-                  <span className="font-bold text-[#0A1C29]">{name}</span>
-                </div>
-                <div className="flex justify-between text-xs">
-                  <span className="text-[#0A1C29]/50">واتساب</span>
-                  <span className="font-bold text-[#0A1C29]" dir="ltr">{whatsapp}</span>
+                  <span className="text-slate-500">الاسم</span>
+                  <span className="font-bold text-[#01226B]">{name}</span>
                 </div>
                 <div className="flex justify-between text-xs">
-                  <span className="text-[#0A1C29]/50">العنوان</span>
-                  <span className="font-bold text-[#0A1C29] text-left max-w-[60%]">{address}</span>
+                  <span className="text-slate-500">واتساب</span>
+                  <span className="font-bold text-[#01226B]" dir="ltr">{whatsapp}</span>
                 </div>
-                <div className="border-t border-[#60758E]/30 pt-2 flex justify-between items-center">
-                  <span className="text-[#0A1C29]/50 text-xs">الإجمالي</span>
-                  <span className="text-lg font-black text-[#284064]">{fmt(total)} <span className="text-xs font-medium text-[#0A1C29]/40"><img src="/money-icon.webp" alt="ر.س" className="inline w-7 h-7 object-contain align-middle" /></span></span>
+                <div className="flex justify-between text-xs">
+                  <span className="text-slate-500">العنوان</span>
+                  <span className="font-bold text-[#01226B] text-left max-w-[60%]">{address}</span>
+                </div>
+                <div className="border-t border-slate-200 pt-2 flex justify-between items-center">
+                  <span className="text-slate-500 text-xs">الإجمالي</span>
+                  <span className="text-lg font-black text-[#01226B]">{fmt(total)} <span className="text-xs font-medium text-slate-400"><img src="/money-icon.webp" alt="ر.س" className="inline w-7 h-7 object-contain align-middle" /></span></span>
                 </div>
               </div>
-              <div className="flex items-center justify-center gap-2 rounded-xl border border-[#60758E]/40 px-4 py-3 mb-4" style={{ background: "#FEFEFE" }}>
-                <Truck className="w-4 h-4 text-[#284064]" />
-                <span className="text-sm font-bold text-[#0A1C29]">الدفع عند الاستلام</span>
+              <div className="flex items-center justify-center gap-2 rounded-xl border border-[#02B9FA]/25 px-4 py-3 mb-4 bg-[#02B9FA]/5">
+                <Truck className="w-4 h-4 text-[#005AAD]" />
+                <span className="text-sm font-bold text-[#01226B]">الدفع عند الاستلام</span>
               </div>
-              <p className="text-[#0A1C29]/50 text-xs mb-5">سيتصل بك فريقنا على رقم واتساب المسجل لتأكيد الطلب وتحديد موعد التوصيل</p>
+              <p className="text-slate-400 text-xs mb-5">سيتصل بك فريقنا على رقم واتساب المسجل لتأكيد الطلب وتحديد موعد التوصيل</p>
               <button
                 onClick={() => { setShowPopup(false); clear(); }}
-                className="w-full py-3.5 rounded-xl text-white font-black text-sm transition-all hover:opacity-90"
-                style={{ background: "linear-gradient(135deg, #284064 0%, #60758E 100%)" }}
+                className="w-full py-3.5 rounded-xl text-white font-black text-sm transition-all hover:opacity-95 shadow-md shadow-[#01226B]/15"
+                style={{ background: "linear-gradient(to left, #01226B, #005AAD)" }}
               >
                 حسناً، شكراً! ✓
               </button>
@@ -167,22 +168,21 @@ export default function CartPage() {
       {showModal && (
         <div
           className="fixed inset-0 z-50 flex items-center justify-center p-4"
-          style={{ background: "rgba(0,0,0,0.55)" }}
+          style={{ background: "rgba(1, 34, 107, 0.45)", backdropFilter: "blur(4px)" }}
           onClick={() => setShowModal(false)}
         >
           <div
-            className="relative w-full max-w-sm rounded-3xl overflow-hidden shadow-2xl"
-            style={{ background: "#ffffff" }}
+            className="relative w-full max-w-sm rounded-3xl overflow-hidden shadow-2xl bg-white"
             onClick={e => e.stopPropagation()}
           >
-            <div className="h-1.5 w-full" style={{ background: "linear-gradient(90deg, #284064, #60758E, #284064)" }} />
-            <div className="px-5 py-4 border-b border-[#60758E]/30 flex items-center gap-3" style={{ background: "#FEFEFE" }}>
-              <div className="w-8 h-8 rounded-full flex items-center justify-center shrink-0 bg-[#284064]">
+            <div className="h-1.5 w-full" style={{ background: "linear-gradient(90deg, #02B9FA, #02D3FF, #005AAD)" }} />
+            <div className="px-5 py-4 border-b border-slate-100 flex items-center gap-3 bg-slate-50/60">
+              <div className="w-8 h-8 rounded-full flex items-center justify-center shrink-0 bg-gradient-to-br from-[#02B9FA] to-[#005AAD] shadow-sm">
                 <CheckCircle2 size={16} className="text-white" />
               </div>
               <div>
-                <h3 className="text-sm font-black text-[#0A1C29]">معلوماتك الشخصية</h3>
-                <p className="text-[10px] text-[#0A1C29]/50 mt-0.5">الاسم والهوية والتواصل والعنوان</p>
+                <h3 className="text-sm font-black text-[#01226B]">معلوماتك الشخصية</h3>
+                <p className="text-[10px] text-slate-400 mt-0.5">الاسم والهوية والتواصل والعنوان</p>
               </div>
             </div>
             <div className="p-5 space-y-4" dir="rtl">
@@ -199,13 +199,13 @@ export default function CartPage() {
               <button
                 onClick={handleOrder}
                 disabled={loading}
-                className="w-full py-4 rounded-xl text-white font-black text-sm transition-all hover:opacity-90 active:scale-[0.99] flex items-center justify-center gap-2 disabled:opacity-70"
-                style={{ background: "linear-gradient(135deg, #284064 0%, #60758E 100%)" }}
+                className="w-full py-4 rounded-xl text-white font-black text-sm transition-all hover:opacity-95 active:scale-[0.99] flex items-center justify-center gap-2 disabled:opacity-70 shadow-md shadow-[#01226B]/15"
+                style={{ background: "linear-gradient(to left, #01226B, #005AAD)" }}
               >
                 {loading ? "جاري المعالجة..." : "تأكيد الدفع عند الاستلام"}
                 {!loading && <ArrowLeft size={16} />}
               </button>
-              <p className="text-center text-[10px] text-[#0A1C29]/40 flex items-center justify-center gap-1">
+              <p className="text-center text-[10px] text-slate-400 flex items-center justify-center gap-1">
                 <Lock size={10} /> بياناتك محمية ومشفرة بالكامل
               </p>
             </div>
@@ -214,25 +214,25 @@ export default function CartPage() {
       )}
 
       {/* HEADER */}
-      <header className="sticky top-0 z-30 backdrop-blur-xl border-b" style={{ background: "rgba(255,255,255,0.95)", borderColor: "var(--color-4)" }}>
+      <header className="sticky top-0 z-30 backdrop-blur-xl border-b border-slate-100 bg-white/95">
         <div className="max-w-5xl mx-auto px-4 sm:px-6 h-14 sm:h-16 flex items-center justify-between">
-          <button onClick={() => router.back()} className="flex items-center gap-1.5 transition text-sm font-bold" style={{ color: "var(--color-3)" }}>
+          <button onClick={() => router.back()} className="flex items-center gap-1.5 transition text-sm font-bold text-[#01226B]/80 hover:text-[#005AAD]">
             <ChevronRight className="w-4 h-4" />
             <span className="hidden sm:inline">رجوع</span>
           </button>
 
           <div className="flex items-center gap-2.5">
             <div className="relative">
-              <ShoppingBag className="w-5 h-5" style={{ color: "var(--color-2)" }} />
-              <span className="absolute -top-1.5 -right-1.5 w-4 h-4 text-white text-[9px] font-black rounded-full flex items-center justify-center" style={{ background: "var(--color-2)" }}>
+              <ShoppingBag className="w-5 h-5 text-[#01226B]" />
+              <span className="absolute -top-1.5 -right-1.5 w-4 h-4 text-white text-[9px] font-black rounded-full flex items-center justify-center shadow-sm" style={{ background: "#01226B" }}>
                 {count}
               </span>
             </div>
-            <span className="text-base font-black" style={{ color: "var(--color-2)" }}>السلة</span>
+            <span className="text-base font-black text-[#01226B]">السلة</span>
           </div>
 
-          <Link href="/" prefetch={false} className="w-9 h-9 rounded-xl border flex items-center justify-center transition" style={{ background: "var(--color-1)", borderColor: "var(--color-4)" }}>
-            <Home className="w-4 h-4" style={{ color: "var(--color-2)" }} />
+          <Link href="/" prefetch={false} className="w-9 h-9 rounded-xl border border-slate-200 hover:border-[#02B9FA]/40 bg-slate-50/70 hover:bg-[#02B9FA]/10 flex items-center justify-center transition text-[#01226B] hover:text-[#005AAD]" title="الرئيسية">
+            <Home className="w-4 h-4" />
           </Link>
         </div>
       </header>
@@ -241,13 +241,12 @@ export default function CartPage() {
       <main className="max-w-5xl mx-auto px-4 sm:px-6 py-6 sm:py-8 bg-white">
 
         {/* Summary Bar */}
-        <div className="rounded-2xl p-4 sm:p-5 mb-6 sm:mb-8 relative overflow-hidden border" style={{ background: "var(--color-1)", borderColor: "var(--color-4)" }}>
-          <div className="absolute inset-0 opacity-[0.08]" style={{ backgroundImage: "radial-gradient(circle, var(--color-2) 1px, transparent 1px)", backgroundSize: "20px 20px" }} />
+        <div className="rounded-2xl p-4 sm:p-5 mb-6 sm:mb-8 relative overflow-hidden border border-[#02B9FA]/20 bg-gradient-to-l from-[#02B9FA]/[0.06] via-white to-white shadow-sm">
           <div className="relative flex flex-row items-center justify-between gap-2">
             <div>
-              <p className="text-xs mb-1" style={{ color: "var(--color-3)" }}>إجمالي الطلب</p>
-              <p className="text-3xl sm:text-4xl font-black" style={{ color: "var(--color-2)" }}>
-                {fmt(total)} <span className="text-sm font-medium" style={{ color: "var(--color-3)" }}><img src="/money-icon.webp" alt="ر.س" className="inline w-7 h-7 object-contain align-middle" /></span>
+              <p className="text-xs mb-1 text-slate-500 font-medium">إجمالي الطلب</p>
+              <p className="text-3xl sm:text-4xl font-black text-[#01226B]">
+                {fmt(total)} <span className="text-sm font-medium text-slate-400"><img src="/money-icon.webp" alt="ر.س" className="inline w-7 h-7 object-contain align-middle" /></span>
               </p>
             </div>
             <div className="flex gap-3 sm:gap-6">
@@ -282,27 +281,28 @@ export default function CartPage() {
             </section>
 
             {initialized && !user && (
-              <div className="border px-4 py-3.5" style={{ borderColor: "var(--color-4)", background: "var(--color-1)" }} dir="rtl">
+              <div className="border border-[#02B9FA]/25 bg-gradient-to-r from-[#02B9FA]/5 to-transparent rounded-2xl p-4" dir="rtl">
                 <div className="flex gap-3 items-start">
-                  <span className="mt-0.5 shrink-0" style={{ color: "var(--color-4)" }}><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg></span>
+                  <span className="mt-0.5 shrink-0 text-[#005AAD]">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+                  </span>
                   <div className="space-y-2.5 flex-1">
-                    <p className="text-xs leading-relaxed" style={{ color: "var(--color-3)" }}>
+                    <p className="text-xs leading-relaxed text-[#01226B]/80 font-medium">
                       لتتمكن من متابعة طلبك وتفاصيله بسهولة بعد إتمام الدفع، ننصحك بتسجيل الدخول أو إنشاء حساب — وهو اختياري تمامًا.
                     </p>
                     <div className="flex gap-2 flex-wrap">
                       <Link
                         href="/auth?redirect=/cart"
                         prefetch={false}
-                        className="text-xs font-bold border px-3 py-1.5 transition-colors"
-                        style={{ color: "var(--color-2)", borderColor: "var(--color-2)", borderRadius: 0 }}
+                        className="text-xs font-bold text-white px-3.5 py-1.5 rounded-lg transition-all hover:opacity-90 shadow-sm"
+                        style={{ background: "#01226B" }}
                       >
                         تسجيل الدخول
                       </Link>
                       <Link
                         href="/auth?tab=register&redirect=/cart"
                         prefetch={false}
-                        className="text-xs font-bold border px-3 py-1.5 transition-colors"
-                        style={{ color: "var(--color-4)", borderColor: "var(--color-4)", borderRadius: 0 }}
+                        className="text-xs font-bold border border-[#02B9FA] text-[#005AAD] hover:bg-[#02B9FA]/10 px-3.5 py-1.5 rounded-lg transition-colors"
                       >
                         إنشاء حساب
                       </Link>
@@ -319,8 +319,8 @@ export default function CartPage() {
                 setTimeout(() => router.push("/checkout"), 3000);
               }}
               disabled={redirecting}
-              className="w-full py-4 rounded-xl text-white font-black text-base transition-all hover:opacity-90 active:scale-[0.99] flex items-center justify-center gap-2 disabled:opacity-90"
-              style={{ background: "var(--color-2)" }}
+              className="w-full py-4 rounded-xl text-white font-black text-base transition-all hover:opacity-95 active:scale-[0.99] flex items-center justify-center gap-2 disabled:opacity-90 shadow-md shadow-[#01226B]/15 hover:shadow-lg"
+              style={{ background: "linear-gradient(to left, #01226B, #005AAD)" }}
             >
               {redirecting ? (
                 <>
@@ -342,33 +342,39 @@ export default function CartPage() {
           {/* LEFT: Sticky Summary (desktop) */}
           <aside className="hidden lg:block lg:col-span-4">
             <div className="lg:sticky lg:top-24 space-y-4">
-              <div className="rounded-2xl border overflow-hidden bg-white" style={{ borderColor: "var(--color-4)" }}>
-                <div className="px-5 py-4 border-b" style={{ background: "var(--color-1)", borderColor: "var(--color-4)" }}>
-                  <h3 className="text-sm font-black" style={{ color: "var(--color-2)" }}>ملخص الطلب</h3>
+              <div className="rounded-2xl border border-slate-200/90 overflow-hidden bg-white shadow-sm">
+                <div className="px-5 py-4 border-b border-slate-100 bg-slate-50/60">
+                  <h3 className="text-sm font-black text-[#01226B]">ملخص الطلب</h3>
                 </div>
                 <div className="p-5 space-y-3">
                   {items.map(({ product, qty }) => {
                     const price = product.salePrice ?? product.originalPrice ?? product.price;
                     return (
                       <div key={product._id} className="flex justify-between items-start gap-2">
-                        <p className="text-xs leading-relaxed line-clamp-1 flex-1" style={{ color: "var(--color-3)" }}>{product.name} <span style={{ color: "var(--color-4)" }}>×{qty}</span></p>
-                        <span className="text-xs font-bold whitespace-nowrap" style={{ color: "var(--color-2)" }}>{fmt(price * qty)} <img src="/money-icon.webp" alt="ر.س" className="inline w-6 h-6 object-contain align-middle" /></span>
+                        <p className="text-xs leading-relaxed line-clamp-1 flex-1 text-[#01226B]/80">
+                          {product.name} <span className="text-[#005AAD] font-bold">×{qty}</span>
+                        </p>
+                        <span className="text-xs font-bold whitespace-nowrap text-[#01226B]">
+                          {fmt(price * qty)} <img src="/money-icon.webp" alt="ر.س" className="inline w-6 h-6 object-contain align-middle" />
+                        </span>
                       </div>
                     );
                   })}
-                  <div className="border-t border-dashed pt-3 flex justify-between text-xs" style={{ borderColor: "var(--color-4)" }}>
-                    <span className="flex items-center gap-1.5" style={{ color: "var(--color-3)" }}><Truck size={12} /> التوصيل</span>
-                    <span className="font-bold" style={{ color: "var(--color-4)" }}>مجاني ✓</span>
+                  <div className="border-t border-dashed border-slate-200 pt-3 flex justify-between text-xs">
+                    <span className="flex items-center gap-1.5 text-slate-500"><Truck size={12} className="text-[#005AAD]" /> التوصيل</span>
+                    <span className="font-bold text-[#005AAD]">مجاني ✓</span>
                   </div>
-                  <div className="border-t pt-3 flex justify-between items-center" style={{ borderColor: "var(--color-4)" }}>
-                    <span className="text-sm font-bold" style={{ color: "var(--color-3)" }}>الإجمالي</span>
-                    <span className="text-2xl font-black" style={{ color: "var(--color-2)" }}>{fmt(total)} <span className="text-xs font-medium" style={{ color: "var(--color-3)" }}><img src="/money-icon.webp" alt="ر.س" className="inline w-7 h-7 object-contain align-middle" /></span></span>
+                  <div className="border-t border-slate-200 pt-3 flex justify-between items-center">
+                    <span className="text-sm font-bold text-[#01226B]/70">الإجمالي</span>
+                    <span className="text-2xl font-black text-[#01226B]">
+                      {fmt(total)} <span className="text-xs font-medium text-slate-400"><img src="/money-icon.webp" alt="ر.س" className="inline w-7 h-7 object-contain align-middle" /></span>
+                    </span>
                   </div>
                 </div>
               </div>
 
               {/* Trust */}
-              <div className="rounded-2xl border p-4 grid grid-cols-2 gap-2" style={{ background: "#ffffff", borderColor: "var(--color-4)" }}>
+              <div className="rounded-2xl border border-slate-200/80 p-4 grid grid-cols-2 gap-2 bg-white shadow-sm">
                 <TrustBadge icon={<Lock size={13} />} text="دفع آمن" />
                 <TrustBadge icon={<Truck size={13} />} text="شحن سريع" />
                 <TrustBadge icon={<BadgeCheck size={13} />} text="ضمان رسمي" />
@@ -385,9 +391,13 @@ export default function CartPage() {
 function SectionHeader({ title, badge }: { title: string; badge?: string }) {
   return (
     <div className="flex items-center gap-2.5">
-      <div className="w-1 h-5 rounded-full" style={{ background: "var(--color-2)" }} />
-      <h2 className="text-sm sm:text-base font-black" style={{ color: "var(--color-2)" }}>{title}</h2>
-      {badge && <span className="text-[10px] font-bold px-2 py-0.5 rounded-full border" style={{ color: "var(--color-4)", background: "rgba(139,168,210,0.1)", borderColor: "var(--color-4)" }}>{badge}</span>}
+      <div className="w-1 h-5 rounded-full bg-gradient-to-b from-[#02B9FA] to-[#01226B]" />
+      <h2 className="text-sm sm:text-base font-black text-[#01226B]">{title}</h2>
+      {badge && (
+        <span className="text-[10px] font-bold px-2 py-0.5 rounded-full border border-[#02B9FA]/30 text-[#005AAD] bg-[#02B9FA]/10">
+          {badge}
+        </span>
+      )}
     </div>
   );
 }
@@ -395,41 +405,49 @@ function SectionHeader({ title, badge }: { title: string; badge?: string }) {
 function MiniStat({ icon, label, value }: { icon: React.ReactNode; label: string; value: string }) {
   return (
     <div className="text-center">
-      <div className="w-6 h-6 sm:w-7 sm:h-7 rounded-full border flex items-center justify-center mx-auto mb-0.5" style={{ borderColor: "var(--color-4)", background: "rgba(139,168,210,0.15)", color: "var(--color-2)" }}>{icon}</div>
-      <p className="text-[8px] sm:text-[9px]" style={{ color: "var(--color-3)" }}>{label}</p>
-      <p className="text-[10px] sm:text-[11px] font-bold" style={{ color: "var(--color-2)" }}>{value}</p>
+      <div className="w-6 h-6 sm:w-7 sm:h-7 rounded-full border border-[#02B9FA]/25 bg-[#02B9FA]/10 text-[#005AAD] flex items-center justify-center mx-auto mb-0.5">
+        {icon}
+      </div>
+      <p className="text-[8px] sm:text-[9px] text-slate-500">{label}</p>
+      <p className="text-[10px] sm:text-[11px] font-bold text-[#01226B]">{value}</p>
     </div>
   );
 }
 
 function TrustBadge({ icon, text }: { icon: React.ReactNode; text: string }) {
   return (
-    <div className="flex items-center gap-2 rounded-xl border px-3 py-2.5" style={{ background: "var(--color-1)", borderColor: "var(--color-4)" }}>
-      <span style={{ color: "var(--color-2)" }}>{icon}</span>
-      <span className="text-[11px] font-bold" style={{ color: "var(--color-2)" }}>{text}</span>
+    <div className="flex items-center gap-2 rounded-xl border border-slate-200/80 bg-slate-50/50 hover:border-[#02B9FA]/30 px-3 py-2.5 transition-colors">
+      <span className="text-[#005AAD]">{icon}</span>
+      <span className="text-[11px] font-bold text-[#01226B]">{text}</span>
     </div>
   );
 }
 
 function OrderSummaryMobile({ items, total }: { items: { product: { _id: string; name: string; salePrice?: number; originalPrice?: number; price: number }; qty: number }[]; total: number }) {
   return (
-    <div className="rounded-2xl border border-[#60758E]/40 p-4 space-y-2.5" style={{ background: "#ffffff" }}>
+    <div className="rounded-2xl border border-slate-200/90 p-4 space-y-2.5 bg-white shadow-sm">
       {items.map(({ product, qty }) => {
         const price = product.salePrice ?? product.originalPrice ?? product.price;
         return (
           <div key={product._id} className="flex justify-between items-center">
-            <p className="text-xs text-[#0A1C29]/60 line-clamp-1 flex-1 ml-3">{product.name} <span className="text-[#0A1C29]/30">×{qty}</span></p>
-            <span className="text-xs font-bold text-[#0A1C29] whitespace-nowrap">{fmt(price * qty)} <img src="/money-icon.webp" alt="ر.س" className="inline w-6 h-6 object-contain align-middle" /></span>
+            <p className="text-xs text-[#01226B]/80 line-clamp-1 flex-1 ml-3">
+              {product.name} <span className="text-[#005AAD] font-bold">×{qty}</span>
+            </p>
+            <span className="text-xs font-bold text-[#01226B] whitespace-nowrap">
+              {fmt(price * qty)} <img src="/money-icon.webp" alt="ر.س" className="inline w-6 h-6 object-contain align-middle" />
+            </span>
           </div>
         );
       })}
-      <div className="border-t border-dashed border-[#60758E]/40 pt-2.5 flex justify-between text-xs">
-        <span className="text-[#0A1C29]/50 flex items-center gap-1"><Truck size={11} /> التوصيل</span>
-        <span className="font-bold text-[#284064]">مجاني</span>
+      <div className="border-t border-dashed border-slate-200 pt-2.5 flex justify-between text-xs">
+        <span className="text-slate-500 flex items-center gap-1"><Truck size={11} className="text-[#005AAD]" /> التوصيل</span>
+        <span className="font-bold text-[#005AAD]">مجاني ✓</span>
       </div>
-      <div className="border-t border-[#60758E]/30 pt-2.5 flex justify-between items-center">
-        <span className="text-sm font-bold text-[#0A1C29]/60">الإجمالي</span>
-        <span className="text-xl font-black text-[#284064]">{fmt(total)} <span className="text-xs text-[#0A1C29]/40"><img src="/money-icon.webp" alt="ر.س" className="inline w-7 h-7 object-contain align-middle" /></span></span>
+      <div className="border-t border-slate-200 pt-2.5 flex justify-between items-center">
+        <span className="text-sm font-bold text-[#01226B]/70">الإجمالي</span>
+        <span className="text-xl font-black text-[#01226B]">
+          {fmt(total)} <span className="text-xs text-slate-400"><img src="/money-icon.webp" alt="ر.س" className="inline w-7 h-7 object-contain align-middle" /></span>
+        </span>
       </div>
     </div>
   );
@@ -443,8 +461,8 @@ function Field({ label, icon, value, error, placeholder, maxLength, dir, inputMo
 }) {
   return (
     <div data-field={fieldName}>
-      <label className="flex items-center gap-1.5 text-xs font-bold text-[#0A1C29]/70 mb-1.5">
-        <span className="text-[#284064]">{icon}</span>
+      <label className="flex items-center gap-1.5 text-xs font-bold text-[#01226B]/80 mb-1.5">
+        <span className="text-[#005AAD]">{icon}</span>
         {label}
       </label>
       <input
@@ -454,10 +472,10 @@ function Field({ label, icon, value, error, placeholder, maxLength, dir, inputMo
         maxLength={maxLength}
         dir={dir}
         inputMode={inputMode}
-        className={`w-full px-4 py-3 rounded-xl text-sm font-medium text-[#0A1C29] border-2 transition-all focus:outline-none placeholder:text-[#0A1C29]/25 ${
+        className={`w-full px-4 py-3 rounded-xl text-sm font-medium text-[#01226B] border transition-all focus:outline-none placeholder:text-slate-300 ${
           error
-            ? "border-red-400/50 bg-red-50 focus:border-red-400"
-            : "border-[#60758E]/40 bg-[#FEFEFE]/40 focus:border-[#284064] focus:bg-white"
+            ? "border-red-400/70 bg-red-50/50 focus:border-red-500"
+            : "border-slate-200 bg-white focus:border-[#02B9FA] focus:ring-2 focus:ring-[#02B9FA]/20"
         }`}
       />
       {error && <p className="text-red-500 text-[10px] font-bold mt-1">⚠ {error}</p>}

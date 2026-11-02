@@ -1,4 +1,4 @@
-export function otpEmailTemplate(otp: string): string {
+﻿export function otpEmailTemplate(otp: string): string {
   return `<!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
@@ -16,8 +16,9 @@ export function otpEmailTemplate(otp: string): string {
   <p style="margin:0 0 8px;font-size:13px;color:#888;">الرمز صالح لمدة 10 دقائق فقط.</p>
   <p style="margin:0;font-size:13px;color:#888;">إذا لم تطلب هذا الرمز، تجاهل هذه الرسالة.</p>
 
-  <p style="margin:32px 0 0;font-size:13px;color:#aaa;border-top:1px solid #eee;padding-top:16px;">فريق الشريحة الموثوقة</p>
+  <p style="margin:32px 0 0;font-size:13px;color:#aaa;border-top:1px solid #eee;padding-top:16px;">فريق شريحة الأعمال</p>
 
 </body>
 </html>`;
 }
+

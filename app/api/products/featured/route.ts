@@ -1,4 +1,4 @@
-import { NextRequest, NextResponse } from "next/server";
+﻿import { NextRequest, NextResponse } from "next/server";
 import { getBackend, forwardCookies } from "../../admin/_lib";
 
 export async function GET(req: NextRequest) {

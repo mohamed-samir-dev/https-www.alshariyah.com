@@ -1,4 +1,4 @@
-const ALLOWED_HOSTS = [
+﻿const ALLOWED_HOSTS = [
   "localhost",
   "sahelnahatelecom.com",
   "www.sahelnahatelecom.com",

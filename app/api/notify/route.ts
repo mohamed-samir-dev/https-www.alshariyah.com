@@ -1,4 +1,4 @@
-import { NextRequest, NextResponse } from "next/server";
+﻿import { NextRequest, NextResponse } from "next/server";
 import jwt from "jsonwebtoken";
 
 function getCustomerIdFromCookie(req: NextRequest): { userId: string | null; cookieHeader: string } {

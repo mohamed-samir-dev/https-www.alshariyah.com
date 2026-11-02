@@ -1,4 +1,4 @@
-/**
+﻿/**
  * Snapchat Pixel — ID: fa4cbf22-9c14-43d5-a2e6-0a1910358f11
  *
  * Base code is injected directly in layout.tsx <head>.

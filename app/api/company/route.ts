@@ -1,4 +1,4 @@
-import { NextResponse } from "next/server";
+﻿import { NextResponse } from "next/server";
 import { getBackend } from "../admin/_lib";
 
 // Uses the dedicated public endpoint — returns only storefront fields,

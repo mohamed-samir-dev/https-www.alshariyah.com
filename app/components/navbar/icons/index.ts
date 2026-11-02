@@ -1,1 +1,1 @@
-export { SearchIcon, CartIcon, MenuIcon, CloseIcon, ChevronDownIcon } from "./NavIcons";
+﻿export { SearchIcon, CartIcon, MenuIcon, CloseIcon, ChevronDownIcon } from "./NavIcons";

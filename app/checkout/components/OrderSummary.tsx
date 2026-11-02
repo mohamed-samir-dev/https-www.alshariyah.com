@@ -1,4 +1,4 @@
-// import { Truck, ShieldCheck, Zap } from "lucide-react";
+﻿// import { Truck, ShieldCheck, Zap } from "lucide-react";
 // import { IoWalletOutline } from "react-icons/io5";
 
 // const fmt = (n: number) => n.toLocaleString("en-US");

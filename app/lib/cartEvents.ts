@@ -1,4 +1,4 @@
-import type { Product } from '../components/products/types';
+﻿import type { Product } from '../components/products/types';
 import { trackSnapProduct } from './snapPixel';
 import { trackProductEvent } from './productEvents';
 

@@ -1,4 +1,5 @@
-import HeroSection from "./components/HeroSection";
+﻿import HeroSection from "./components/HeroSection";
+import PartnersSection from "./components/PartnersSection";
 import MostDemandedSection from "./components/MostDemandedSection";
 import HomeCategorySections from "./components/HomeCategorySections";
 import CustomerReviews from "./components/CustomerReviews";
@@ -37,7 +38,7 @@ async function getReviews() {
 export default async function Home() {
   const [c, reviews] = await Promise.all([getCompany(), getReviews()]);
 
-  const siteName = c.nameAr || "الشريحة الموثوقة";
+  const siteName = c.nameAr || "شريحة الأعمال";
   const logoUrl = c.logo
     ? c.logo.startsWith("http")
       ? c.logo
@@ -111,6 +112,7 @@ export default async function Home() {
       />
       <main className="min-h-screen">
         <HeroSection />
+        <PartnersSection />
         <MostDemandedSection />
         <HomeCategorySections />
         <CustomerReviews initialReviews={reviews} />
@@ -118,3 +120,4 @@ export default async function Home() {
     </>
   );
 }
+

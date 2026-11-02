@@ -1,4 +1,4 @@
-import Link from "next/link";
+﻿import Link from "next/link";
 
 export interface HeroSlideData {
   /** اسم ملف الصورة في /public مثال: "hero1.webp" */
