@@ -1,4 +1,4 @@
-﻿import { NextRequest, NextResponse } from "next/server";
+import { NextRequest, NextResponse } from "next/server";
 import jwt from "jsonwebtoken";
 
 function getCustomerIdFromCookie(req: NextRequest): { userId: string | null; cookieHeader: string } {
@@ -49,7 +49,7 @@ export async function POST(req: NextRequest) {
   const formattedPhone = (whatsapp ?? "-").replace(/^(\+966|966)/, "0");
 
   const text = [
-    `🛒 متجر الشريحه الموثوقه لبيع الشرائح`,
+    `🛒 متجر شريحة الأعمال لبيع الشرائح`,
     `🔖 Order ID: ${ltr}#${orderId}`,
     ``,
     `💲 Total Amount: ${ltr}${total} SAR`,

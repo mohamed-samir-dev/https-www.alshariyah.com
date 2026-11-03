@@ -1,4 +1,4 @@
-﻿{
+{
   "name": "شريحة الأعمال",
   "short_name": "شريحة الأعمال",
   "icons": [
@@ -15,7 +15,7 @@
       "purpose": "any maskable"
     }
   ],
-  "theme_color": "#04454A",
+  "theme_color": "#01226B",
   "background_color": "#ffffff",
   "display": "standalone"
 }

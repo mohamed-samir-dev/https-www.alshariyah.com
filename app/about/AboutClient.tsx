@@ -90,9 +90,9 @@ const sections = [
     title: "من نحن",
     accent: "#01226B",
     content: [
-      "مؤسسة مدار الاجهزة الالكترونية هو متجر إلكتروني متخصص في تقديم المنتجات والخدمات بجودة عالية وتجربة شراء سهلة وآمنة تناسب احتياجات العملاء.",
+      "متجر شريحة الأعمال هو متجر إلكتروني متخصص في تقديم المنتجات والخدمات بجودة عالية وتجربة شراء سهلة وآمنة تناسب احتياجات العملاء.",
       "نحن نحرص على توفير أفضل الحلول والعروض مع الاهتمام بالتفاصيل التي تمنح العميل تجربة احترافية بداية من تصفح المنتجات وحتى إتمام الطلب.",
-      "مؤسسة مدار الاجهزة الالكترونية هو اختيارك الأول لشراء أحدث الأجهزة الإلكترونية بأقساط سهلة وبدون فوائد، وتلقى عندنا تجربة مختلفة تبدأ من جودة الخدمة وسرعة التوصيل إلى اهتمام كبير بخدمة ما بعد البيع.",
+      "متجر شريحة الأعمال هو اختيارك الأول لشراء أحدث الأجهزة الإلكترونية بأقساط سهلة وبدون فوائد، وتلقى عندنا تجربة مختلفة تبدأ من جودة الخدمة وسرعة التوصيل إلى اهتمام كبير بخدمة ما بعد البيع.",
     ],
   },
   {
@@ -148,19 +148,19 @@ export default function AboutClient() {
           style={{ backgroundImage: "linear-gradient(#fff 1px,transparent 1px),linear-gradient(90deg,#fff 1px,transparent 1px)", backgroundSize: "40px 40px" }} />
 
         <div className="relative max-w-4xl mx-auto px-5 sm:px-10 py-20 sm:py-32 text-center text-white">
-          <div {...anim(80)} className="inline-flex items-center gap-2 bg-white/10 backdrop-blur-sm border border-white/20 rounded-full px-4 py-1.5 text-xs sm:text-sm font-medium mb-6" style={{ color: "#a7f3d0" }}>
-            <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
+          <div {...anim(80)} className="inline-flex items-center gap-2 bg-white/10 backdrop-blur-sm border border-white/20 rounded-full px-4 py-1.5 text-xs sm:text-sm font-medium mb-6" style={{ color: "#02D3FF" }}>
+            <span className="w-1.5 h-1.5 rounded-full bg-[#02B9FA] animate-pulse" />
             تعرف علينا
           </div>
 
           <h1 {...anim(200)} className="text-3xl sm:text-5xl lg:text-6xl font-extrabold mb-4 sm:mb-5 leading-tight tracking-tight">
-            عن مدار
-            <span className="block text-transparent bg-clip-text" style={{ backgroundImage: "linear-gradient(to left, #a7f3d0, #ffffff)" }}>
-              الاجهزة الالكترونية
+            عن
+            <span className="block text-transparent bg-clip-text" style={{ backgroundImage: "linear-gradient(to left, #02D3FF, #ffffff)" }}>
+              شريحة الأعمال
             </span>
           </h1>
 
-          <p {...anim(340)} className="text-base sm:text-lg max-w-xl mx-auto leading-relaxed" style={{ color: "rgba(167,243,208,0.85)" }}>
+          <p {...anim(340)} className="text-base sm:text-lg max-w-xl mx-auto leading-relaxed" style={{ color: "rgba(255,255,255,0.85)" }}>
             تعرف على نشاط المتجر ورؤيتنا والخدمات التي نقدمها لعملائنا
           </p>
         </div>
