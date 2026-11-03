@@ -7,7 +7,7 @@ import { getCompany } from "./lib/getCompany";
 import { Analytics } from "@vercel/analytics/next";
 
 // Single source of truth for the production domain
-const SITE_URL = "https://alshariyah.com";
+const SITE_URL = "https://www.shareehapro.com";
 
 export const viewport: Viewport = {
   themeColor: "#01226B",
@@ -24,7 +24,7 @@ export async function generateMetadata(): Promise<Metadata> {
   const description =
     c.details ||
     "شريحة الأعمال - تسوق أفضل شرائح الاتصال وباقات الإنترنت من فيرجن وSTC وزين وموبايلي بأسعار مميزة. توصيل سريع لجميع مناطق المملكة العربية السعودية.";
-  const ogImage = `${SITE_URL}/logo.webp`;
+  const ogImage = `${SITE_URL}/web-app-manifest-512x512.png`;
 
   return {
     metadataBase: new URL(SITE_URL),
@@ -79,6 +79,19 @@ export async function generateMetadata(): Promise<Metadata> {
         "max-snippet": -1,
       },
     },
+    icons: {
+      icon: [
+        { url: "/favicon.ico", sizes: "any" },
+        { url: "/icon1.png", type: "image/png", sizes: "96x96" },
+        { url: "/web-app-manifest-192x192.png", type: "image/png", sizes: "192x192" },
+        { url: "/web-app-manifest-512x512.png", type: "image/png", sizes: "512x512" },
+      ],
+      apple: [
+        { url: "/apple-icon.png", sizes: "180x180", type: "image/png" },
+        { url: "/apple-touch-icon.png", sizes: "180x180", type: "image/png" },
+      ],
+      shortcut: ["/favicon.ico"],
+    },
     openGraph: {
       type: "website",
       locale: "ar_SA",
@@ -88,14 +101,8 @@ export async function generateMetadata(): Promise<Metadata> {
       description,
       images: [
         {
-          url: ogImage,
-          width: 1200,
-          height: 630,
-          alt: siteName,
-          type: "image/webp",
-        },
-        {
           url: `${SITE_URL}/web-app-manifest-512x512.png`,
+          secureUrl: `${SITE_URL}/web-app-manifest-512x512.png`,
           width: 512,
           height: 512,
           alt: siteName,
@@ -104,10 +111,10 @@ export async function generateMetadata(): Promise<Metadata> {
       ],
     },
     twitter: {
-      card: "summary_large_image",
+      card: "summary",
       title: titleDefault,
       description,
-      images: [ogImage],
+      images: [`${SITE_URL}/web-app-manifest-512x512.png`],
       creator: "@alshariyaa",
       site: "@alshariyaa",
     },
@@ -203,6 +210,13 @@ u.parentNode.insertBefore(r,u);})(window,document,
 'https://sc-static.net/scevent.min.js');
 snaptr('init','fa4cbf22-9c14-43d5-a2e6-0a1910358f11',{});`}
         </Script>
+
+        {/* Favicons & App Icons */}
+        <link rel="icon" href="/favicon.ico" sizes="any" />
+        <link rel="icon" type="image/png" sizes="96x96" href="/icon1.png" />
+        <link rel="icon" type="image/png" sizes="192x192" href="/web-app-manifest-192x192.png" />
+        <link rel="apple-touch-icon" sizes="180x180" href="/apple-icon.png" />
+        <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
 
       </head>
       <body
