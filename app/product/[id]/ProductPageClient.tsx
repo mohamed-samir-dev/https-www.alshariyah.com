@@ -2,8 +2,8 @@
 
 import { useState } from "react";
 import { useAuthStore } from "../../store/authStore";
-import { useSnapProductView } from "../../lib/useSnapProductView";
-import { useProductView } from "../../lib/useProductView";
+import { useEffect } from "react";
+import { pushViewItem, pushAddToCart } from "../../lib/gtmEvents";
 import { useRouter } from "next/navigation";
 import { motion } from "framer-motion";
 import { IoArrowForward, IoShareSocial, IoHomeOutline, IoChevronBack, IoCartOutline } from "react-icons/io5";
@@ -23,11 +23,42 @@ export default function ProductPageClient({ id, initialProduct }: { id: string; 
   const { user } = useAuthStore();
 
   const product = initialProduct;
-  useSnapProductView(product);
-  useProductView(product);
+
+  // ── Track ViewContent / view_item ──
+  useEffect(() => {
+    if (!product) return;
+    pushViewItem({
+      currency: "SAR",
+      value: finalPrice,
+      items: [
+        {
+          item_id: String(product._id),
+          item_name: product.name,
+          price: finalPrice,
+          quantity: 1,
+          item_brand: product.brand,
+          item_category: product.category,
+        },
+      ],
+    });
+  }, [product, finalPrice]);
 
   const addProductToCart = (product: Product, qty: number) => {
     addItem(product, qty);
+    pushAddToCart({
+      currency: "SAR",
+      value: finalPrice * qty,
+      items: [
+        {
+          item_id: String(product._id),
+          item_name: product.name,
+          price: finalPrice,
+          quantity: qty,
+          item_brand: product.brand,
+          item_category: product.category,
+        },
+      ],
+    });
   };
 
   if (!product)

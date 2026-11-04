@@ -1,7 +1,6 @@
 ﻿import { create } from "zustand";
 import { persist } from "zustand/middleware";
 import type { Product } from "../components/products/types";
-import { trackCartAddition } from "../lib/cartEvents";
 
 export interface CartItem {
   product: Product;
@@ -47,7 +46,6 @@ export const useCartStore = create<CartState>()(
             };
           return { items: [...s.items, { product, qty }] };
         });
-        trackCartAddition(product, qty);
       },
       removeItem: (id) =>
         set((s) => ({ items: s.items.filter((i) => i.product._id !== id) })),

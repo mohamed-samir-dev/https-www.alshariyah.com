@@ -13,7 +13,7 @@ import CheckoutPayment from "./CheckoutPayment";
 import CustomerSection, { validateCustomer } from "./CustomerSection";
 import type { CustomerData } from "./CustomerSection";
 import { useAuthStore } from "../store/authStore";
-import { trackSnap } from "../lib/snapPixel";
+import { pushBeginCheckout, pushPurchase } from "../lib/gtmEvents";
 
 const fmt = (n: number) => n.toLocaleString("en-US");
 const API = process.env.NEXT_PUBLIC_API_URL || "http://localhost:5000";
@@ -114,16 +114,18 @@ export default function CheckoutPage() {
   useEffect(() => {
     if (!mounted || items.length === 0) return;
 
-    const checkoutValue = Math.max(0, totalPrice() - discount);
-    // Snap START_CHECKOUT
-    try {
-      trackSnap('START_CHECKOUT', {
-        price: checkoutValue,
-        currency: 'SAR',
-        item_ids: items.map(i => i.product._id).filter((id): id is string => !!id?.trim()),
-        number_items: items.reduce((s, i) => s + i.qty, 0),
-      });
-    } catch { /* analytics must not break checkout */ }
+    pushBeginCheckout({
+      currency: "SAR",
+      value: Math.max(0, totalPrice() - discount),
+      items: items.map(i => ({
+        item_id: String(i.product._id),
+        item_name: i.product.name,
+        price: i.product.salePrice ?? i.product.originalPrice ?? i.product.price,
+        quantity: i.qty,
+        item_brand: i.product.brand,
+        item_category: i.product.category,
+      })),
+    });
   }, [mounted]);
 
 
@@ -185,6 +187,20 @@ export default function CheckoutPage() {
     } catch { /* silent */ }
     setLoading(false);
     setCustomer({ name: fullName, nationalId: "", whatsapp: customer.phone, address, installmentType: "full", months: 0, downPayment: 0 } as CustomerInfo);
+    pushPurchase({
+      transaction_id: `cod_${Date.now()}`,
+      currency: "SAR",
+      value: finalTotal,
+      items: items.map(i => ({
+        item_id: String(i.product._id),
+        item_name: i.product.name,
+        price: i.product.salePrice ?? i.product.originalPrice ?? i.product.price,
+        quantity: i.qty,
+        item_brand: i.product.brand,
+        item_category: i.product.category,
+      })),
+    });
+    clear();
     setShowModal(false);
     setShowSuccess(true);
   };

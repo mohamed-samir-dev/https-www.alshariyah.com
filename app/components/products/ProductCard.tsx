@@ -8,6 +8,7 @@ import { IoCartOutline, IoCheckmarkCircle, IoWifiOutline } from "react-icons/io5
 import type { Product } from "./types";
 import { useCartStore } from "../../store/cartStore";
 import { useCartPopupStore } from "../../store/cartPopupStore";
+import { pushAddToCart } from "../../lib/gtmEvents";
 
 const API = process.env.NEXT_PUBLIC_API_URL || "http://localhost:5000";
 const resolveImgUrl = (src: string) => {
