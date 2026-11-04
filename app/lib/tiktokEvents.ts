@@ -6,7 +6,7 @@
 /** Guard: تأكد إن ttq موجود وعنده track */
 function getTtq(): TikTokPixel | null {
   if (typeof window === "undefined") return null;
-  const ttq = (window as Window & { ttq?: TikTokPixel }).ttq;
+  const ttq = window.ttq;
   if (!ttq || typeof ttq.track !== "function") return null;
   return ttq;
 }
