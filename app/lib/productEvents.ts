@@ -1,4 +1,4 @@
-﻿import type { Product } from '../components/products/types';
+import type { Product } from '../components/products/types';
 
 export const CATALOG_PIXEL_ID = 'DB4IAG3C77U4O1M3UD7G';
 type Payload = {
@@ -6,14 +6,6 @@ type Payload = {
   content_name: string; currency: string; value: number;
   contents: { content_id: string; content_name: string; quantity: number; price: number }[];
 };
-declare global {
-  interface Window {
-    ttq?: {
-      _i?: Record<string, unknown>;
-      instance?: (id: string) => { track: (event: string, payload: Payload) => void };
-    };
-  }
-}
 
 const pending: { event: string; payload: Payload; expires: number }[] = [];
 let retryTimer: ReturnType<typeof setTimeout> | undefined;
