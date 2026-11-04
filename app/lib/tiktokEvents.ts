@@ -6,7 +6,7 @@
 /** Guard: تأكد إن ttq موجود وعنده track */
 function getTtq(): TikTokPixel | null {
   if (typeof window === "undefined") return null;
-  const ttq = window.ttq as TikTokPixel | undefined;
+  const ttq = (window as Window & { ttq?: TikTokPixel }).ttq;
   if (!ttq || typeof ttq.track !== "function") return null;
   return ttq;
 }
@@ -24,10 +24,11 @@ export function pushTikTokViewContent(params: {
   currency?: string;
   value: number;
 }) {
-  if (typeof window === "undefined" || !window.ttq) return;
+  const ttq = getTtq();
+  if (!ttq) return;
 
   try {
-    window.ttq.track("ViewContent", {
+    ttq.track("ViewContent", {
       content_id: params.content_id,
       content_type: params.content_type || "product",
       content_name: params.content_name,
@@ -55,10 +56,11 @@ export function pushTikTokAddToCart(params: {
   currency?: string;
   value: number;
 }) {
-  if (typeof window === "undefined" || !window.ttq) return;
+  const ttq = getTtq();
+  if (!ttq) return;
 
   try {
-    window.ttq.track("AddToCart", {
+    ttq.track("AddToCart", {
       content_id: params.content_id,
       content_type: params.content_type || "product",
       content_name: params.content_name,
@@ -86,10 +88,11 @@ export function pushTikTokInitiateCheckout(params: {
   currency?: string;
   value: number;
 }) {
-  if (typeof window === "undefined" || !window.ttq) return;
+  const ttq = getTtq();
+  if (!ttq) return;
 
   try {
-    window.ttq.track("InitiateCheckout", {
+    ttq.track("InitiateCheckout", {
       content_ids: params.content_ids,
       content_type: params.content_type || "product",
       content_name: params.content_name,
@@ -117,10 +120,11 @@ export function pushTikTokCompletePayment(params: {
   currency?: string;
   value: number;
 }) {
-  if (typeof window === "undefined" || !window.ttq) return;
+  const ttq = getTtq();
+  if (!ttq) return;
 
   try {
-    window.ttq.track("CompletePayment", {
+    ttq.track("CompletePayment", {
       content_ids: params.content_ids,
       content_type: params.content_type || "product",
       content_name: params.content_name,
@@ -148,10 +152,11 @@ export function pushTikTokPlaceAnOrder(params: {
   currency?: string;
   value: number;
 }) {
-  if (typeof window === "undefined" || !window.ttq) return;
+  const ttq = getTtq();
+  if (!ttq) return;
 
   try {
-    window.ttq.track("PlaceAnOrder", {
+    ttq.track("PlaceAnOrder", {
       content_ids: params.content_ids,
       content_type: params.content_type || "product",
       content_name: params.content_name,
