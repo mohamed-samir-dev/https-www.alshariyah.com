@@ -131,10 +131,10 @@ export default function VerifyPage() {
     // ── TikTok CompletePayment + PlaceAnOrder ─────────────────────
     if (verifyData.items && verifyData.items.length > 0) {
       const ttqItems = verifyData.items
-        .filter(i => i.productId && i.productId.trim() !== "")
+        .filter(i => Boolean(i.productId && i.productId.trim() !== ""))
         .map(i => ({
           product: {
-            _id: i.productId,
+            _id: i.productId!,
             name: i.name,
             price: i.price,
             originalPrice: i.price,
