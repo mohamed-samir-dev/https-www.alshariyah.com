@@ -4,5 +4,4 @@ declare module "*.css";
 interface Window {
   dataLayer: any[];
   ttq?: any;
-  snaptr?: any;
 }
