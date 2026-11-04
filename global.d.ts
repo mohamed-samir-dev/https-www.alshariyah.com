@@ -1,37 +1,8 @@
 declare module "*.css";
 
-// ─── TikTok Pixel (ttq) global type declaration ───────────────
-interface TikTokPixelContent {
-  content_id: string;
-  content_name: string;
-  content_type: 'product';
-  quantity: number;
-  price: number;
-}
-
-interface TikTokPixelPayload {
-  content_id?: string;
-  content_ids?: string[];
-  content_type?: string;
-  content_name?: string;
-  content_category?: string;
-  price?: number;
-  quantity?: number;
-  currency?: string;
-  value?: number;
-  contents?: TikTokPixelContent[];
-  [key: string]: unknown;
-}
-
-interface TikTokPixel {
-  track: (event: string, payload?: TikTokPixelPayload) => void;
-  page: () => void;
-  identify: (params: Record<string, unknown>) => void;
-  instance?: (id: string) => { track: (event: string, payload: TikTokPixelPayload) => void };
-  _i?: Record<string, unknown>;
-}
-
+// ─── Global Browser Analytics Objects ─────────────────────────
 interface Window {
-  ttq?: TikTokPixel;
-  dataLayer: unknown[];
+  dataLayer: any[];
+  ttq?: any;
+  snaptr?: any;
 }

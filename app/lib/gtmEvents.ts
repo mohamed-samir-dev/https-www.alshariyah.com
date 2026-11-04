@@ -9,19 +9,6 @@
  *  - CompletePayment / purchase         (إتمام الشراء)
  */
 
-declare global {
-  interface Window {
-    dataLayer: Record<string, unknown>[];
-    ttq?: {
-      track: (event: string, params?: Record<string, unknown>, options?: Record<string, unknown>) => void;
-      page?: () => void;
-      load?: (id: string, options?: Record<string, unknown>) => void;
-      instance?: (id: string) => { track: (e: string, p?: Record<string, unknown>, o?: Record<string, unknown>) => void };
-    };
-    snaptr?: (action: string, event: string, params?: Record<string, unknown>) => void;
-  }
-}
-
 /** تأكد من وجود dataLayer */
 function dl(): Record<string, unknown>[] {
   if (typeof window === "undefined") return [];
