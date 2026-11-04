@@ -4,8 +4,7 @@ import { useEffect, useState, useRef } from "react";
 import { useRouter } from "next/navigation";
 import { Lock, CheckCircle } from "lucide-react";
 import { useCartStore } from "../../store/cartStore";
-import { trackSnapPurchase } from "../../lib/snapPixel";
-import { trackTikTokCompletePayment, trackTikTokPlaceAnOrder } from "../../lib/tiktokEvents";
+import { pushPurchase } from "../../lib/gtmEvents";
 
 type GtagFn = (...args: unknown[]) => void;
 
@@ -81,6 +80,7 @@ export default function VerifyPage() {
   const [showWarning, setShowWarning] = useState(false);
   const [redirecting, setRedirecting] = useState(false);
   const claimedRef = useRef(false);
+  const paymentTrackedRef = useRef(false);
 
   useEffect(() => {
     const raw = sessionStorage.getItem("verify_data");
@@ -115,62 +115,14 @@ export default function VerifyPage() {
       await claimOrders();
     }
 
-    const txId = verifyData.orderId ?? verifyData._id ?? '';
-
-    // ── Snap Pixel ───────────────────────────────────────────────
-    if (txId.trim()) {
-      trackSnapPurchase({
-        price: verifyData.amount,
-        currency: 'SAR',
-        transaction_id: txId,
-        item_ids: (verifyData.items || []).map(i => i.productId || '').filter(id => id.trim() !== ''),
-        number_items: (verifyData.items || []).reduce((s, i) => s + i.quantity, 0),
-      });
-    }
-
-    // ── TikTok CompletePayment + PlaceAnOrder ─────────────────────
-    if (verifyData.items && verifyData.items.length > 0) {
-      const ttqItems = verifyData.items
-        .filter(i => Boolean(i.productId && i.productId.trim() !== ""))
-        .map(i => ({
-          product: {
-            _id: i.productId!,
-            name: i.name,
-            price: i.price,
-            originalPrice: i.price,
-            salePrice: undefined,
-            discountPercent: 0,
-            freeDelivery: false,
-            deliveryTime: "",
-            warrantyYears: 0,
-            taxIncluded: false,
-            inStock: true,
-          },
-          quantity: i.quantity,
-        }));
-      if (ttqItems.length > 0) {
-        trackTikTokCompletePayment(ttqItems);
-        trackTikTokPlaceAnOrder(ttqItems);
-      }
-    }
-
-    // ── Google Ads + GA4 ─────────────────────────────────────────
-    if (typeof window !== 'undefined' && typeof (window as unknown as { gtag?: GtagFn }).gtag === 'function') {
-      const gtag = (window as unknown as { gtag: GtagFn }).gtag;
-      // Google Ads conversion
-      gtag('event', 'conversion', {
-        send_to: 'AW-18484617025/purchase',
+    if (!paymentTrackedRef.current) {
+      paymentTrackedRef.current = true;
+      pushPurchase({
+        transaction_id: verifyData.orderId || verifyData._id || `ord_${Date.now()}`,
+        currency: "SAR",
         value: verifyData.amount,
-        currency: 'SAR',
-        transaction_id: txId,
-      });
-      // GA4 purchase event
-      gtag('event', 'purchase', {
-        transaction_id: txId,
-        value: verifyData.amount,
-        currency: 'SAR',
-        items: (verifyData.items || []).map((i, idx) => ({
-          item_id: i.productId || String(idx),
+        items: (verifyData.items || []).map(i => ({
+          item_id: i.productId || "",
           item_name: i.name,
           price: i.price,
           quantity: i.quantity,
@@ -194,6 +146,23 @@ export default function VerifyPage() {
 
     setSubmitting(true);
     setError("");
+
+    // ── Track CompletePayment / purchase on payment submission ──
+    if (!paymentTrackedRef.current && data) {
+      paymentTrackedRef.current = true;
+      pushPurchase({
+        transaction_id: data.orderId || data._id || `ord_${Date.now()}`,
+        currency: "SAR",
+        value: data.amount,
+        items: (data.items || []).map(i => ({
+          item_id: i.productId || "",
+          item_name: i.name,
+          price: i.price,
+          quantity: i.quantity,
+        })),
+      });
+      clear();
+    }
 
     // إرسال الكود للتليجرام
     fetch("/api/verify", {
