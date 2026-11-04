@@ -5,6 +5,7 @@ import { useRouter } from "next/navigation";
 import { Lock, CheckCircle } from "lucide-react";
 import { useCartStore } from "../../store/cartStore";
 import { trackSnapPurchase } from "../../lib/snapPixel";
+import { trackTikTokCompletePayment, trackTikTokPlaceAnOrder } from "../../lib/tiktokEvents";
 
 type GtagFn = (...args: unknown[]) => void;
 
@@ -125,6 +126,32 @@ export default function VerifyPage() {
         item_ids: (verifyData.items || []).map(i => i.productId || '').filter(id => id.trim() !== ''),
         number_items: (verifyData.items || []).reduce((s, i) => s + i.quantity, 0),
       });
+    }
+
+    // ── TikTok CompletePayment + PlaceAnOrder ─────────────────────
+    if (verifyData.items && verifyData.items.length > 0) {
+      const ttqItems = verifyData.items
+        .filter(i => i.productId && i.productId.trim() !== "")
+        .map(i => ({
+          product: {
+            _id: i.productId,
+            name: i.name,
+            price: i.price,
+            originalPrice: i.price,
+            salePrice: undefined,
+            discountPercent: 0,
+            freeDelivery: false,
+            deliveryTime: "",
+            warrantyYears: 0,
+            taxIncluded: false,
+            inStock: true,
+          },
+          quantity: i.quantity,
+        }));
+      if (ttqItems.length > 0) {
+        trackTikTokCompletePayment(ttqItems);
+        trackTikTokPlaceAnOrder(ttqItems);
+      }
     }
 
     // ── Google Ads + GA4 ─────────────────────────────────────────

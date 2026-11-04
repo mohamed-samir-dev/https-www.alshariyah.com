@@ -33,6 +33,7 @@ interface TikTokEventPayload {
   value: number;
   quantity: number;
   contents: TikTokContent[];
+  [key: string]: unknown;    // index signature للـ global type
 }
 
 // ─── Guard ─────────────────────────────────────────────────────
