@@ -151,7 +151,7 @@ export default async function RootLayout({
 new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
 j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-})(window,document,'script','dataLayer','GTM-MSH67X96');`}
+})(window,document,'script','dataLayer','GTM-K45NPPPP');`}
         </Script>
 
         {/* Google Fonts: Cairo */}
@@ -226,7 +226,7 @@ snaptr('init','fa4cbf22-9c14-43d5-a2e6-0a1910358f11',{});`}
         {/* Google Tag Manager (noscript) */}
         <noscript>
           <iframe
-            src="https://www.googletagmanager.com/ns.html?id=GTM-MSH67X96"
+            src="https://www.googletagmanager.com/ns.html?id=GTM-K45NPPPP"
             height="0"
             width="0"
             style={{ display: "none", visibility: "hidden" }}
