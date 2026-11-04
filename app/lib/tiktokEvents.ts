@@ -3,6 +3,14 @@
  * يتم استخدام هذه الدوال لإرسال الأحداث إلى TikTok Pixel
  */
 
+/** Guard: تأكد إن ttq موجود وعنده track */
+function getTtq(): TikTokPixel | null {
+  if (typeof window === "undefined") return null;
+  const ttq = window.ttq as TikTokPixel | undefined;
+  if (!ttq || typeof ttq.track !== "function") return null;
+  return ttq;
+}
+
 /**
  * Track ViewContent event - عند عرض صفحة المنتج
  */
