@@ -203,3 +203,34 @@ export function pushTikTokPlaceAnOrder(params: {
     console.error("TikTok PlaceAnOrder tracking error:", error);
   }
 }
+
+// ─── Legacy compatibility aliases ─────────────────────────────
+export const trackTikTokViewContent = (product: { _id: string; name: string; price: number; salePrice?: number; originalPrice?: number; category?: string }, quantity = 1) => {
+  const price = product.salePrice ?? product.originalPrice ?? product.price ?? 0;
+  pushTikTokViewContent({
+    content_id: String(product._id),
+    content_type: "product",
+    content_name: product.name,
+    content_category: product.category || "",
+    price,
+    quantity,
+    currency: "SAR",
+    value: price * quantity,
+  });
+  return true;
+};
+
+export const trackTikTokAddToCart = (product: { _id: string; name: string; price: number; salePrice?: number; originalPrice?: number; category?: string }, quantity = 1) => {
+  const price = product.salePrice ?? product.originalPrice ?? product.price ?? 0;
+  pushTikTokAddToCart({
+    content_id: String(product._id),
+    content_type: "product",
+    content_name: product.name,
+    content_category: product.category || "",
+    price,
+    quantity,
+    currency: "SAR",
+    value: price * quantity,
+  });
+  return true;
+};

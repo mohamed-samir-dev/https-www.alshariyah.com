@@ -23,6 +23,7 @@ export default function ProductPageClient({ id, initialProduct }: { id: string; 
   const { user } = useAuthStore();
 
   const product = initialProduct;
+  const finalPrice = product ? (product.salePrice ?? product.originalPrice ?? 0) : 0;
 
   // ── Track ViewContent / view_item ──
   useEffect(() => {
@@ -77,7 +78,6 @@ export default function ProductPageClient({ id, initialProduct }: { id: string; 
     try { await navigator.share({ title: product.name, url: window.location.href }); } catch {}
   };
 
-  const finalPrice = product.salePrice ?? product.originalPrice ?? 0;
 
   return (
     <main className="min-h-screen bg-white pb-28 lg:pb-16" dir="rtl">
